@@ -1,0 +1,39 @@
+.category-sort{
+    display: grid;
+    height: 1.2rem;
+
+    grid-template-columns: 1fr;
+}
+
+.sort {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr 0.12fr;
+
+}
+
+.category-sort-header {
+    background-color: #900015;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+}
+
+.category-up {
+    background-color: #900015;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+}
+
+.category-down {
+    background-color: #900015;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+}

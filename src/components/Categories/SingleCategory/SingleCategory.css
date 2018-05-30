@@ -1,0 +1,33 @@
+.category-list{
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+
+    /*border-bottom: solid 0.09px silver;*/
+
+
+;
+}
+.category{
+    display: grid;
+    padding: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+
+
+
+/*.category{*/
+    /*grid-column: 2;*/
+    /*grid-row: 1;*/
+    /*display: grid;*/
+    /*padding: 1rem;*/
+    /*justify-content: start;*/
+    /*justify-items: center;*/
+    /*align-items: center;*/
+    /*font-size: 1.2rem;*/
+/*}*/

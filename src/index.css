@@ -1,0 +1,15 @@
+:root {
+    ---shadow: 0 1px 5px rgba(104,104,104,0.8);
+}
+
+html{
+    box-sizing: border-box;
+
+}
+body{
+    margin: 30px 30px;
+    line-height: 1.4;
+    color: aliceblue;
+
+}
+
