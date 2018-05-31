@@ -3,6 +3,7 @@ import './App.css'
 import {Post} from "./components/Posts/Post/Post";
 import {CategoriesBar} from "./components/Categories/CategoriesBar/CategoriesBar";
 import {Category} from "./components/Categories/Category/Category";
+import {PostSummary} from "./components/PostDisplay/PostSummary/PostSummary";
 
 class App extends Component {
     render() {
@@ -11,6 +12,7 @@ class App extends Component {
                 <Category/>
 
                 <Post/>
+                <PostSummary/>
 
 
             </div>

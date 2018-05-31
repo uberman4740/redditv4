@@ -1,0 +1,141 @@
+
+.vpp-summary{
+    background-color: #e0ded3;
+}
+
+
+
+
+.post-summary-container{
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+.post-inside{
+
+    height:83vh;
+    overflow: auto;
+    margin :30px 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 0.2fr;
+
+}
+.p-title{
+    background-color: #1a385f;
+
+
+    grid-row:1;
+    display: grid;
+    grid-template-columns: 0.07fr 1fr;
+    grid-template-rows: 0.8fr 0.4fr;
+}
+
+.p-header{
+
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    justify-content: start;
+    justify-items: center;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.p-rating{
+    display:grid;
+    grid-column: 1;
+    grid-row: 1/3;
+    grid-template-rows:  repeat(3,17px);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    font-size: 0.7rem;
+
+}
+.p-footer{
+    grid-column: 2;
+    grid-row: 2;
+    display:grid;
+    font-size: 0.7rem;
+    grid-template-columns:  repeat(3,1fr);
+}
+.p-footer .comments{
+    grid-column: 1;
+    padding: 1rem;
+    justify-content: start;
+    justify-items: start;
+    align-items: center;
+}
+.p-footer .author{
+    grid-column: 2;
+    padding: 1rem;
+    justify-content: start;
+    justify-items: center;
+    align-items: center;
+
+}
+.p-footer .date{
+    grid-column: 3;
+    padding: 1rem;
+    justify-content: end;
+    justify-items: end;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+.p-body{
+    grid-row:2;
+    display:flex;
+    background-color: #1b426a;
+
+}
+.p-body p{
+    display:flex;
+    margin: 50px 80px;
+    /*justify-content: center;*/
+    /*justify-items: center;*/
+    /*align-items: center;*/
+}
+.p-comments{
+
+    margin:15px 20px;
+    grid-row:3;
+    background-color: rgb(109, 113, 123);
+    display:grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    grid-row-gap: 1rem;
+
+
+
+}
+.p-comments-header{
+    grid-row:1;
+    padding:1rem;
+    grid-column: 1;
+
+    background-color: #20385c;
+
+
+}
+.p-comments-list{
+
+    grid-row:auto;
+    grid-column: 1;
+    grid-row-gap: 0.3rem;
+    grid-template-rows: auto;
+    display: grid;
+
+
+
+}
+

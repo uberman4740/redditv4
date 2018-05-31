@@ -13,10 +13,12 @@
 
 .category-sort-header {
     background-color: #900015;
+    /*height: 3rem;*/
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    /*border-left: solid 2px #ba0015;*/
 
 }
 

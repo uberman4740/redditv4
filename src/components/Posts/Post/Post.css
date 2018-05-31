@@ -1,25 +1,34 @@
 .post-container{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    /*grid-template-rows: auto;*/
     /*grid-gap: 0.2px;*/
+    /*grid-template-rows: 100vh;*/
+
+
+
+
+
+
+
 
 
 
 }
-.vpp{
 
-    height: 100vh;
-
-
-    background-color: #f9f7ee;
-
-
-}
 .post-yo{
+    /*height: 100vh;*/
+
+
+
+    /*height:100vh;*/
+    height: 85vh;
 
     display: grid;
+    grid-template-columns: 1fr;
     grid-gap: 1px;
+    overflow: scroll;
+
 
 
 
@@ -27,6 +36,7 @@
 
 }
 .post-yo .hh {
+
     transition: background 0.2s ease,
     padding 0.5s ;
 }

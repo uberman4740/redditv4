@@ -21,42 +21,29 @@ export class Category extends Component {
         console.log("this.props");
 
         return (
-            <div className={'vp'}>
                 <div className={'category-container'}>
-
                     <div>
                         <CategoriesBar/>
                         <CategorySort/>
+                        <SingleCategory/>
+
                     </div>
-                    <div className={'category-yo'}>
 
 
-                        <div className={"hh"}>
-                            <SingleCategory/>
 
-                        </div>
-                        <div className={"hh"}>
-                            <SingleCategory/>
 
-                        </div>
-                        <div className={"hh"}>
-                            <SingleCategory/>
 
-                        </div>
+
 
 
                     </div>
 
 
-                </div>
 
 
-                {/*<div className={'category-yo'}>*/}
-                {/*<Singlecategory/>*/}
-                {/*</div>*/}
 
 
-            </div>
+
 
 
 

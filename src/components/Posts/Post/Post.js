@@ -27,27 +27,59 @@ export class Post extends Component {
         };
 
         return (
-            <div className={'vpp'}>
-                <div className={'post-container'}>
+            <div className={'post-container'}>
 
                     <div>
                         <PostBar/>
                         <PostSort/>
-                    </div>
-                    <div className={'post-yo'}>
-                        {
-                            color.map(i=>(
-                            <div className={"hh"} style={{backgroundColor:i}}>
+                        <div className={'post-yo'}>
+                            {
+                                color.map(i=>(
+                                    <div className={"hh"} style={{backgroundColor:i}}>
+                                        <SinglePost/>
+                                    </div>
+
+                                ))}
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
+                                <SinglePost/>
+                            </div>
+                            <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
                                 <SinglePost/>
                             </div>
 
-                        ))}
 
+
+
+                        </div>
 
                     </div>
 
 
-                </div>
+
 
 
                 {/*<div className={'post-yo'}>*/}

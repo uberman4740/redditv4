@@ -2,7 +2,7 @@
 .post-bar{
     display: grid;
     grid-template-columns: 1fr 0.07fr 0.07fr;
-    
+
     grid-template-areas: 'post-bar-header search-posts add-post';
     /*border-bottom: solid 0.5px #ba0015;*/
 
