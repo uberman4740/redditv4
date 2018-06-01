@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './App.css'
+import Category from "./components/Category/Category";
 import {Post} from "./components/Posts/Post/Post";
-import {CategoriesBar} from "./components/Categories/CategoriesBar/CategoriesBar";
-import {Category} from "./components/Categories/Category/Category";
-import {PostSummary} from "./components/PostDisplay/PostSummary/PostSummary";
+// import {CategoriesBar} from "./components/Categories/CategoriesBar/CategoriesBar";
+// import {PostSummary} from "./components/PostDisplay/PostSummary/PostSummary";
+// import {Category} from "./components/Category/Category";
 
 class App extends Component {
     render() {
@@ -11,8 +12,8 @@ class App extends Component {
             <div className={"app-container"} >
                 <Category/>
 
-                <Post/>
-                <PostSummary/>
+                {/*<Post/>*/}
+                {/*<PostSummary/>*/}
 
 
             </div>

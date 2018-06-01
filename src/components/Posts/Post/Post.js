@@ -28,7 +28,6 @@ export class Post extends Component {
 
         return (
             <div className={'post-container'}>
-
                     <div>
                         <PostBar/>
                         <PostSort/>
@@ -38,7 +37,6 @@ export class Post extends Component {
                                     <div className={"hh"} style={{backgroundColor:i}}>
                                         <SinglePost/>
                                     </div>
-
                                 ))}
                             <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
                                 <SinglePost/>
@@ -70,42 +68,10 @@ export class Post extends Component {
                             <div className={"hh"} style={{backgroundColor:"#e4751b"}}>
                                 <SinglePost/>
                             </div>
-
-
-
-
                         </div>
 
                     </div>
-
-
-
-
-
-                {/*<div className={'post-yo'}>*/}
-                    {/*<SinglePost/>*/}
-                {/*</div>*/}
-
-
-
-
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
         );
     }
 }

@@ -2,29 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be2608ed-acdc-41ff-9ba8-bad31f9cea73" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Comments/Comments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Comments/Comments.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/PostDisplay/PostSummarFooter/PostSummaryFooter.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/PostDisplay/PostSummarFooter/PostSummaryFooter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/PostDisplay/PostSummaryBar/PostSummarBar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/PostDisplay/PostSummaryBar/PostSummaryBar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/actions/categoryActions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/actions/shared.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Category/Category.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Category/Category.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/reducers/categoriesReducer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/reducers/index.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/Category/Category.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/Category/Category.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.css" afterPath="$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Categories/Category/Category.css" afterPath="$PROJECT_DIR$/src/components/Categories/Category/Category.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Categories/Category/Category.js" afterPath="$PROJECT_DIR$/src/components/Categories/Category/Category.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.css" afterPath="$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css" afterPath="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.js" afterPath="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Posts/Post/Post.css" afterPath="$PROJECT_DIR$/src/components/Posts/Post/Post.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Posts/Post/Post.js" afterPath="$PROJECT_DIR$/src/components/Posts/Post/Post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.css" afterPath="$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Posts/PostList/SinglePost.css" afterPath="$PROJECT_DIR$/src/components/Posts/PostList/SinglePost.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Posts/PostSort/PostSort.css" afterPath="$PROJECT_DIR$/src/components/Posts/PostSort/PostSort.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,124 +34,141 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4737221">
+    <splitter split-orientation="horizontal" split-proportion="0.5262195">
       <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PostSummarBar.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummaryBar/PostSummarBar.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="196">
-                  <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PostSummary.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="196">
-                  <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#1806#4683#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SinglePost.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Posts/PostList/SinglePost.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="554">
-                  <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PostSummaryFooter.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummarFooter/PostSummaryFooter.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="196">
-                  <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#0#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Comments.css" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/Comments/Comments.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="560">
-                  <caret line="40" column="19" lean-forward="false" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SinglePost.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Posts/PostList/SinglePost.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="376">
-                  <caret line="37" column="30" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="37" selection-end-column="30" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CategoriesBar.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="154">
-                  <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#0#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Category.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Categories/Category/Category.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="406">
-                  <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#0#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CategoriesBar.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="448">
-                  <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PostSummaryBar.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummaryBar/PostSummaryBar.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="140">
-                  <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
+        <splitter split-orientation="vertical" split-proportion="0.89851487">
+          <split-first>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/App.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="196">
+                      <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                      <folding>
+                        <element signature="e#0#39#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="Comments.css" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/components/Comments/Comments.css">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="560">
+                      <caret line="40" column="19" lean-forward="false" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="Category.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/components/Category/Category.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="185">
+                      <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+                      <folding>
+                        <element signature="e#0#38#0" expanded="true" />
+                        <element signature="e#139#161#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="Post.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/components/Posts/Post/Post.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="56">
+                      <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+                      <folding>
+                        <element signature="e#0#38#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/package.json">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="84">
+                      <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/index.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="28">
+                      <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="categoriesReducer.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/reducers/categoriesReducer.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="168">
+                      <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="categoryActions.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/actions/categoryActions.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="shared.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/actions/shared.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf>
+              <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/App.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="168">
+                      <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="15" selection-end-column="33" />
+                      <folding>
+                        <element signature="e#0#39#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="PostSummary.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="PostSummary.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="456">
@@ -170,17 +184,7 @@
             <entry file="file://$PROJECT_DIR$/src/components/Posts/PostSort/PostSort.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="490">
-                  <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CategorySort.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="196">
-                  <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                  <caret line="35" column="11" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -211,18 +215,8 @@
           <file leaf-file-name="PostBar.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="364">
-                  <caret line="27" column="18" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="27" selection-end-column="18" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SingleCategory.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="112">
-                  <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+                <state relative-caret-position="126">
+                  <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -238,11 +232,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Category.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Categories/Category/Category.css">
+          <file leaf-file-name="Category.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/Category/Category.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+                <state relative-caret-position="219">
+                  <caret line="72" column="28" lean-forward="false" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
@@ -290,13 +284,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/PostBar/PostBar..js" />
-        <option value="$PROJECT_DIR$/src/components/ss.html" />
         <option value="$PROJECT_DIR$/src/components/PostList/PostList..js" />
         <option value="$PROJECT_DIR$/src/components/PostList/PostList.css" />
         <option value="$PROJECT_DIR$/src/components/Post/Post..js" />
         <option value="$PROJECT_DIR$/src/components/Post/Post.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/PostSort/PostSort..js" />
         <option value="$PROJECT_DIR$/src/components/PostBar/PostBar.js" />
@@ -311,19 +302,12 @@
         <option value="$PROJECT_DIR$/src/components/CategorySort/CategorySort.css" />
         <option value="$PROJECT_DIR$/src/components/CategorySort/CategorySort.js" />
         <option value="$PROJECT_DIR$/src/components/CategoriesBar/CategoriesBar.css" />
-        <option value="$PROJECT_DIR$/src/components/Category/Category.css" />
-        <option value="$PROJECT_DIR$/src/components/Category/Category.js" />
         <option value="$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.js" />
         <option value="$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.js" />
         <option value="$PROJECT_DIR$/src/components/PostDisplay/PostSummary.js" />
         <option value="$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.js" />
-        <option value="$PROJECT_DIR$/src/components/Categories/Category/Category.js" />
-        <option value="$PROJECT_DIR$/src/components/Categories/Category/Category.css" />
-        <option value="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/components/Posts/Post/Post.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Posts/Post/Post.css" />
         <option value="$PROJECT_DIR$/src/components/PostDisplay/PostSummarFooter/PostSummaryFooter.css" />
         <option value="$PROJECT_DIR$/src/components/PostDisplay/PostSummarFooter/PostSummaryFooter.js" />
@@ -331,7 +315,6 @@
         <option value="$PROJECT_DIR$/src/components/Comments/index.js" />
         <option value="$PROJECT_DIR$/src/components/Comments/Category.css" />
         <option value="$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.js" />
-        <option value="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css" />
         <option value="$PROJECT_DIR$/src/components/PostDisplay/PostSummaryBar/PostSummarBar.js" />
         <option value="$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.css" />
         <option value="$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.css" />
@@ -341,6 +324,17 @@
         <option value="$PROJECT_DIR$/src/components/Comments/Comments.js" />
         <option value="$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.css" />
         <option value="$PROJECT_DIR$/src/components/Comments/Comments.css" />
+        <option value="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css" />
+        <option value="$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.js" />
+        <option value="$PROJECT_DIR$/src/components/Categories/Category/Category.css" />
+        <option value="$PROJECT_DIR$/src/components/Categories/Category/Category.js" />
+        <option value="$PROJECT_DIR$/src/reducers/index.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Category/Category.css" />
+        <option value="$PROJECT_DIR$/src/components/Category/Category.js" />
+        <option value="$PROJECT_DIR$/src/components/Posts/Post/Post.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
   </component>
@@ -359,11 +353,11 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="575" />
-    <option name="y" value="-1080" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1345" />
+    <option name="y" value="-1057" />
     <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -399,6 +393,12 @@
               <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
               <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -406,22 +406,6 @@
               <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Categories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Categories" type="462c0819:PsiDirectoryNode" />
-              <item name="CategoriesBar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Categories" type="462c0819:PsiDirectoryNode" />
               <item name="Category" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -429,52 +413,6 @@
               <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Categories" type="462c0819:PsiDirectoryNode" />
-              <item name="CategorySort" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Categories" type="462c0819:PsiDirectoryNode" />
-              <item name="SingleCategory" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Comments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="PostDisplay" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="PostDisplay" type="462c0819:PsiDirectoryNode" />
-              <item name="PostSummary" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="PostDisplay" type="462c0819:PsiDirectoryNode" />
-              <item name="PostSummaryBar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Posts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -483,15 +421,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Posts" type="462c0819:PsiDirectoryNode" />
-              <item name="PostBar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="redditv4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="redditv4-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Posts" type="462c0819:PsiDirectoryNode" />
-              <item name="PostSort" type="462c0819:PsiDirectoryNode" />
+              <item name="Post" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -516,7 +446,12 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/actions" />
+      <recent name="$PROJECT_DIR$/src/reducers" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/Categories" />
       <recent name="$PROJECT_DIR$/src/components/Posts" />
     </key>
@@ -554,12 +489,12 @@
       <workItem from="1527468367940" duration="7405000" />
       <workItem from="1527476158654" duration="1850000" />
       <workItem from="1527545852930" duration="28772000" />
-      <workItem from="1527704833580" duration="35500000" />
+      <workItem from="1527704833580" duration="39096000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81788000" />
+    <option name="totallyTimeSpent" value="85384000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -571,7 +506,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="575" y="-1080" width="1920" height="1080" extended-state="0" />
+    <frame x="-1345" y="-1057" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13638757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -581,7 +517,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.028659161" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25024825" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16008316" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -624,43 +560,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Posts/PostList/SinglePost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Posts/PostSort/PostSort.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Posts/PostList/SinglePost.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -731,27 +630,10 @@
     <entry file="file://$PROJECT_DIR$/src/components/PostBar/fsadasdf..js" />
     <entry file="file://$PROJECT_DIR$/src/components/PostBar/ttt..js" />
     <entry file="file://$PROJECT_DIR$/src/components/PostBar/yo.vue" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,14 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Posts/PostSort/PostSort.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="790">
@@ -788,14 +662,6 @@
           <folding>
             <element signature="e#0#38#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="78" column="65" lean-forward="false" selection-start-line="78" selection-start-column="65" selection-end-line="78" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -812,26 +678,6 @@
         <state relative-caret-position="28">
           <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Posts/Post/Post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,30 +721,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="27" column="18" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="27" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummarFooter/PostSummaryFooter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/Category/Category.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -908,42 +736,8 @@
         <state relative-caret-position="196">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/Category/Category.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -955,18 +749,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Posts/PostSort/PostSort.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
-          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <caret line="35" column="11" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -982,7 +768,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
-          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding>
             <element signature="e#1806#4683#0" expanded="false" />
           </folding>
@@ -992,7 +778,65 @@
     <entry file="file://$PROJECT_DIR$/src/components/Posts/PostList/SinglePost.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="554">
-          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Comments/Comments.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="40" column="19" lean-forward="false" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="111" column="10" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <element signature="e#13#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Posts/PostBar/PostBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="27" column="18" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategoriesBar/CategoriesBar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="34" column="18" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="34" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Categories/CategorySort/CategorySort.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1007,21 +851,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PostDisplay/PostSummary/PostSummary.css">
+    <entry file="file://$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="111" column="10" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Categories/SingleCategory/SingleCategory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="60" column="22" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="60" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/categoriesReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/categoryActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/shared.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Category/Category.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="72" column="28" lean-forward="false" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Category/Category.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
           <folding>
-            <element signature="e#13#47#0" expanded="false" />
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#139#161#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Comments/Comments.css">
+    <entry file="file://$PROJECT_DIR$/src/components/Posts/Post/Post.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="40" column="19" lean-forward="false" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="56">
+          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
