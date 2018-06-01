@@ -13,16 +13,15 @@ class App extends Component {
     render() {
         return (
 
-                <Router  >
-                    <div className={"app-container"}>
-                        <Category/>
-                        <Post/>
-
-
-
-                        <Route path ='/:postId' exact component={PostSummary}/>
+                <Router >
+                    <div>
+                        <Route exact path ='/:categoryId?/:postId?' render={(props)=>
+                            <div className={"app-container"}>
+                                <Category {...props}/>
+                                <Post {...props}/>
+                                <PostSummary {...props}/>
+                            </div>}/>
                     </div>
-
                 </Router>
 
 

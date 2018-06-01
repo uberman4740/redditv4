@@ -52,11 +52,12 @@ class Category extends Component {
                     {
                         _.map(this.props.categories,c=>{
                             return(
-                                <div  className={'category'} key={c.id}>
+                                <Link  className={'category'}  to={`/${c.title}`} key={c.id}>
                                     {c.title}
+
                                     {/*<Route path={`${match.url}/:categoryId`} component={SingleCategory}/>*/}
                                     {/*<Route path='/categories/:categoryId' exact component={SingleCategory}/>*/}
-                                </div>
+                                </Link>
                             )
                         })
                     }

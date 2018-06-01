@@ -23,7 +23,7 @@ class Post extends Component {
     closeEditPostModal = () => this.setState(() => ({postModalOpen: false}))
 
     fetchCategoryPosts = (categoryId) => {
-        this.props.getCategoryPosts(categoryId).then(() => this.setState({loading: false}))
+        // this.props.getCategoryPosts(categoryId).then(() => this.setState({loading: false}))
     }
 
     componentDidMount() {
@@ -41,7 +41,7 @@ class Post extends Component {
         // const {postId} = this.props.match.params
         console.log("clicked delete")
 
-        this.props.deletePost(id).then(() => this.props.getCategoryPosts(this.props.match.params.categoryId))
+        // this.props.deletePost(id).then(() => this.props.getCategoryPosts(this.props.match.params.categoryId))
 
     }
     updatePost = (post) => {
@@ -60,10 +60,17 @@ class Post extends Component {
     }
 
     componentDidUpdate(nextProps, prevState, snapshot) {
-        if (this.props.id !== nextProps.id) {
+        console.log("CDU nextProps", nextProps)
+        console.log("CDU props", this.props)
+        if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
             this.props.getCategoryPosts(this.props.match.params.categoryId)
 
         }
+
+    }
+    static getDerivedStateFromProps(props, state){
+        console.log("GDSFP props", props)
+        console.log("GDSFP state", props)
 
     }
 
@@ -110,7 +117,7 @@ class Post extends Component {
                                                 </div>
                                             </div>
                                             <div className={'post'}>
-                                                <Link to={`/${p.id}`}>{p.title}</Link>
+                                                <Link to={`/${p.category}/${p.id}`}>{p.title}</Link>
                                                 {/*{p.title}*/}
                                             </div>
                                             <div className={'post-footer'}>

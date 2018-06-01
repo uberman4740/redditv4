@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './PostSummary.css';
 import {PostSummarBar} from "../PostSummaryBar/PostSummarBar";
-import {Comments} from "../../Comments/Comments";
+import Comments from "../../Comments/Comments";
 import {deletePost, editPost, getPost, votePost} from "../../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
 
@@ -10,6 +10,15 @@ class PostSummary extends Component {
     componentDidMount() {
         console.log("PostSummary CDM props: ", this.props)
     }
+    // static getDerivedStateFromProps(props, state){
+    //     console.log("GGGGGGGG props", props)
+    //     console.log("GGGGGGGG this props", this.props)
+    //     console.log("GGGGGGGG state", state)
+    //
+    //
+    // }
+
+
 
     render() {
         console.log("PostSummary Render  props: ", this.props)
@@ -60,15 +69,8 @@ class PostSummary extends Component {
                     <div className={'p-comments'}>
                         <div className={'p-comments-header'}>Comments</div>
                         <div className={'p-comments-list'}>
-                            <div>
-                                <Comments/>
-                            </div>
-                            <div>
-                                <Comments/>
-                            </div>
-                            <div>
-                                <Comments/>
-                            </div>
+                            <Comments postId={this.props.match.params.postId}/>
+
 
 
 
@@ -90,10 +92,24 @@ const mapStateToProps = (state, ownProps) => {
     console.log("PostSummary state: ", state)
 
     console.log("PostSummary ownprops", ownProps)
-    return {
-        post: state.posts[ownProps.match.params.postId],
-        categories: state.categories
+    if (ownProps.match.params.postId === undefined){
+        return {
+            post: "",
+            // post: state.posts,
+
+            categories: state.categories
+        }
     }
+    else{
+        return {
+
+            post: state.posts[ownProps.match.params.postId],
+            // post: state.posts,
+
+            categories: state.categories
+        }
+    }
+
 }
 
 const mapDispatchToProps = (dispatch) => ({
