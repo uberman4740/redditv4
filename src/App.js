@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import './App.css'
 import Category from "./components/Category/Category";
 import Post from "./components/Posts/Post/Post";
+import PostSummary from "./components/PostDisplay/PostSummary/PostSummary";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
 // import {CategoriesBar} from "./components/Categories/CategoriesBar/CategoriesBar";
 // import {PostSummary} from "./components/PostDisplay/PostSummary/PostSummary";
 // import {Category} from "./components/Category/Category";
@@ -9,14 +12,20 @@ import Post from "./components/Posts/Post/Post";
 class App extends Component {
     render() {
         return (
-            <div className={"app-container"} >
-                <Category/>
 
-                <Post/>
-                {/*<PostSummary/>*/}
+                <Router  >
+                    <div className={"app-container"}>
+                        <Category/>
+                        <Post/>
 
 
-            </div>
+
+                        <Route path ='/:postId' exact component={PostSummary}/>
+                    </div>
+
+                </Router>
+
+
         );
     }
 }

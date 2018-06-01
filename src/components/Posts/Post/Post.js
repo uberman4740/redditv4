@@ -6,12 +6,15 @@ import {deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../
 import connect from "react-redux/es/connect/connect";
 import _ from 'lodash'
 import {getAllPostComments} from "../../../actions/commentsActions";
+import {SinglePost} from "../PostList/SinglePost";
+import PostSummary from "../../PostDisplay/PostSummary/PostSummary";
+import Link from "react-router-dom/es/Link";
 
 
 class Post extends Component {
     state = {
         loading: true,
-        toPostList: false,
+        toPostSummary: false,
         postModalOpen: false
 
 
@@ -32,6 +35,7 @@ class Post extends Component {
 
 
     }
+
 
     onDeleteClick = (id) => {
         // const {postId} = this.props.match.params
@@ -63,6 +67,9 @@ class Post extends Component {
 
     }
 
+    onToPostSummary = () => {
+        this.setState({toPostSummary: true})
+    }
 
     render() {
 
@@ -84,24 +91,31 @@ class Post extends Component {
                         {
                             _.map(this.props.posts, p =>
                                 (
-                                    // const i=0
-                                    <div className={"hh"} >
+                                    <div className={"hh"}>
+
+                                        {/*{<PostSummary showPost={this.state.toPostSummary}/>}*/}
+
+
                                         <div className={'post-list'}>
                                             <div className={'rating'}>
                                                 <div>
-                                                    <i className="fas fa-thumbs-up" onClick={()=>this.props.votePost(p.id,'upVote')}></i>
+                                                    <i className="fas fa-thumbs-up"
+                                                       onClick={() => this.props.votePost(p.id, 'upVote')}/>
                                                 </div>
                                                 <div>
                                                     {p.voteScore}                                                </div>
                                                 <div>
-                                                    <i className="fas fa-thumbs-down" onClick={()=>this.props.votePost(p.id,'downVote')}></i>
+                                                    <i className="fas fa-thumbs-down"
+                                                       onClick={() => this.props.votePost(p.id, 'downVote')}/>
                                                 </div>
                                             </div>
                                             <div className={'post'}>
-                                                {p.title}                                                </div>
+                                                <Link to={`/${p.id}`}>{p.title}</Link>
+                                                {/*{p.title}*/}
+                                            </div>
                                             <div className={'post-footer'}>
                                                 <div className={'post-footer comments'}><i
-                                                    className="far fa-comment"></i>
+                                                    className="far fa-comment"/>
                                                 </div>
                                                 <div className={'post-footer author'}>
                                                     <i className="far fa-user">

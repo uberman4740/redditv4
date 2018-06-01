@@ -12,10 +12,10 @@ export class Comments extends Component {
             <div className={'comments-container'}>
 
                     <div className={'comments-rating'}>
-                        <div><i class="fas fa-thumbs-up"></i>
+                        <div><i className="fas fa-thumbs-up"></i>
 
                         </div>
-                        <div><i class="fas fa-thumbs-down"></i>
+                        <div><i className="fas fa-thumbs-down"></i>
 
                         </div>
 
@@ -28,11 +28,11 @@ export class Comments extends Component {
                     <div className={'comments-body'}>Yes, I agree. I can now create NLP based web apps. I have so much power now but so little time.</div>
                     <div className={'comments-footer'}>
                         <div>
-                            <i class="fas fa-trash-alt"></i>
+                            <i className="fas fa-trash-alt"></i>
 
 
                         </div>
-                        <div><i class="fas fa-edit"></i>
+                        <div><i className="fas fa-edit"></i>
 
                         </div>
                     </div>
