@@ -18,23 +18,16 @@ export class SinglePost extends Component {
 
 
         return (
-            <div>
-
-
                 <div className={'post-list'}>
                     <div className={'rating'}>
                         <div>
                             <i className="fas fa-thumbs-up"></i>
-
-
                         </div>
                         <div>
                             12
-
                         </div>
                         <div>
                             <i className="fas fa-thumbs-down"></i>
-
                         </div>
                     </div>
                     <div className={'post'}>
@@ -42,22 +35,14 @@ export class SinglePost extends Component {
                     </div>
                     <div className={'post-footer'}>
                         <div className={'post-footer comments'}><i className="far fa-comment"></i>
-
                         </div>
                         <div className={'post-footer author'}><i className="far fa-user"></i>
 
                         </div>
                         <div className={'post-footer date'}><i className="far fa-calendar-alt"></i>
-
-
                         </div>
                     </div>
-
-
                 </div>
-
-
-            </div>
 
 
         );
