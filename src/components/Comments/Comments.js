@@ -3,6 +3,10 @@ import './Comments.css'
 import connect from "react-redux/es/connect/connect";
 import _ from 'lodash'
 import {deleteComment, editComment, getAllPostComments, voteComment} from "../../actions/commentsActions";
+import AddComment from "./AddComment";
+import Modal from 'react-modal'
+import {CommentEdit} from "./CommentEdit";
+
 class Comments extends Component {
     state = {
         isAddCommentClicked: false,
@@ -59,6 +63,20 @@ class Comments extends Component {
         return _.map(this.props.comments, c => {
             return (
                 <div className={'comments-container'}>
+                    <Modal
+                        isOpen={this.state.postModalOpen}
+                        onRequestClose={this.closeEditPostModal}
+                    >
+                        {this.state.postModalOpen &&
+                        <CommentEdit
+                            initialValue={c}
+                            onSub={this.updateComment}
+                            closeModal={this.closeEditPostModal}
+
+                        />}
+
+                    </Modal>
+
 
                     <div className={'comments-rating'}>
                         <div className="fas fa-thumbs-up" onClick={()=>this.props.voteComment(c.id,'upVote')}>
@@ -80,12 +98,12 @@ class Comments extends Component {
                         {c.body}
                     </div>
                     <div className={'comments-footer'}>
-                        <div   onClick={() => this.onDeleteClick(c.id)}>
+                        <div onClick={() => this.onDeleteClick(c.id)}>
                             <i className="fas fa-trash-alt"/>
 
 
                         </div>
-                        <div><i className="fas fa-edit"/>
+                        <div ><i className="fas fa-edit" onClick={this.openEditPostModal}/>
 
                         </div>
                     </div>
@@ -98,7 +116,22 @@ class Comments extends Component {
 
         return (
            <div>
-               {this.renderComments()}
+
+               <div className={'c-add'} onClick={()=>this.onAddCommentClick(true)}>
+                   Add comment
+                   {
+                       this.state.isAddCommentClicked
+                           ? <AddComment postId={this.props.postId} commentClicked = {this.onAddCommentClick}/>
+                           : null
+                   }
+
+               </div>
+               <div className={'p-comments-header'}>Comments</div>
+
+
+
+               <div className={'c-l'}> {this.renderComments()}</div>
+
            </div>
         )
     }

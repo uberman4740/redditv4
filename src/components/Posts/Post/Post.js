@@ -68,11 +68,6 @@ class Post extends Component {
         }
 
     }
-    static getDerivedStateFromProps(props, state){
-        console.log("GDSFP props", props)
-        console.log("GDSFP state", props)
-
-    }
 
     onToPostSummary = () => {
         this.setState({toPostSummary: true})

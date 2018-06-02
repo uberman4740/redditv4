@@ -59,3 +59,35 @@
 
 }
 
+.comment-add-text{
+}
+textarea{
+    width: 98.5%;
+}
+
+
+.c-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr ;
+}
+
+.c-add{
+    margin-bottom:1rem;
+    grid-row:1;
+    grid-column: 1;
+    /*background-color: green;*/
+}
+/*.c-texta{*/
+    /*grid-row:2;*/
+    /*background-color: white;*/
+/*}*/
+.c-edit{
+    margin-bottom:1rem;
+    grid-row:1;
+    grid-column: 2;
+    background-color: #1a4980;
+}
+.c-l{
+    grid-row:3;
+}
