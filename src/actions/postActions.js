@@ -16,9 +16,12 @@ export const CREATE_POST = "CREATE_POST"
 export const DELETE_POST = "DELETE_POST"
 export const VOTE_POST = "VOTE_POST"
 export const EDIT_POST = "EDIT_POST"
-
-
-
+// export const SORT_POSTS = "SORT_POSTS"
+//
+//
+// export function sortPosts{
+//
+// }
 export function editPost(id,values) {
     const request =  axios.put(`${ROOT_URL}/posts/${id}`,values)
     return{
@@ -77,10 +80,10 @@ export function getPost (postId){
 
     }
 }
-export function createPost (values){
+export function createPost(values){
    const {title,body,author,category} = values
     const data = {
-       id: uuidv4(),
+        id: values.id,
         timestamp: Date.now(),
         title,
         body,

@@ -32,6 +32,7 @@ export default function posts(state = {}, action){
 
             }
         case EDIT_POST:
+            console.log("in reducer for edit", action)
             return{
                 ...state,
                 [action.payload.data.id]: action.payload.data

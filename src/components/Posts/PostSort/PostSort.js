@@ -19,43 +19,26 @@ export class PostSort extends Component {
         return (
 
             <div className={'post-sort'}>
-                <div className={'sort'}>
-                    <div className={'sort-header'}>rating</div>
-                    <div className={'up'}><i className="fas fa-arrow-alt-circle-up"></i>
+                <div className={'c-sort'}>
+                    <div className={'dropdown'}>
+                        sortBy
+                        <div class="dropdown-content">
+
+                            <div onClick={() => this.props.sortBy('title', 'asc')}>title:low to high</div>
+                            <div onClick={() => this.props.sortBy('title', 'desc')}>title:high to low</div>
+
+                            <div onClick={() => this.props.sortBy('rating', 'asc')}>rating:low to high</div>
+                            <div onClick={() => this.props.sortBy('rating', 'desc')}>rating:low to high</div>
+
+                            <div onClick={() => this.props.sortBy('date', 'asc')}>date:low to high</div>
+                            <div onClick={() => this.props.sortBy('date', 'desc')}>date:high to low</div>
 
 
+                        </div>
                     </div>
-                    <div className={'down'}><i className="fas fa-arrow-alt-circle-down"></i>
 
-
-                    </div>
                 </div>
 
-                <div className={'sort'}>
-                    <div className={'sort-header'}>date</div>
-                    <div className={'up'}>
-                        <i className="fas fa-arrow-alt-circle-up"></i>
-
-
-                    </div>
-                    <div className={'down'}><i className="fas fa-arrow-alt-circle-down"></i>
-
-
-                    </div>
-                </div>
-
-                <div className={'sort'}>
-                    <div className={'sort-header'}>title</div>
-                    <div className={'up'}>
-                        <i className="fas fa-arrow-alt-circle-up"></i>
-
-
-                    </div>
-                    <div className={'down'}><i className="fas fa-arrow-alt-circle-down"></i>
-
-
-                    </div>
-                </div>
 
             </div>
         );

@@ -1,23 +1,82 @@
 .post-container{
     display: grid;
     grid-template-columns: 1fr;
+    height: 100vh;
+    background: #c1bdf4;
+    text-decoration: none;
+    color: white;
+
 }
 
 .post-yo{
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 1px;
     overflow: scroll;
+    text-decoration: none;
+    color: white;
+
+
 }
+
+
 .post-yo .hh {
-    background-color: #a62329;
     transition: background 0.2s ease,
     padding 0.5s ;
+    text-decoration: none;
+    color: white;
+
 }
 .hh:hover {
     /*background-color: green;*/
     padding: 5px;
 }
+div.post-yo > div:nth-of-type(1) {
+    background: #302976;
+
+}
+div.post-yo > div:nth-of-type(2) {
+    background: #383090;
+
+}
+div.post-yo > div:nth-of-type(3) {
+    background: #4036a5;
+
+}
+
+div.post-yo > div:nth-of-type(4) {
+    background: #483db9;
+
+}
+div.post-yo > div:nth-of-type(5) {
+    background: #5044ce;
+
+}
+div.post-yo > div:nth-of-type(6) {
+    background: #574ae2;
+
+}
+div.post-yo > div:nth-of-type(7) {
+    background: #665ae4;
+
+}
+div.post-yo > div:nth-of-type(8) {
+    background: #756ae7;
+
+}
+div.post-yo > div:nth-of-type(9) {
+    background: #847be9;
+
+}
+div.post-yo > div:nth-of-type(10) {
+    background: #948bec;
+
+}
+div.post-yo > div:nth-of-type(11) {
+    background: #a39cef;
+
+}
+
+
 
 
 
@@ -27,10 +86,11 @@
     display: grid;
     grid-template-columns: 5rem 1fr;
     grid-template-rows: auto 0.1fr;
+    text-decoration: none;
+    color: white;
+    text-decoration: none;
+    color: white;
 
-
-
-;
 }
 
 
@@ -43,6 +103,13 @@
     justify-items: center;
     align-items: center;
     font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+
+}
+.no-u{
+    text-decoration: none;
+    color: white;
 }
 .rating{
     display:grid;
@@ -65,6 +132,8 @@
     /*background-color: #980015;*/
 
     grid-template-columns:  repeat(3,1fr);
+    text-decoration: none;
+    color: white;
     /*grid-template-rows: auto;*/
 }
 .post-footer .comments{
@@ -93,3 +162,52 @@
 
 
 
+
+/*PostBar*/
+
+
+.post-bar{
+    display: grid;
+    grid-template-columns: 1fr 0.07fr 0.07fr;
+    background: #181557;
+
+    grid-template-areas: 'post-bar-header search-posts add-post';
+    /*border-bottom: solid 0.5px #ba0015;*/
+
+
+}
+.post-bar-header{
+
+    grid-area: post-bar-header;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /*justify-content: center;*/
+
+}
+.post-bar-header h1{
+    font-weight: bold;
+    font-size: 2.8rem;
+
+}
+
+.search-posts{
+    grid-area: search-posts;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.add-post{
+    grid-area: add-post;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

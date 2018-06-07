@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Route, Link} from 'react-router-dom'
 import connect from "react-redux/es/connect/connect";
-import {createComment} from "../../actions/commentsActions";
+import {createComment, getAllPostComments} from "../../actions/commentsActions";
 
 class AddComment extends Component {
     state = {
@@ -9,9 +9,10 @@ class AddComment extends Component {
         author:'',
         parentId: this.props.postId
     }
-    componentDidMount() {
+    componentDidMount=()=> {
         console.log("AddComment CDM props: ", this.props)
     }
+
 
     handleInputChange= (event)=> {
         const target = event.target
@@ -22,7 +23,9 @@ class AddComment extends Component {
     }
     handleSubmit =()=> {
 
-        this.props.createComment(this.state)
+        this.props.createComment(this.state).then(()=>this.props.getPostComments(this.state.parentId)
+        )
+
         this.props.commentClicked(false)
     }
 
@@ -65,7 +68,9 @@ class AddComment extends Component {
 //     return {}
 // }
 const mapDispatchToProps = (dispatch) => ({
-    createComment: (CommentData) => dispatch(createComment(CommentData))
+    createComment: (commentData) => dispatch(createComment(commentData)),
+    getPostComments: (postId) => dispatch(getAllPostComments(postId)),
+
 })
 
 export default connect(null, mapDispatchToProps)(AddComment)

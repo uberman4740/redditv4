@@ -5,6 +5,7 @@ import Post from "./components/Posts/Post/Post";
 import PostSummary from "./components/PostDisplay/PostSummary/PostSummary";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import AddComment from "./components/Comments/AddComment";
+import AddPost from "./components/Posts/Post/AddPost";
 
 // import {CategoriesBar} from "./components/Categories/CategoriesBar/CategoriesBar";
 // import {PostSummary} from "./components/PostDisplay/PostSummary/PostSummary";
@@ -17,8 +18,10 @@ class App extends Component {
 
                 <Router >
 
+
                     <div>
-                        {/*<AddComment/>*/}
+
+
                         <Route exact path ='/:categoryId?/:postId?' render={(props)=>
                             <div className={"app-container"}>
                                 <Category {...props}/>

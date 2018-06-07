@@ -2,27 +2,28 @@ import React, {Component} from 'react'
 import {Route, Link} from 'react-router-dom'
 import connect from "react-redux/es/connect/connect";
 import Redirect from "react-router-dom/es/Redirect";
-import {Field, reduxForm} from 'redux-form'
 
 
 export class CommentEdit extends Component {
     state = {
         value: this.props.initialValue
     }
+
     componentDidMount() {
         console.log("CommentEdit CDM props: ", this.props)
     }
-    onFormSubmit= ()=>{
+
+    onFormSubmit = () => {
         // event.preventDefault()
         this.props.onSub(this.state.value)
         // console.log("submit!!!!!" ,this.state.value)
     }
-    handleChange=(event)=>{
+    handleChange = (event) => {
         var someProperty = {...this.state.value}
         someProperty.body = event.target.value
 
-            this.setState({
-                value: someProperty
+        this.setState({
+            value: someProperty
         })
     }
 
@@ -38,17 +39,13 @@ export class CommentEdit extends Component {
         // someProperty.body = event.target.value
 
 
-
         return (
             <div>
                 <form onSubmit={this.onFormSubmit}>
                     <input
-                        // placeholder={initialValues.body}
-                        ref = 'name'
-                        value = {someProperty.body}
+                        ref='name'
+                        value={someProperty.body}
                         onChange={this.handleChange}/>
-
-
 
 
                     <div>

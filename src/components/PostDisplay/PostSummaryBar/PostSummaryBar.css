@@ -1,7 +1,7 @@
 .post-summary-bar{
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-rows: 9rem;
 
     /*grid-template-areas: 'post-bar-header';*/
 
@@ -10,11 +10,12 @@
 .post-summary-bar-header{
 
     /*grid-area: post-bar-header;*/
-    background-color: #cf0015;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
+    background-color: #201b63;
+    grid-row:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 }
 

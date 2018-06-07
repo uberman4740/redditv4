@@ -1,36 +1,53 @@
 
-.vpp-summary{
-    background-color: #e0ded3;
-}
-
-
-
 
 .post-summary-container{
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 9rem auto;
+    background:#c6c4d7;
+    height: 100vh;
+    overflow: auto;
+
+
 
 }
+
 .post-inside{
 
     /*height:83vh;*/
     overflow: auto;
+    grid-row:2;
+
     margin :30px 30px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr 20px;
+    grid-template-rows: 50px 0.1fr 20px;
 
 }
+
+
+.post-inside .p-body{
+    grid-row:2;
+    background-color: #372f8d;
+
+}
+.p-body p{
+    display:flex;
+    margin: 50px 80px;
+    /*justify-content: center;*/
+    /*justify-items: center;*/
+    /*align-items: center;*/
+}
 .post-inside .p-title{
-    background-color: #1a385f;
+    background-color: #5f5916;
 
 
     grid-row:1;
     display: grid;
     grid-template-columns: 0.07fr 1fr;
     grid-template-rows: 0.8fr 0.4fr;
+    background: #251f5f;
 }
 
 .p-title .p-header{
@@ -60,7 +77,7 @@
     grid-row: 2;
     display:grid;
     font-size: 0.7rem;
-    grid-template-columns:  repeat(3,1fr);
+    grid-template-columns:  repeat(5,1fr);
 }
 .p-footer .comments{
 
@@ -85,35 +102,20 @@
     justify-items: end;
     align-items: center;
 }
-
-
-
-
-
-
-
-
-
-.post-inside .p-body{
-    grid-row:2;
-    display:flex;
-    background-color: #1b426a;
-
+.p-footer .edit{
+    grid-column: 4;
+    padding: 1rem;
+    justify-content: end;
+    justify-items: end;
+    align-items: center;
 }
-.p-body p{
-    display:flex;
-    margin: 50px 80px;
-    /*justify-content: center;*/
-    /*justify-items: center;*/
-    /*align-items: center;*/
+.p-footer .delete{
+    grid-column: 5;
+    padding: 1rem;
+    justify-content: end;
+    justify-items: end;
+    align-items: center;
 }
-
-/*.post-inside .p-add-comment{*/
-
-    /*grid-row: 3;*/
-    /*background-color: rgb(10, 113, 42);*/
-
-/*}*/
 
 
 
@@ -123,7 +125,7 @@
     grid-row:3;
     /*margin-top: 2rem;*/
     /*margin-bottom: 10px;*/
-    background-color: rgb(36, 66, 103);
+    background: #251f5f;
     display:grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
@@ -136,7 +138,7 @@
     padding:1rem;
     grid-column: 1;
 
-    background-color: #20385c;
+    background: #251f5f;
 
 
 }
