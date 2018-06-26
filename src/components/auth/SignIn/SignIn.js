@@ -11,8 +11,10 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './SignIn.css'
 import {Link} from "react-router-dom";
+import connect from "react-redux/es/connect/connect";
+import {addAuthUser} from "../../../actions/authAction";
 
-export class SignIn extends Component {
+class SignIn extends Component {
     state = {
         email: "",
         password: "",
@@ -46,20 +48,26 @@ export class SignIn extends Component {
             await Auth.signIn(this.state.email, this.state.password);
             this.setState({isAuthenticated: true})
             this.setState({isLoading: false})
+            const session = await Auth.currentSession()
+            console.log(session)
+            this.props.addAuthUser(session.idToken.payload['cognito:username'])
         }
         catch (e) {
             alert(e.message);
             console.log("not logged in")
             this.setState({isLoading: false})
         }
-        const session = await Auth.currentSession()
 
-        this.setState({token: session.idToken.jwtToken})
-        this.props.history.push({pathname: '/categories', state: {token: this.state.token}})
+
+        // this.setState({token: session.idToken.jwtToken})
+        this.props.history.push({pathname: '/categories'})
 
     }
-    userHasAuthenticated = authenticated => {
+    userHasAuthenticated =  authenticated => {
+
         this.setState({isAuthenticated: authenticated});
+
+
     }
 
     async componentDidMount() {
@@ -74,24 +82,9 @@ export class SignIn extends Component {
             }
         }
 
-        // console.log("Session:", session)
-        //
-        // console.log(this.state.token)
 
         this.setState({ isAuthenticating: false });
     }
-
-
-        // let apiName = 'notes';
-        // let path = '/posts/all';
-        // let myInit = { // OPTIONAL
-        //     headers: {'Authorization': this.state.token}
-        // } // OPTIONAL
-        // API.get(apiName, path).then(r=>{
-        //     console.log(r)
-        // }).catch(e=>{
-        //     console.log("errooor", e)
-        // })
 
 
     render() {
@@ -186,3 +179,20 @@ export class SignIn extends Component {
 
 
 
+const mapStateToProps = (state) => {
+    console.log("auth compnent state: ", state)
+
+
+    return {
+        authUser: state.authUser
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+
+    addAuthUser: (authUser) => dispatch(addAuthUser(authUser)),
+
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

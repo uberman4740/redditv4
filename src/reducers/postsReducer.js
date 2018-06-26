@@ -1,9 +1,10 @@
-import {EDIT_POST, GET_ALL_POSTS, GET_CATEGORY_POSTS, GET_POST, VOTE_POST} from "../actions/postActions";
+import {CREATE_POST, EDIT_POST, GET_ALL_POSTS, GET_CATEGORY_POSTS, GET_POST, VOTE_POST} from "../actions/postActions";
 import _ from 'lodash'
 export default function posts(state = {}, action){
     switch (action.type){
         case GET_ALL_POSTS: {
-            const posts = _.mapKeys(action.payload.data, 'id')
+            console.log("post reducer state",state)
+            const posts = _.mapKeys(action.payload, 'postId')
 
             return {
                 ...state,
@@ -38,6 +39,16 @@ export default function posts(state = {}, action){
                 [action.payload.data.id]: action.payload.data
 
             }
+        case CREATE_POST:
+            console.log("in create post reducer")
+            console.log("STATE:", state)
+            console.log("Action",action)
+
+            console.log("in create comment reducer", state)
+            return [
+                ...state,
+                action.payload
+            ]
 
 
         default:

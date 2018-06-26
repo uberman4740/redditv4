@@ -2,30 +2,32 @@ import React, {Component} from 'react'
 import connect from "react-redux/es/connect/connect";
 import {createPost} from "../../../actions/postActions";
 import {getAllCategories} from "../../../actions/categoryActions";
+
 const uuidv4 = require('uuid/v4');
 
 
-export class AddPost extends Component{
-    state={
+export class AddPost extends Component {
+    state = {
         id: uuidv4(),
-        title:'',
-        body:'',
-        author:'',
-        category:'',
+        title: '',
+        body: '',
+        author: this.props.authUser,
+        category: '',
     }
 
-    handleSubmit=()=>{
+    handleSubmit = () => {
         this.props.onSubmitNewPost(this.state)
     }
-    handleChange=(event)=>{
+    handleChange = (event) => {
         const target = event.target
         const value = target.value
         const name = target.name
-        this.setState({[name]:value});
+        this.setState({[name]: value});
     }
-    render(){
+
+    render() {
         // console.log("ADDD POST!!@!#@!#@!#!@#!@#",this.props)
-        return(
+        return (
             <form onSubmit={this.handleSubmit}>
                 <label>
                     <input
@@ -54,20 +56,20 @@ export class AddPost extends Component{
                         value={this.state.value}
                         onChange={this.handleChange}/>
                 </label>
-                <label>
-=                    <input
-                        name={'author'}
-                        type={'text'}
-                    placeholder="Enter Author"
+                {/*<label>*/}
+                    {/*<input*/}
+                        {/*name={'author'}*/}
+                        {/*type={'text'}*/}
+                        {/*placeholder="Enter Author"*/}
 
 
-                    value={this.state.value}
-                        onChange={this.handleChange}/>
-                </label>
+                        {/*value={this.state.value}*/}
+                        {/*onChange={this.handleChange}/>*/}
+                {/*</label>*/}
                 <button type={'submit'}>Submit</button>
                 <button type={'submit'}>Cancel</button>
             </form>
-            )
+        )
     }
 }
 

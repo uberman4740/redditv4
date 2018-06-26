@@ -157,9 +157,10 @@ class Post extends Component {
 
 
     render() {
+
         const color = ['#d90015', '#dc1c17', '#e03917', '#e25819', '#e4751b'];
         console.log("Post render props:");
-        console.log("this.props");
+        console.log("props Post ", this.props);
         const divStyle = {
             backgroundColor: '#b65b1d', // note the capital 'W' here
         };
@@ -204,7 +205,8 @@ class Post extends Component {
                                             isOpen={this.state.postModalOpen}
                                             onRequestClose={this.closeEditPostModal}
                                         >
-                                            <AddPost onSubmitNewPost={this.onSubmitNewPost}/>
+                                            <AddPost onSubmitNewPost={this.onSubmitNewPost}
+                                                     authUser={this.state.authUser}/>
 
                                         </Modal>
                                     </div>
@@ -216,6 +218,9 @@ class Post extends Component {
                     <PostSort sortBy={this.sortBy}/>
                     <div className={'post-yo'}>
                         {
+
+
+
 
                             _.map(posts, p =>
                                 (
@@ -268,12 +273,12 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const posts = _.filter(state.posts, p => !p.deleted)
-    console.log("SingleCategory state: ", state)
+    console.log("Post state: ", state)
 
 
     return {
-        posts: posts
+        posts: state.posts,
+        authUser: state.authUser
     }
 }
 

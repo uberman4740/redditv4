@@ -4,11 +4,14 @@ import {
 
 } from './shared';
 import axios from 'axios';
+import { API } from "aws-amplify";
+
 const uuidv4 = require('uuid/v4');
 
 axios.defaults.headers.common['Authorization'] = AUTH_HEADERS;
 
-
+let apiName = 'notes';
+let path = '/posts';
 export const GET_ALL_POSTS = "GET_ALL_POSTS"
 export const GET_CATEGORY_POSTS = "GET_CATEGORY_POSTS"
 export const GET_POST = "GET_POST"
@@ -48,14 +51,26 @@ export function deletePost(id){
     }
 
 }
-export function getAllPosts (){
-    const request = axios.get(`${ROOT_URL}/posts`)
 
+export function loadAllPosts(data){
+    // const req = axios.get(`${ROOT_URL}/categories`)
+    // const req = await API.get(apiName,path)
     return{
         type: GET_ALL_POSTS,
-        payload: request
+        payload: data
 
     }
+}
+export function getAllPosts (){
+
+    return async dispatch => {
+        const req = await API.get(apiName,path)
+        dispatch(
+            loadAllPosts(req)
+        )
+
+    }
+
 }
 
 export function getCategoryPosts (category){
@@ -79,22 +94,27 @@ export function getPost (postId){
 
     }
 }
+export function addPost(data){
+
+    return{
+        type: CREATE_POST,
+        payload: data
+    }
+}
 export function createPost(values){
-   const {title,body,author,category} = values
+    const {title,body,author,category} = values
     const data = {
-        id: values.id,
-        timestamp: Date.now(),
         title,
         body,
         author,
         category
     }
-    const request = axios.post(`${ROOT_URL}/posts`,data)
 
-
-    return{
-        type: CREATE_POST,
-        payload: request
+    return async dispatch => {
+        const req = await API.post(apiName,path,{body:data})
+        dispatch(
+            addPost(req)
+        )
 
     }
 }
