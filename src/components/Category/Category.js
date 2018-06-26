@@ -88,7 +88,7 @@ class Category extends Component {
                         {/*<div className={'category-sort-header '}>*/}
                             <div className={'c-dropdown'}>
                                 sortBy
-                                <div class="c-dropdown-content">
+                                <div className="c-dropdown-content">
                                     <div onClick={() => this.sortByTitle('asc')}>title:low to high</div>
                                     <div onClick={() => this.sortByTitle('desc')}>title:high to low</div>
                                 </div>

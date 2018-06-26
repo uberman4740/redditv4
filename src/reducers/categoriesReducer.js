@@ -4,7 +4,11 @@ import {FETCH_CATEGORIES} from "../actions/categoryActions";
 export default function categories(state = {}, action){
     switch (action.type){
         case FETCH_CATEGORIES:{
-            const categories = _.mapKeys(action.payload.data.categories,'id')
+
+            console.log("!!!!!!!!",action)
+            // const categories = _.mapKeys(action.payload.data.categories,'title')
+            const categories = _.mapKeys(action.payload,'title')
+
             // console.log("payload", action.payload.data)
             // console.log(categories)
             return{

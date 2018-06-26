@@ -6,6 +6,8 @@ import PostSummary from "./components/PostDisplay/PostSummary/PostSummary";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import AddComment from "./components/Comments/AddComment";
 import AddPost from "./components/Posts/Post/AddPost";
+import Login from "./components/Login/Login";
+import {SignIn} from "./components/auth/SignIn/SignIn";
 
 // import {CategoriesBar} from "./components/Categories/CategoriesBar/CategoriesBar";
 // import {PostSummary} from "./components/PostDisplay/PostSummary/PostSummary";
@@ -16,20 +18,27 @@ class App extends Component {
         return (
 
 
-                <Router >
+            <Router>
 
 
-                    <div>
+                <div>
+
+                    <Route exact path='/' component = {SignIn}/>
+                    <Route path='/categories' component = {Category}/>
 
 
-                        <Route exact path ='/:categoryId?/:postId?' render={(props)=>
-                            <div className={"app-container"}>
-                                <Category {...props}/>
-                                <Post {...props}/>
-                                <PostSummary {...props}/>
-                            </div>}/>
-                    </div>
-                </Router>
+                    {/*<Switch>*/}
+
+                        {/*<Route exact path='/:categoryId?/:postId?' render={(props) =>*/}
+                            {/*<div className={"app-container"}>*/}
+                                {/*<Category {...props}/>*/}
+                                {/*/!*<Post {...props}/>*!/*/}
+                                {/*/!*<PostSummary {...props}/>*!/*/}
+                            {/*</div>}/>*/}
+                    {/*</Switch>*/}
+
+                </div>
+            </Router>
 
 
         );

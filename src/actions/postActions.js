@@ -29,7 +29,6 @@ export function editPost(id,values) {
         payload:request
     }
 
-
 }
 export function votePost(id, vote){
     const request = axios.post(`${ROOT_URL}/posts/${id}`, {option: vote})
