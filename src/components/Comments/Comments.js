@@ -10,7 +10,8 @@ import {CommentEdit} from "./CommentEdit";
 class Comments extends Component {
     state = {
         isAddCommentClicked: false,
-        postModalOpen: false
+        postModalOpen: false,
+        comments: ''
 
     }
     componentDidMount() {
@@ -18,18 +19,23 @@ class Comments extends Component {
         console.log("Comments CDM props: ", this.props)
     }
     componentDidUpdate(nextProps, prevState, snapshot) {
-        console.log("++prev state+++", prevState)
-        console.log("++comp state+++", this.state)
-        console.log("++NEXT PROPS id++", nextProps)
+        // console.log("++prev state+++", prevState)
+        // console.log("++comp state+++", this.state)
+        // console.log("++NEXT PROPS id++", nextProps)
 
-        console.log("props", this.props)
+        // console.log("props", this.props)
 
 
         if (prevState.isAddCommentClicked === true && this.state.isAddCommentClicked === false) {
+            alert(this.props.comments)
+            console.log("getting comments")
             this.props.getPostComments(this.props.postId)
+            this.setState({comments:this.props.comments})
         }
         if (nextProps.postId !== this.props.postId) {
             this.props.getPostComments(this.props.postId)
+            this.setState({comments:this.props.comments})
+
         }
 
     }
@@ -49,18 +55,19 @@ class Comments extends Component {
     updateComment=(comment)=>{
         const updatedComment = {
             id: comment.id,
-            timestamp: Date.now(), //update with edit time
+            time_stamp: Date.now(), //update with edit time
             body: comment.body,
 
         }
-        console.log("updatePost data_________________", updatedComment)
+        // console.log("updatePost data_________________", updatedComment)
         this.props.editComment(updatedComment.id,updatedComment)
         this.closeEditPostModal()
 
     }
 
     renderComments() {
-        return _.map(this.props.comments, c => {
+        console.log("dskfjnsadkjfnsakjdnfaskjfn++++++++++", this.state)
+        return _.map(this.state.comments, c => {
             return (
                 <div className={'comments-container'}>
                     <Modal
@@ -79,10 +86,10 @@ class Comments extends Component {
 
 
                     <div className={'comments-rating'}>
-                        <div className="fas fa-thumbs-up" onClick={()=>this.props.voteComment(c.id,'upVote')}>
+                        <div className="fas fa-thumbs-up" onClick={()=>this.props.voteComment(c.commentId,'upVote')}>
 
                         </div>
-                        <div onClick={()=>this.props.voteComment(c.id,'downVote')}>
+                        <div onClick={()=>this.props.voteComment(c.commentId,'downVote')}>
                             <i className="fas fa-thumbs-down"/>
                         </div>
 
@@ -98,7 +105,7 @@ class Comments extends Component {
                         {c.body}
                     </div>
                     <div className={'comments-footer'}>
-                        <div onClick={() => this.onDeleteClick(c.id)}>
+                        <div onClick={() => this.onDeleteClick(c.commentId)}>
                             <i className="fas fa-trash-alt"/>
 
 
@@ -112,7 +119,7 @@ class Comments extends Component {
 
 
     render() {
-        console.log("Comments Render  props: ", this.props)
+        console.log("Comments Render  state: ", this.state)
 
         return (
            <div>
@@ -140,11 +147,10 @@ class Comments extends Component {
 const mapStateToProps = (state, ownProps) => {
     console.log("Comments state: ", state)
 
-    console.log("Comments ownProps: ", ownProps)
+    // console.log("Comments ownProps: ", ownProps)
 
-    const comments = _.filter(state.comments, comment => !comment.deleted)
     return {
-        comments: comments
+        comments: state.comments
     }
 }
 const mapDispatchToProps = (dispatch) => ({

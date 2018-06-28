@@ -12,7 +12,7 @@ let apiName = 'notes';
 let path = '/categories';
 axios.defaults.headers.common['Authorization'] = AUTH_HEADERS;
 
-export const FETCH_CATEGORIES = "fetch_categories"
+export const FETCH_CATEGORIES = "FETCH_CATEGORIES"
 
 
 export function loadAllCategories(data){

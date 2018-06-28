@@ -4,7 +4,7 @@ import {
 
 } from './shared';
 import axios from 'axios';
-import { API } from "aws-amplify";
+import {API} from "aws-amplify";
 
 const uuidv4 = require('uuid/v4');
 
@@ -25,26 +25,44 @@ export const EDIT_POST = "EDIT_POST"
 // export function sortPosts{
 //
 // }
-export function editPost(id,values) {
-    const request =  axios.put(`${ROOT_URL}/posts/${id}`,values)
-    return{
-        type:EDIT_POST,
-        payload:request
-    }
-
-}
-export function votePost(id, vote){
-    const request = axios.post(`${ROOT_URL}/posts/${id}`, {option: vote})
-
-    return{
-        type: VOTE_POST,
+export function editPost(id, values) {
+    const request = axios.put(`${ROOT_URL}/posts/${id}`, values)
+    return {
+        type: EDIT_POST,
         payload: request
     }
 
 }
+export function updateVotePost(data) {
 
-export function deletePost(id){
-    const request =  axios.delete(`${ROOT_URL}/posts/${id}`)
+
+    return {
+        type: VOTE_POST,
+        payload: data
+    }
+
+}
+export function votePost(id, vote) {
+    // const {title, body, author, category} = values
+    // const data = {
+    //     title,
+    //     body,
+    //     author,
+    //     category
+    // }
+
+    // return async dispatch => {
+    //     const req = await API.post(apiName, path, {body: data})
+    //     dispatch(
+    //         addPost(req)
+    //     )
+
+    // }
+
+}
+
+export function deletePost(id) {
+    const request = axios.delete(`${ROOT_URL}/posts/${id}`)
     return {
         type: DELETE_POST,
         payload: request
@@ -52,57 +70,74 @@ export function deletePost(id){
 
 }
 
-export function loadAllPosts(data){
-    // const req = axios.get(`${ROOT_URL}/categories`)
-    // const req = await API.get(apiName,path)
-    return{
+export function loadAllPosts(data) {
+    return {
         type: GET_ALL_POSTS,
+        payload: data
+    }
+}
+
+export function getAllPosts() {
+    return async dispatch => {
+        const req = await API.get(apiName, path)
+        dispatch(loadAllPosts(req))
+    }
+}
+
+export function loadCategoryPosts(data) {
+    return {
+        type: GET_CATEGORY_POSTS,
         payload: data
 
     }
 }
-export function getAllPosts (){
+export function getCategoryPosts(id) {
+
 
     return async dispatch => {
-        const req = await API.get(apiName,path)
+        try {
+            dispatch(loadCategoryPosts(await API.get(apiName, `/categories/${id}`)))
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+
+    }
+}
+
+
+export function loadPost(data) {
+
+
+    return {
+        type: GET_POST,
+        payload: data
+
+    }
+}
+export function getPost(postId) {
+
+
+    return async dispatch => {
+        const req = await API.post(apiName, `/posts/${postId}`)
         dispatch(
-            loadAllPosts(req)
+            loadPost(req)
         )
 
     }
-
 }
 
-export function getCategoryPosts (category){
-    const request = axios.get(`${ROOT_URL}/${category}/posts`)
+export function addPost(data) {
 
-
-    return{
-        type: GET_CATEGORY_POSTS,
-        payload: request
-
-    }
-}
-
-export function getPost (postId){
-    const request = axios.get(`${ROOT_URL}/posts/${postId}`)
-
-
-    return{
-        type: GET_POST,
-        payload: request
-
-    }
-}
-export function addPost(data){
-
-    return{
+    return {
         type: CREATE_POST,
         payload: data
     }
 }
-export function createPost(values){
-    const {title,body,author,category} = values
+
+export function createPost(values) {
+    const {title, body, author, category} = values
     const data = {
         title,
         body,
@@ -111,7 +146,7 @@ export function createPost(values){
     }
 
     return async dispatch => {
-        const req = await API.post(apiName,path,{body:data})
+        const req = await API.post(apiName, path, {body: data})
         dispatch(
             addPost(req)
         )

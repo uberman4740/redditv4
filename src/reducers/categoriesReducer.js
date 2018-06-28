@@ -5,7 +5,7 @@ export default function categories(state = {}, action){
     switch (action.type){
         case FETCH_CATEGORIES:{
 
-            console.log("!!!!!!!!",action)
+            // console.log("!!!!!!!!",action)
             // const categories = _.mapKeys(action.payload.data.categories,'title')
             const categories = _.mapKeys(action.payload,'title')
 

@@ -8,7 +8,6 @@ const uuidv4 = require('uuid/v4');
 
 export class AddPost extends Component {
     state = {
-        id: uuidv4(),
         title: '',
         body: '',
         author: this.props.authUser,

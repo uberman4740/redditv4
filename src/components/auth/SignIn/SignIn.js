@@ -60,7 +60,7 @@ class SignIn extends Component {
 
 
         // this.setState({token: session.idToken.jwtToken})
-        this.props.history.push({pathname: '/categories'})
+        this.props.history.push({pathname: '/posts'})
 
     }
     userHasAuthenticated =  authenticated => {

@@ -1,3 +1,5 @@
+import {API} from "aws-amplify";
+
 import {
     ROOT_URL,
     AUTH_HEADERS
@@ -5,6 +7,7 @@ import {
 } from './shared';
 import axios from 'axios';
 const uuidv4 = require('uuid/v4');
+
 
 axios.defaults.headers.common['Authorization'] = AUTH_HEADERS;
 
@@ -37,31 +40,44 @@ export function deleteComment(id){
 
 }
 
-export function getAllPostComments(id){
-    const request = axios.get(`${ROOT_URL}/posts/${id}/comments`)
+export function loadAllPostComments(data){
     return{
         type: GET_ALL_POST_COMMENTS,
-        payload: request
+        payload: data
 
     }
 }
+export function getAllPostComments(postId){
+    console.log("GET ALL POST COMMENTS", postId)
 
-export function createComment (values){
-    const {body,author,parentId,} = values
-    const data = {
-        id: uuidv4(),
-        timestamp: Date.now(),
-        body,
-        author,
-        parentId
-
+    return async dispatch => {
+        const req = await API.get('notes', `/posts/${postId}/comments`)
+        dispatch(loadAllPostComments(req))
     }
-    const request = axios.post(`${ROOT_URL}/comments`,data)
+}
+
+
+export function addComment (data){
+
 
 
     return{
         type: CREATE_COMMENT,
-        payload: request
+        payload: data
+
+    }
+}
+export function createComment (values){
+    const {body} = values
+    const data = {body}
+    // console.log("ACTIOB COMMENT", values)
+
+
+    return async dispatch => {
+        const req = await API.post('notes', '/comments', {body: values})
+        dispatch(
+            addComment(req)
+        )
 
     }
 }

@@ -3,8 +3,8 @@ import './PostSort.css'
 
 export class PostSort extends Component {
     componentDidMount() {
-        console.log("PostSort CDU props:");
-        console.log("this.props");
+        // console.log("PostSort CDU props:");
+        // console.log("this.props");
     }
 
     state = {
@@ -13,8 +13,8 @@ export class PostSort extends Component {
     }
 
     render() {
-        console.log("PostSort render props:");
-        console.log("this.props");
+        // console.log("PostSort render props:");
+        // console.log("this.props");
 
         return (
 
@@ -22,7 +22,7 @@ export class PostSort extends Component {
                 <div className={'c-sort'}>
                     <div className={'dropdown'}>
                         sortBy
-                        <div class="dropdown-content">
+                        <div className="dropdown-content">
 
                             <div onClick={() => this.props.sortBy('title', 'asc')}>title:low to high</div>
                             <div onClick={() => this.props.sortBy('title', 'desc')}>title:high to low</div>

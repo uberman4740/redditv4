@@ -7,12 +7,12 @@ import withRouter from "react-router-dom/es/withRouter";
 
 export class EditPost extends Component {
     state={
-        id:this.props.post.id,
+        postId:this.props.post.id,
         title:this.props.post.title,
         body:this.props.post.body,
         category:this.props.post.category,
         author: this.props.post.author,
-        timestamp: this.props.post.timestamp
+        time_stamp: this.props.post.time_stamp
 
     }
     componentDidMount=()=>{

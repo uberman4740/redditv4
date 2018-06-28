@@ -8,13 +8,22 @@ import AddComment from "./components/Comments/AddComment";
 import AddPost from "./components/Posts/Post/AddPost";
 import Login from "./components/Login/Login";
 import SignIn from "./components/auth/SignIn/SignIn";
+import {Auth, API} from "aws-amplify";
+import connect from "react-redux/es/connect/connect";
+import {addAuthUser} from "./actions/authAction";
 
 // import {CategoriesBar} from "./components/Categories/CategoriesBar/CategoriesBar";
 // import {PostSummary} from "./components/PostDisplay/PostSummary/PostSummary";
 // import {Category} from "./components/Category/Category";
 
 class App extends Component {
+    async componentDidMount(){
+        const session =  await Auth.currentSession()
+        console.log(session)
+        this.props.addAuthUser(session.idToken.payload['cognito:username'])
+    }
     render() {
+
         return (
 
 
@@ -23,9 +32,8 @@ class App extends Component {
 
                 <div>
 
-                    <Route exact path='/' component = {SignIn}/>
-                    {/*/!*<Route path='/categories' component = {Category}/>*!/*/}
-                    {/*<Route path='/posts' component = {Post}/>*/}
+                    <Route exact path='/signin' component = {SignIn}/>
+
 
 
 
@@ -35,7 +43,7 @@ class App extends Component {
                             <div className={"app-container"}>
                                 <Category {...props}/>
                                 <Post {...props}/>
-                                {/*<PostSummary {...props}/>*/}
+                                <PostSummary {...props}/>
                             </div>}/>
                     </Switch>
 
@@ -47,4 +55,12 @@ class App extends Component {
     }
 }
 
-export default App;
+
+
+const mapDispatchToProps = (dispatch) => ({
+    addAuthUser: (authUser) => dispatch(addAuthUser(authUser)),
+
+})
+
+
+export default connect(null, mapDispatchToProps)(App)

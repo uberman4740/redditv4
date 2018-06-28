@@ -4,17 +4,22 @@ export default function comments(state = {}, action){
     switch (action.type){
         case GET_ALL_POST_COMMENTS:
 
-            const commentsPost = _.mapKeys(action.payload.data, 'id')
-            console.log("in fetchpost comments reducer", commentsPost)
+            console.log("comment reducer state",state)
+            const comments = _.mapKeys(action.payload, 'commentId')
 
-
-            return commentsPost
+            return {
+                ...state,
+                ...comments
+            }
 
         case CREATE_COMMENT:
+            console.log("Reducer COMMENT", action)
+
             console.log("in create comment reducer", state)
-            return{
+            return [
                 ...state,
-            }
+                action.payload
+            ];
         case VOTE_COMMENT:
             console.log("VOTE COMMENT action.payload.data", action.payload.data)
             return{

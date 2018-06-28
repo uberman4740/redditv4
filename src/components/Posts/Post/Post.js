@@ -6,6 +6,8 @@ import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePos
 import connect from "react-redux/es/connect/connect";
 import _ from 'lodash'
 import Modal from 'react-modal'
+import {API} from "aws-amplify";
+
 
 import {getAllPostComments} from "../../../actions/commentsActions";
 import {SinglePost} from "../PostList/SinglePost";
@@ -35,47 +37,79 @@ class Post extends Component {
     fetchCategoryPosts = (categoryId) => {
     }
 
-    componentDidMount() {
-        console.log("CCDDDDDDDDD", this.props)
-        this.props.getAllPosts()
+    async componentDidMount() {
+        try{
+            this.props.getAllPosts()
+
+            // const post= await this.getPost()
+            // console.log("bro the post is+++++", post)
+        }catch (e){
+            alert(e)
+        }
+
+        // console.log("CCDDDDDDDDD", this.props)
+        //
+        //
+        // this.props.getAllPosts()
+        // // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",note)
+
+
+    }
+    getPost() {
+        return API.get("notes", "/posts/b9d53780-7a54-11e8-9b82-3df2dbf90115");
     }
 
     onDeleteClick = (id) => {
-        console.log("clicked delete")
+        // console.log("clicked delete")
     }
     updatePost = (post) => {
         const updatedPost = {
-            id: post.id,
-            timestamp: Date.now(), //update with edit time
+            postId: post.id,
+            time_stamp: Date.now(), //update with edit time
             title: post.title,
             body: post.body,
             author: post.author,
             category: post.category,
         }
-        console.log("updatePost data_________________", updatedPost)
+        // console.log("updatePost data_________________", updatedPost)
         this.props.editPost(updatedPost.id, updatedPost)
         this.closeEditPostModal()
     }
 
     componentDidUpdate(nextProps, prevState, snapshot) {
-        console.log("__________________________|||||||||||______________________________")
-        console.log("CDU nextProps", nextProps)
-        console.log("CDU props", this.props)
+        // console.log("__________________________|||||||||||______________________________")
+        // console.log("CDU nextProps", nextProps)
+        // console.log("POST CDU props", this.props)
         if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
-            console.log("thre is an update man!!!!!!")
-            this.props.getCategoryPosts(this.props.match.params.categoryId)
-        }
-        if (this.props.match.params.postId === undefined && nextProps.match.params.postId) {
-            console.log("thre is an update man!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            this.props.getCategoryPosts(this.props.match.params.categoryId)
-        }
-        if (this.props.location.pathname === '/all' && nextProps.location.pathname !== '/all') {
-            this.props.getAllPosts()
+            console.log("dff")
+            if (this.props.match.params.categoryId === 'all') {
+                this.props.getAllPosts()
+
+            }
+            else {
+                this.props.getCategoryPosts(this.props.match.params.categoryId)
+
+            }
+            // console.log("thre is an update man!!!!!!")
+            // console.log("this.props.match.params.categoryId", this.props.match.params.categoryId)
+
         }
     }
 
+    // if (this.props.match.params.postId === undefined && nextProps.match.params.postId) {
+    //     // console.log("thre is an update man!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    //     this.props.getCategoryPosts(this.props.match.params.categoryId)
+    // }
+    // if (this.props.location.pathname === '/all' && nextProps.location.pathname !== '/all') {
+    //     this.props.getAllPosts()
+    // }
+
+
+
     onSubmitNewPost = (values) => {
-        this.props.createPost(values).then(() => this.props.getCategoryPosts(this.props.match.params.categoryId))
+        console.log("form", values)
+
+        this.props.createPost(values).then(() => this.props.history.push({pathname: `/${values.category}`}))
         this.closeEditPostModal()
     }
     onToPostSummary = () => {
@@ -91,8 +125,6 @@ class Post extends Component {
                 this.setState({sortByRatingDesc: false})
                 this.setState({sortByDateAsc: false})
                 this.setState({sortByDateDesc: false})
-
-
 
 
             }
@@ -159,8 +191,8 @@ class Post extends Component {
     render() {
 
         const color = ['#d90015', '#dc1c17', '#e03917', '#e25819', '#e4751b'];
-        console.log("Post render props:");
-        console.log("props Post ", this.props);
+        // console.log("Post render props:");
+        // console.log("props Post ", this.props);
         const divStyle = {
             backgroundColor: '#b65b1d', // note the capital 'W' here
         };
@@ -179,10 +211,10 @@ class Post extends Component {
             var posts = _.sortBy(this.props.posts, p => p.voteScore).reverse()
         }
         else if (this.state.sortByDateAsc === true) {
-            var posts = _.sortBy(this.props.posts, p => p.timestamp)
+            var posts = _.sortBy(this.props.posts, p => p.time_stamp)
         }
         else if (this.state.sortByDateDesc === true) {
-            var posts = _.sortBy(this.props.posts, p => p.timestamp).reverse()
+            var posts = _.sortBy(this.props.posts, p => p.time_stamp).reverse()
         }
         else {
             var posts = {...this.props.posts}
@@ -206,7 +238,7 @@ class Post extends Component {
                                             onRequestClose={this.closeEditPostModal}
                                         >
                                             <AddPost onSubmitNewPost={this.onSubmitNewPost}
-                                                     authUser={this.state.authUser}/>
+                                                     authUser={this.props.authUser}/>
 
                                         </Modal>
                                     </div>
@@ -220,46 +252,44 @@ class Post extends Component {
                         {
 
 
-
-
                             _.map(posts, p =>
                                 (
-                                        <div className={"hh"}>
-                                            <div className={'post-list'}>
-                                                <div className={'rating'}>
-                                                    <div>
-                                                        <i className="fas fa-thumbs-up"
-                                                           onClick={() => this.props.votePost(p.id, 'upVote')}/>
-                                                    </div>
-                                                    <div>
-                                                        {p.voteScore}
-                                                    </div>
-                                                    <div>
-                                                        <i className="fas fa-thumbs-down"
-                                                           onClick={() => this.props.votePost(p.id, 'downVote')}/>
-                                                    </div>
+                                    <div className={"hh"} key={p.postId}>
+                                        <div className={'post-list'}>
+                                            <div className={'rating'}>
+                                                <div>
+                                                    <i className="fas fa-thumbs-up"
+                                                       onClick={() => this.props.votePost(p.postId, 'upVote')}/>
                                                 </div>
-                                                <div className={'post'}>
-                                                    <Link className={'no-u'} to={`/${p.category}/${p.id}`}>{p.title}</Link>
-                                                    {/*{p.title}*/}
+                                                <div>
+                                                    {p.voteScore}
                                                 </div>
-                                                <div className={'post-footer'}>
-                                                    <div className={'post-footer comments'}><i
-                                                        className="far fa-comment"/>
-                                                    </div>
-                                                    <div className={'post-footer author'}>
-                                                        <i className="far fa-user">
-                                                            {p.author}
-                                                        </i>
-                                                    </div>
-                                                    <div className={'post-footer date'}>
-                                                        <i className="far fa-calendar-alt">
-                                                            {p.timestamp}
-                                                        </i>
-                                                    </div>
+                                                <div>
+                                                    <i className="fas fa-thumbs-down"
+                                                       onClick={() => this.props.votePost(p.postId, 'downVote')}/>
+                                                </div>
+                                            </div>
+                                            <div className={'post'}>
+                                                <Link className={'no-u'} to={`/${p.category}/${p.postId}`}>{p.title}</Link>
+                                                {/*{p.title}*/}
+                                            </div>
+                                            <div className={'post-footer'}>
+                                                <div className={'post-footer comments'}><i
+                                                    className="far fa-comment"/>
+                                                </div>
+                                                <div className={'post-footer author'}>
+                                                    <i className="far fa-user">
+                                                        {p.author}
+                                                    </i>
+                                                </div>
+                                                <div className={'post-footer date'}>
+                                                    <i className="far fa-calendar-alt">
+                                                        {p.time_stamp}
+                                                    </i>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
                                 )
                             )
@@ -268,12 +298,13 @@ class Post extends Component {
 
                 </div>
             </div>
+
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log("Post state: ", state)
+    // console.log("Post state: ", state)
 
 
     return {
@@ -297,3 +328,152 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post)
+{/*<div className={'post-container'}>*/
+}
+{/*<div>*/
+}
+{/*<div className={'post-bar'}>*/
+}
+{/*<div className={"post-bar-header"}>*/
+}
+{/*<h1>Posts</h1></div>*/
+}
+{/*<div className={"search-posts"}><i className="fas fa-search"></i>*/
+}
+{/*</div>*/
+}
+{/*<div className={'add-post'}><i className="fas fa-plus"*/
+}
+{/*onClick={() => this.onAddPostClick(true)}>*/
+}
+{/*{*/
+}
+{/*this.state.isAddPostClicked*/
+}
+{/*? <div>*/
+}
+{/*<Modal*/
+}
+{/*isOpen={this.state.postModalOpen}*/
+}
+{/*onRequestClose={this.closeEditPostModal}*/
+}
+{/*>*/
+}
+{/*<AddPost onSubmitNewPost={this.onSubmitNewPost}*/
+}
+{/*authUser={this.state.authUser}/>*/
+}
+
+{/*</Modal>*/
+}
+{/*</div>*/
+}
+{/*: null*/
+}
+{/*}*/
+}
+{/*</i>*/
+}
+{/*</div>*/
+}
+{/*</div>*/
+}
+{/*<PostSort sortBy={this.sortBy}/>*/
+}
+{/*<div className={'post-yo'}>*/
+}
+{/*{*/
+}
+
+
+{/*_.map(posts, p =>*/
+}
+{/*(*/
+}
+{/*<div className={"hh"} key={p.postId}>*/
+}
+{/*<div className={'post-list'}>*/
+}
+{/*<div className={'rating'}>*/
+}
+{/*<div>*/
+}
+{/*<i className="fas fa-thumbs-up"*/
+}
+{/*onClick={() => this.props.votePost(p.postId, 'upVote')}/>*/
+}
+{/*</div>*/
+}
+{/*<div>*/
+}
+{/*{p.voteScore}*/
+}
+{/*</div>*/
+}
+{/*<div>*/
+}
+{/*<i className="fas fa-thumbs-down"*/
+}
+{/*onClick={() => this.props.votePost(p.postId, 'downVote')}/>*/
+}
+{/*</div>*/
+}
+{/*</div>*/
+}
+{/*<div className={'post'}>*/
+}
+{/*<Link className={'no-u'} to={`/${p.category}/${p.id}`}>{p.title}</Link>*/
+}
+{/*/!*{p.title}*!/*/
+}
+{/*</div>*/
+}
+{/*<div className={'post-footer'}>*/
+}
+{/*<div className={'post-footer comments'}><i*/
+}
+{/*className="far fa-comment"/>*/
+}
+{/*</div>*/
+}
+{/*<div className={'post-footer author'}>*/
+}
+{/*<i className="far fa-user">*/
+}
+{/*{p.author}*/
+}
+{/*</i>*/
+}
+{/*</div>*/
+}
+{/*<div className={'post-footer date'}>*/
+}
+{/*<i className="far fa-calendar-alt">*/
+}
+{/*{p.timestamp}*/
+}
+{/*</i>*/
+}
+{/*</div>*/
+}
+{/*</div>*/
+}
+{/*</div>*/
+}
+{/*</div>*/
+}
+
+{/*)*/
+}
+{/*)*/
+}
+{/*}*/
+}
+{/*</div>*/
+}
+
+{/*</div>*/
+}
+{/*</div>*/
+}

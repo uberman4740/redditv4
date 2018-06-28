@@ -7,10 +7,10 @@ class AddComment extends Component {
     state = {
         body:'',
         author:'',
-        parentId: this.props.postId
+        postId: this.props.postId
     }
     componentDidMount=()=> {
-        console.log("AddComment CDM props: ", this.props)
+        // // console.log("AddComment CDM props: ", this.props)
     }
 
 
@@ -30,7 +30,7 @@ class AddComment extends Component {
     }
 
     render() {
-        console.log("AddComment Render  props: ", this.props)
+        // // console.log("AddComment Render  props: ", this.props)
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -64,7 +64,7 @@ class AddComment extends Component {
 }
 
 // const mapStateToProps = (state, ownProps) => {
-//     console.log("AddComment ownProps: ", ownProps)
+//     // // console.log("AddComment ownProps: ", ownProps)
 //     return {}
 // }
 const mapDispatchToProps = (dispatch) => ({

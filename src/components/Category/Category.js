@@ -5,6 +5,8 @@ import _ from 'lodash'
 import {Link} from 'react-router-dom'
 import './Category.css'
 import {getAllCategories} from "../../actions/categoryActions";
+import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../../actions/postActions";
+
 
 
 class Category extends Component {
@@ -35,26 +37,22 @@ class Category extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("$$$$$$$Category CDY preProps: ", prevProps)
-        console.log("$$$$$$$Category CDU prevState: ", prevState)
-        console.log("$$$$$$$Category CDU state", this.state)
+        // console.log("$$$$$$$Category CDY preProps: ", prevProps)
+        // console.log("$$$$$$$Category CDU prevState: ", prevState)
+        // console.log("$$$$$$$Category CDU state", this.state)
         // if(this.state.sortByTitleAsc !== prevState.sortByTitleAsc){
         //     this.fetchAllCategories()
         //
         // }
     }
 
-    static getDerivedStateFromProps(props, state) {
-        console.log("$$$$$ gdfp props:", props)
-        console.log("$$$$$ gdfp state:", state)
 
-    }
 
 
     render() {
         const color = ['#d90015', '#dc1c17', '#e03917', '#e25819', '#e4751b'];
-        console.log("Category render props:");
-        console.log("this.props");
+        // console.log("Category render props:");
+        // console.log("this.props");
         // var cat = {...this.props.categories}
 
         if(this.state.sortByTitleAsc === true){
@@ -67,7 +65,7 @@ class Category extends Component {
         if (this.state.sortByTitleDesc ===false && this.state.sortByTitleAsc===false){
             var cat = {...this.props.categories}
         }
-        console.log("dsfsadfasfdsakjesjkfkjafkjasfkjasnfdkjnfaskjfn" ,cat)
+        // console.log("dsfsadfasfdsakjesjkfkjafkjasfkjasnfdkjnfaskjfn" ,cat)
 
 
 
@@ -105,21 +103,17 @@ class Category extends Component {
 
                             _.map(cat, c => {
                                 return (
-                                    <div className={'category'}>
-                                        <Link className={'category'} to={`/${c.title}`} key={c.id}>
+                                    <div className={'category'} key={c.title}>
+                                        <Link className={'category'} to={`/${c.title}`} >
                                             {c.title}
 
                                             {/*<Route path={`${match.url}/:categoryId`} component={SingleCategory}/>*/}
                                             {/*<Route path='/categories/:categoryId' exact component={SingleCategory}/>*/}
                                         </Link>
                                     </div>
-
                                 )
                             })
-
                     }
-
-
                 </div>
             </div>
 
@@ -128,7 +122,7 @@ class Category extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("ownPPP", ownProps)
+    // console.log("ownPPP", ownProps)
     return {
         categories: state.categories,
 
@@ -137,7 +131,9 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 const mapDispatchToProps = (dispatch) => ({
-    getAllCategories: () => dispatch(getAllCategories())
+    getAllCategories: () => dispatch(getAllCategories()),
+    getCategoryPosts: (category) => dispatch(getCategoryPosts(category)),
+
 
 })
 
