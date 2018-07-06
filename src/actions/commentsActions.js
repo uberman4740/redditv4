@@ -82,14 +82,33 @@ export function createComment (values){
     }
 }
 
-export function voteComment(id, vote){
-    const request = axios.post(`${ROOT_URL}/comments/${id}`, {option: vote})
+// export function voteComment(id, vote){
+//     const request = axios.post(`${ROOT_URL}/comments/${id}`, {option: vote})
+//
+//     return{
+//         type: VOTE_COMMENT,
+//         payload: request
+//     }
+//
+// }
+export function updateVoteComment(data) {
 
-    return{
+
+    return {
         type: VOTE_COMMENT,
-        payload: request
+        payload: data
     }
 
 }
+export function voteComment(id, data) {
 
+    return async dispatch => {
+        const req = await API.put('notes', `/comments/${id}`, {body: {option:data.option,postId:data.postId}})
+        dispatch(
+            updateVoteComment(req)
+        )
+
+    }
+
+}
 

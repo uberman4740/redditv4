@@ -30,7 +30,8 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.3.0",
     "slug": "^0.9.1",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "react-phone-number-input": "^1.1.7"
   },
   "scripts": {
     "start": "react-scripts start",

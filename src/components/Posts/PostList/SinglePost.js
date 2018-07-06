@@ -21,13 +21,13 @@ export class SinglePost extends Component {
                 <div className={'post-list'}>
                     <div className={'rating'}>
                         <div>
-                            <i className="fas fa-thumbs-up"></i>
+                            <i className="fas fa-caret-up"></i>
                         </div>
                         <div>
                             12
                         </div>
                         <div>
-                            <i className="fas fa-thumbs-down"></i>
+                            <i className="fas fa-caret-down"></i>
                         </div>
                     </div>
                     <div className={'post'}>

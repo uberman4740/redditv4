@@ -42,32 +42,30 @@ export function updateVotePost(data) {
     }
 
 }
-export function votePost(id, vote) {
-    // const {title, body, author, category} = values
-    // const data = {
-    //     title,
-    //     body,
-    //     author,
-    //     category
-    // }
+export function votePost(id, data) {
 
-    // return async dispatch => {
-    //     const req = await API.post(apiName, path, {body: data})
-    //     dispatch(
-    //         addPost(req)
-    //     )
+    return async dispatch => {
+        const req = await API.put(apiName, `/posts/${id}`, {body: {option:data.option,userId:data.userId}})
+        dispatch(
+            updateVotePost(req)
+        )
 
-    // }
+    }
 
 }
 
-export function deletePost(id) {
-    const request = axios.delete(`${ROOT_URL}/posts/${id}`)
+export function destroyPost(request) {
     return {
         type: DELETE_POST,
         payload: request
     }
 
+}
+export function deletePost(id) {
+    return async dispatch => {
+        const req = await API.get(apiName, path)
+        dispatch(destroyPost(req))
+    }
 }
 
 export function loadAllPosts(data) {

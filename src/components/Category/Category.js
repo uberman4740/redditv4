@@ -6,15 +6,101 @@ import {Link} from 'react-router-dom'
 import './Category.css'
 import {getAllCategories} from "../../actions/categoryActions";
 import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../../actions/postActions";
+import List from "@material-ui/core/es/List/List";
+import Divider from "@material-ui/core/es/Divider/Divider";
+import Button from "@material-ui/core/es/Button/Button";
+import Drawer from "@material-ui/core/es/Drawer/Drawer";
+import {mailFolderListItems, otherMailFolderListItems} from '../tileData';
+import {withStyles} from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import IconButton from "@material-ui/core/es/IconButton/IconButton";
+import Menu from "@material-ui/core/es/Menu/Menu";
+import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
+const styles = {
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
+};
+const ITEM_HEIGHT = 48;
+
+const options = [
+    'None',
+    'Atria',
+    'Callisto',
+    'Dione',
+    'Ganymede',
+    'Hangouts Call',
+    'Luna',
+    'Oberon',
+    'Phobos',
+    'Pyxis',
+    'Sedna',
+    'Titania',
+    'Triton',
+    'Umbriel',
+];
 
 class Category extends Component {
     state = {
         loading: true,
         sortByTitleAsc: false,
-        sortByTitleDesc: false
+        sortByTitleDesc: false,
+        anchorEl: null
 
+    }
+    handleClick = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+    renderDrawer = () => {
+        // this.toggleDrawer('left', true)
+
+
+        const { anchorEl } = this.state;
+
+
+
+
+
+        return (
+            <div>
+                <IconButton
+                    aria-label="More"
+                    aria-owns={anchorEl ? 'long-menu' : null}
+                    aria-haspopup="true"
+                    onClick={this.handleClick}
+                >
+                    <MoreVertIcon />
+                </IconButton>
+                <Menu
+                    id="long-menu"
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={this.handleClose}
+                    PaperProps={{
+                        style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: 200,
+                        },
+                    }}
+                >
+                    {options.map(option => (
+                        <MenuItem key={option} selected={option === 'Pyxis'} onClick={this.handleClose}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </Menu>
+            </div>
+        );
     }
 
     componentDidMount() {
@@ -25,29 +111,16 @@ class Category extends Component {
         this.props.getAllCategories().then(this.setState({loading: false}))
     }
     sortByTitle = (val) => {
-        if (val == 'asc'){
+        if (val == 'asc') {
             this.setState({sortByTitleAsc: true})
             this.setState({sortByTitleDesc: false})
         }
-        if (val == 'desc'){
+        if (val == 'desc') {
             this.setState({sortByTitleAsc: false})
             this.setState({sortByTitleDesc: true})
         }
         this.fetchAllCategories()
     }
-
-    componentDidUpdate(prevProps, prevState) {
-        // console.log("$$$$$$$Category CDY preProps: ", prevProps)
-        // console.log("$$$$$$$Category CDU prevState: ", prevState)
-        // console.log("$$$$$$$Category CDU state", this.state)
-        // if(this.state.sortByTitleAsc !== prevState.sortByTitleAsc){
-        //     this.fetchAllCategories()
-        //
-        // }
-    }
-
-
-
 
     render() {
         const color = ['#d90015', '#dc1c17', '#e03917', '#e25819', '#e4751b'];
@@ -55,35 +128,39 @@ class Category extends Component {
         // console.log("this.props");
         // var cat = {...this.props.categories}
 
-        if(this.state.sortByTitleAsc === true){
+        if (this.state.sortByTitleAsc === true) {
 
-            var cat = _.sortBy(this.props.categories,'title')
+            var cat = _.sortBy(this.props.categories, 'title')
         }
-        if(this.state.sortByTitleDesc === true){
-            var cat = _.sortBy(this.props.categories,'title').reverse()
+        if (this.state.sortByTitleDesc === true) {
+            var cat = _.sortBy(this.props.categories, 'title').reverse()
         }
-        if (this.state.sortByTitleDesc ===false && this.state.sortByTitleAsc===false){
+        if (this.state.sortByTitleDesc === false && this.state.sortByTitleAsc === false) {
             var cat = {...this.props.categories}
         }
         // console.log("dsfsadfasfdsakjesjkfkjafkjasfkjasnfdkjnfaskjfn" ,cat)
 
 
-
         return (
-            <div className={'category-container'}>
-                <div className={'category-bar'}>
-                    <div className={"category-bar-header"}>
-                        <h1>Categories</h1></div>
-                    {/*<div className={"search-category"}><i className="fas fa-search"></i>*/}
+            <div>
+                <div className={'category-container'}>
+                    <div className={'category-bar'}>
+                        <div className={'add-category'}>
+                            {this.renderDrawer()}
 
-                    {/*</div>*/}
-                    {/*<div className={'add-category'}><i className="fas fa-plus"></i>*/}
-                    {/*</div>*/}
-                </div>
+                        </div>
+                        <div className={"category-bar-header"}>
+                            <h1>Categories</h1>
+                        </div>
+                        {/*<div className={"search-category"}><i className="fas fa-search" ></i>*/}
 
-                <div className={'category-sort'}>
-                    <div className={'sort'}>
-                        {/*<div className={'category-sort-header '}>*/}
+                        {/*</div>*/}
+
+                    </div>
+
+                    <div className={'category-sort'}>
+                        <div className={'sort'}>
+                            {/*<div className={'category-sort-header '}>*/}
                             <div className={'c-dropdown'}>
                                 sortBy
                                 <div className="c-dropdown-content">
@@ -93,18 +170,18 @@ class Category extends Component {
                             </div>
 
 
-                        {/*</div>*/}
+                            {/*</div>*/}
 
+                        </div>
                     </div>
-                </div>
 
-                <div className={'category-list'}>
-                    {
+                    <div className={'category-list'}>
+                        {
 
                             _.map(cat, c => {
                                 return (
                                     <div className={'category'} key={c.title}>
-                                        <Link className={'category'} to={`/${c.title}`} >
+                                        <Link className={'category'} to={`/${c.title}`}>
                                             {c.title}
 
                                             {/*<Route path={`${match.url}/:categoryId`} component={SingleCategory}/>*/}
@@ -113,13 +190,16 @@ class Category extends Component {
                                     </div>
                                 )
                             })
-                    }
+                        }
+                    </div>
                 </div>
             </div>
+
 
         );
     }
 }
+
 
 const mapStateToProps = (state, ownProps) => {
     // console.log("ownPPP", ownProps)
@@ -138,4 +218,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Category)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Category))

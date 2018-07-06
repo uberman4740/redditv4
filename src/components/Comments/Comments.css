@@ -91,3 +91,11 @@ textarea{
 .c-l{
     grid-row:3;
 }
+
+.c-button{
+    transform: scale(0.7);
+    font-size: 10px;
+    color: black;
+
+
+}

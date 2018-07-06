@@ -1,11 +1,13 @@
 import React, {Component} from "react"
 import './Post.css'
+import AddIcon from '@material-ui/icons/Add';
+
 import {PostBar} from "../PostBar/PostBar";
 import {PostSort} from "../PostSort/PostSort";
 import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
 import _ from 'lodash'
-import Modal from 'react-modal'
+import Modal from '@material-ui/core/Modal';
 import {API} from "aws-amplify";
 
 
@@ -13,7 +15,8 @@ import {getAllPostComments} from "../../../actions/commentsActions";
 import {SinglePost} from "../PostList/SinglePost";
 import PostSummary from "../../PostDisplay/PostSummary/PostSummary";
 import Link from "react-router-dom/es/Link";
-import {AddPost} from "./AddPost";
+import AddPost from "./AddPost";
+import Button from "@material-ui/core/es/Button/Button";
 
 class Post extends Component {
     state = {
@@ -37,15 +40,13 @@ class Post extends Component {
     fetchCategoryPosts = (categoryId) => {
     }
 
-    async componentDidMount() {
-        try{
-            this.props.getAllPosts()
+    componentDidMount() {
 
-            // const post= await this.getPost()
-            // console.log("bro the post is+++++", post)
-        }catch (e){
-            alert(e)
-        }
+        this.props.getAllPosts()
+
+        // const post= await this.getPost()
+        // console.log("bro the post is+++++", post)
+
 
         // console.log("CCDDDDDDDDD", this.props)
         //
@@ -55,9 +56,7 @@ class Post extends Component {
 
 
     }
-    getPost() {
-        return API.get("notes", "/posts/b9d53780-7a54-11e8-9b82-3df2dbf90115");
-    }
+
 
     onDeleteClick = (id) => {
         // console.log("clicked delete")
@@ -77,8 +76,9 @@ class Post extends Component {
     }
 
     componentDidUpdate(nextProps, prevState, snapshot) {
-        // console.log("__________________________|||||||||||______________________________")
-        // console.log("CDU nextProps", nextProps)
+        console.log("__________________________POSTS______________________________")
+
+        console.log("CDU POST nextProps", nextProps)
         // console.log("POST CDU props", this.props)
         if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
             console.log("dff")
@@ -103,7 +103,6 @@ class Post extends Component {
     // if (this.props.location.pathname === '/all' && nextProps.location.pathname !== '/all') {
     //     this.props.getAllPosts()
     // }
-
 
 
     onSubmitNewPost = (values) => {
@@ -190,9 +189,10 @@ class Post extends Component {
 
     render() {
 
+
         const color = ['#d90015', '#dc1c17', '#e03917', '#e25819', '#e4751b'];
         // console.log("Post render props:");
-        // console.log("props Post ", this.props);
+        console.log("props Post ", this.props);
         const divStyle = {
             backgroundColor: '#b65b1d', // note the capital 'W' here
         };
@@ -221,30 +221,37 @@ class Post extends Component {
 
         }
         return (
+
             <div className={'post-container'}>
                 <div>
                     <div className={'post-bar'}>
                         <div className={"post-bar-header"}>
                             <h1>Posts</h1></div>
-                        <div className={"search-posts"}><i className="fas fa-search"></i>
-                        </div>
-                        <div className={'add-post'}><i className="fas fa-plus"
-                                                       onClick={() => this.onAddPostClick(true)}>
-                            {
-                                this.state.isAddPostClicked
-                                    ? <div>
-                                        <Modal
-                                            isOpen={this.state.postModalOpen}
-                                            onRequestClose={this.closeEditPostModal}
-                                        >
-                                            <AddPost onSubmitNewPost={this.onSubmitNewPost}
-                                                     authUser={this.props.authUser}/>
+                        {/*<div className={"search-posts"}><i className="fas fa-search"></i>*/}
+                        {/*</div>*/}
+                        <div className={'search-posts'}>
+                            <Button variant="fab" color="primary" aria-label="add"  onClick={() => this.onAddPostClick(true)} >
+                                <AddIcon />
+                                {
+                                    this.state.isAddPostClicked
+                                        ? <div>
+                                            <Modal
+                                                aria-labelledby="simple-modal-title"
+                                                aria-describedby="simple-modal-description"
+                                                open={this.state.postModalOpen}
+                                                onClose={this.closeEditPostModal}
+                                            >
+                                                <AddPost onSubmitNewPost={this.onSubmitNewPost}
+                                                         authUser={this.props.authUser}
+                                                />
 
-                                        </Modal>
-                                    </div>
-                                    : null
-                            }
-                        </i>
+                                            </Modal>
+                                        </div>
+                                        : null
+                                }
+                            </Button>
+
+
                         </div>
                     </div>
                     <PostSort sortBy={this.sortBy}/>
@@ -258,19 +265,20 @@ class Post extends Component {
                                         <div className={'post-list'}>
                                             <div className={'rating'}>
                                                 <div>
-                                                    <i className="fas fa-thumbs-up"
-                                                       onClick={() => this.props.votePost(p.postId, 'upVote')}/>
+                                                    <i className="fas fa-caret-up"
+                                                       onClick={() => this.props.votePost(p.postId, {option:'upVote',userId:p.userId})}/>
                                                 </div>
                                                 <div>
                                                     {p.voteScore}
                                                 </div>
                                                 <div>
-                                                    <i className="fas fa-thumbs-down"
-                                                       onClick={() => this.props.votePost(p.postId, 'downVote')}/>
+                                                    <i className="fas fa-caret-down"
+                                                       onClick={() => this.props.votePost(p.postId, {option:'downVote',userId:p.userId})}/>
                                                 </div>
                                             </div>
                                             <div className={'post'}>
-                                                <Link className={'no-u'} to={`/${p.category}/${p.postId}`}>{p.title}</Link>
+                                                <Link className={'no-u'}
+                                                      to={`/${p.category}/${p.postId}`}>{p.title}</Link>
                                                 {/*{p.title}*/}
                                             </div>
                                             <div className={'post-footer'}>
@@ -304,12 +312,12 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log("Post state: ", state)
+    // console.log("Post state: ", Object.keys(state.categories))
 
 
     return {
         posts: state.posts,
-        authUser: state.authUser
+        authUser: state.authUser,
     }
 }
 
@@ -399,7 +407,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Post)
 }
 {/*<div>*/
 }
-{/*<i className="fas fa-thumbs-up"*/
+{/*<i className="fas fa-caret-up"*/
 }
 {/*onClick={() => this.props.votePost(p.postId, 'upVote')}/>*/
 }
@@ -413,7 +421,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Post)
 }
 {/*<div>*/
 }
-{/*<i className="fas fa-thumbs-down"*/
+{/*<i className="fas fa-caret-down"*/
 }
 {/*onClick={() => this.props.votePost(p.postId, 'downVote')}/>*/
 }

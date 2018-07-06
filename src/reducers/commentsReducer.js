@@ -7,24 +7,21 @@ export default function comments(state = {}, action){
             console.log("comment reducer state",state)
             const comments = _.mapKeys(action.payload, 'commentId')
 
-            return {
-                ...state,
-                ...comments
-            }
+            return comments
 
         case CREATE_COMMENT:
             console.log("Reducer COMMENT", action)
 
             console.log("in create comment reducer", state)
-            return [
+            return {
                 ...state,
-                action.payload
-            ];
+                [action.payload.commentId]:action.payload
+    };
         case VOTE_COMMENT:
             console.log("VOTE COMMENT action.payload.data", action.payload.data)
             return{
                 ...state,
-                [action.payload.data.id]: action.payload.data
+                [action.payload.commentId]: action.payload
 
             }
         case EDIT_COMMENT:
@@ -32,7 +29,7 @@ export default function comments(state = {}, action){
 
             return{
                 ...state,
-                [action.payload.data.id]: action.payload.data
+                [action.payload.commentId]: action.payload
 
             }
 

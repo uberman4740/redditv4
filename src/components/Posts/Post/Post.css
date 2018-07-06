@@ -34,47 +34,123 @@ div.post-yo > div:nth-of-type(1) {
     background: #302976;
 
 }
+div.post-yo > div:nth-of-type(1):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(2) {
     background: #383090;
 
-}
+}div.post-yo > div:nth-of-type(2):hover {
+     background: dimgrey;
+
+ }
+
+
+
 div.post-yo > div:nth-of-type(3) {
     background: #4036a5;
 
 }
+div.post-yo > div:nth-of-type(3):hover {
+    background: dimgrey;
+
+}
+
+
+
 
 div.post-yo > div:nth-of-type(4) {
     background: #483db9;
 
 }
+div.post-yo > div:nth-of-type(4):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(5) {
     background: #5044ce;
 
 }
+div.post-yo > div:nth-of-type(5):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(6) {
     background: #574ae2;
 
 }
+div.post-yo > div:nth-of-type(6):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(7) {
     background: #665ae4;
 
 }
+div.post-yo > div:nth-of-type(7):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(8) {
     background: #756ae7;
 
 }
+div.post-yo > div:nth-of-type(8):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(9) {
     background: #847be9;
 
 }
+div.post-yo > div:nth-of-type(9):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(10) {
     background: #948bec;
 
 }
+div.post-yo > div:nth-of-type(10):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(11) {
     background: #a39cef;
 
 }
+div.post-yo > div:nth-of-type(11):hover {
+    background: dimgrey;
+
+}
+
+
+
 
 
 

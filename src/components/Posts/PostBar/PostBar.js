@@ -1,5 +1,8 @@
 import React, {Component} from "react"
 import './PostBar.css'
+import Button from "@material-ui/core/es/Button/Button";
+import AddIcon from '@material-ui/icons/Add';
+
 export class PostBar extends Component {
     componentDidMount() {
         console.log("PostBar CDU props:");
@@ -22,9 +25,13 @@ export class PostBar extends Component {
                 <div className={"search-posts"}><i className="fas fa-search"></i>
 
                 </div>
-                <div className={'add-post'}><i className="fas fa-plus"></i>
+                <div className={'add-post'}>
+                    <Button variant="fab" color="primary" aria-label="add" >
+                    <AddIcon />
+                </Button>
 
                 </div>
+
             </div>
         );
     }

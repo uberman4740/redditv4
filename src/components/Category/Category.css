@@ -47,14 +47,14 @@
 }
 
 
-.category-bar .add-category{
-    grid-area: add-category;
-    color: aliceblue;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+/*.category-bar .add-category{*/
+    /*grid-area: add-category;*/
+    /*color: aliceblue;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+/*}*/
 
 /*CategorySort*/
 .category-sort{
@@ -144,39 +144,96 @@
 
 div.category-list > div:nth-of-type(1) {
     background: #4B026E;
-
 }
+div.category-list > div:nth-of-type(1):hover {
+    background: dimgrey;
+}
+
+
 div.category-list > div:nth-of-type(2) {
     background: #590384;
 
 }
+div.category-list > div:nth-of-type(2):hover {
+    background: dimgrey;
+}
+
+
 div.category-list > div:nth-of-type(3) {
     background: #68039b;
 
 }
+div.category-list > div:nth-of-type(3):hover {
+    background: dimgrey;
+}
+
+
 div.category-list > div:nth-of-type(4) {
     background: #7703b1;
 }
+
+div.category-list > div:nth-of-type(4):hover {
+    background: dimgrey;
+}
+
+
+
 div.category-list > div:nth-of-type(5) {
     background: #8604c7;
 }
+div.category-list > div:nth-of-type(5):hover {
+    background: dimgrey;
+}
+
+
+
 div.category-list > div:nth-of-type(6) {
     background: #9504dc;
+}
+
+
+div.category-list > div:nth-of-type(6):hover {
+    background: dimgrey;
 }
 div.category-list > div:nth-of-type(7) {
     background: #a304f2;
 }
+
+
+div.category-list > div:nth-of-type(7):hover {
+    background: dimgrey;
+}
 div.category-list > div:nth-of-type(8) {
     background: #ab1af3;
 }
+div.category-list > div:nth-of-type(8):hover {
+    background: dimgrey;
+}
+
+
+
 div.category-list > div:nth-of-type(9) {
     background: #b331f4;
+}
+
+
+div.category-list > div:nth-of-type(9):hover {
+    background: dimgrey;
 }
 div.category-list > div:nth-of-type(10) {
     background: #bc48f4;
 }
+div.category-list > div:nth-of-type(10):hover {
+    background: dimgrey;
+}
+
+
+
 div.category-list > div:nth-of-type(11) {
     background: #c45ff6;
+}
+div.category-list > div:nth-of-type(11):hover {
+    background: dimgrey;
 }
 
 
@@ -185,14 +242,18 @@ div.category-list > div:nth-of-type(11) {
 
 .category:hover {
     padding: 0.1rem;
-
 }
+
+
+
+
 
 .c-dropdown {
     position: relative;
 
     background-color: #3f0261;
     cursor: pointer;
+
 
     /*display: inline-block;*/
 
@@ -211,6 +272,7 @@ div.category-list > div:nth-of-type(11) {
 }
 .c-dropdown:hover .c-dropdown-content {
     display: block;
+
 
 
 }

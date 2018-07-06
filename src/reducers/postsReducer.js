@@ -8,17 +8,15 @@ export default function posts(state = {}, action){
             console.log("post reducer state",state)
             const posts = _.mapKeys(action.payload, 'postId')
 
-            return {
-                ...state,
-                ...posts
-            }
+            return posts
         }
         case GET_CATEGORY_POSTS:{
             return _.mapKeys(action.payload, 'postId')
 
         }
         case GET_POST:{
-            const post = action.payload.data
+            console.log("IN GET POST REDUCER", action)
+            const post = action.payload
             return{
                 ...state,
                 [action.payload.data.id]:action.payload.data
@@ -27,10 +25,11 @@ export default function posts(state = {}, action){
             }
         }
         case VOTE_POST:
-            // console.log("VOTE COMMENT action.payload.data", action.payload.data)
+            console.log("VOTE COMMENT action", action)
+            console.log("STATE",state)
             return{
                 ...state,
-                [action.payload.data.id]: action.payload.data
+                [action.payload.postId]: action.payload
 
             }
         case EDIT_POST:
@@ -46,10 +45,11 @@ export default function posts(state = {}, action){
             console.log("Action",action)
 
             console.log("in create comment reducer", state)
-            return [
+            return {
                 ...state,
-                action.payload
-            ]
+                [action.payload.postId]:action.payload
+
+    }
 
 
         default:

@@ -17,7 +17,7 @@ import App from "./App";
 import thunkMiddleware from 'redux-thunk'
 
 
-const middlewares = [promise,logger,thunkMiddleware]
+const middlewares = [thunkMiddleware,logger]
 // const middlewares = []
 
 const store = createStore(

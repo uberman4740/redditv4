@@ -9,10 +9,37 @@ import {getAllPostComments} from "../../../actions/commentsActions";
 import Modal from 'react-modal'
 import {EditPost} from "./EditPost";
 import Link from "react-router-dom/es/Link";
-
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import {API} from "aws-amplify";
+import Typography from '@material-ui/core/Typography';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import ModeComment from '@material-ui/icons/ModeComment';
+import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 
-class PostSummary extends Component {
+import Divider from '@material-ui/core/Divider';
+
+import CardMedia from '@material-ui/core/CardMedia';
+import IconButton from '@material-ui/core/IconButton';
+import CardHeader from '@material-ui/core/CardHeader';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
+import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
+import './PostSummary.css';
+
+
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Avatar from '@material-ui/core/Avatar';
+
+import './PostSummary.css';
+import TextField from "@material-ui/core/es/TextField/TextField";
+import Button from "@material-ui/core/es/Button/Button";
+import Paper from "@material-ui/core/es/Paper/Paper";
+import Comments1 from "../../Comments/Comments1";
+
+class PostSummary1 extends Component {
     state = {
         isAddCommentClicked: false,
         postModalOpen: false,
@@ -100,77 +127,60 @@ class PostSummary extends Component {
                 <PostSummarBar/>
                 {!this.state.loadPost
                     ? null
-                    : <div className={'post-inside'}>
-                        <div className={'p-title'}>
-                            <div className={'p-header'}>
-                                {this.props.post.title}
-                            </div>
-                            <div className={'p-rating'}>
+                    : <div>
+                        <Card>
+                            <CardHeader
+                                title={this.props.post.title}
+                                subheader={this.props.post.time_stamp}
 
+                            />
+                            <CardContent>
 
+                                <Typography paragraph>
+                                    {this.props.post.body}                         </Typography>
                                 <div>
-                                    <i className="fas fa-caret-up"
-                                       onClick={() => this.props.votePost(this.props.post.postId, {option:'upVote',userId:this.props.post.userId})}/>
-                                </div>
-                                <div>
-                                    {this.props.post.voteScore}
-                                </div>
-                                <div>
-                                    <i className="fas fa-caret-down"
-                                       onClick={() => this.props.votePost(this.props.post.postId, {option:'downVote',userId:this.props.post.userId})}/>
-                                </div>
-                            </div>
-                            <div className={'p-footer'}>
-                                <div><i className="far fa-comment"></i>
+                                    <IconButton onClick={() => this.props.votePost(this.props.post.postId, {
+                                        option: 'upVote',
+                                        userId: this.props.post.userId
+                                    })}>
 
-                                </div>
-                                <div><i className="far fa-user"/>
-                                    {this.props.post.author}
-                                </div>
-                                <div><i className="far fa-calendar-alt"/>
-                                    {this.props.post.time_stamp}
-                                </div>
-                                <div>
-                                    <i className="far fa-edit" onClick={this.openEditPostModal}/>
-                                    <Modal
-                                        isOpen={this.state.postModalOpen}
-                                        onRequestClose={this.closeEditPostModal}
+                                        <ArrowDropUp/>
+                                    </IconButton>
 
+                                    <span className={'vote-score'}>{this.props.post.voteScore}</span>
+                                    <IconButton onClick={() => this.props.votePost(this.props.post.postId, {option:'downVote',userId:this.props.post.userId})}>
+                                        <ArrowDropDown/>
+                                    </IconButton>
+
+                                    <IconButton onClick={() => this.onDeleteClick(this.props.post.postId)}>
+                                        <Link to={`/${this.props.post.category}`}>
+                                        <Delete/>
+                                        </Link>
+                                    </IconButton>
+                                    <IconButton>
+                                        <ModeComment/>
+                                    </IconButton>
+                                    <span>4</span>
+
+                                    <IconButton aria-label="Next" bsSize="large"
                                     >
-                                        <EditPost
-                                            onSubmitEditPost={this.onSubmitEditPost}
-
-                                            post={this.state.post}/>
-
-                                    </Modal>
-
-
+                                        <Edit/>
+                                    </IconButton>
                                 </div>
-                                <div onClick={() => this.onDeleteClick(this.props.post.postId)}>
-                                    <Link to={`/${this.props.post.category}`}>
-                                        <i className="fas fa-trash-alt"/>
 
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div className={'p-body'}>
-                            <p>
-                                {this.props.post.body}
-                            </p>
-                        </div>
-                        <div className={'p-comments'}>
-                            <div className={'p-comments-list'}>
-                                <Comments postId={this.props.match.params.postId}
+                                <Comments1 postId={this.props.match.params.postId}
                                           onAddComment={this.onAddComment}
                                 />
-                            </div>
-                        </div>
 
 
-                    </div>}
 
+                            </CardContent>
+
+
+                        </Card>
+                    </div>
+                }
             </div>
 
         )
@@ -208,4 +218,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostSummary)
+export default connect(mapStateToProps, mapDispatchToProps)(PostSummary1)
