@@ -1,10 +1,12 @@
 .post-container{
     display: grid;
+    grid-template-rows:auto;
     grid-template-columns: 1fr;
     height: 100vh;
-    background: #c1bdf4;
+    background: #a39cef;
     text-decoration: none;
     color: white;
+    overflow: scroll;
 
 }
 

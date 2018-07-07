@@ -144,7 +144,6 @@ class AddComment extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    alert(state.authUser)
 
     return {authUser: state.authUser}
 }

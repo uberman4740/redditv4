@@ -25,11 +25,22 @@ export const EDIT_POST = "EDIT_POST"
 // export function sortPosts{
 //
 // }
-export function editPost(id, values) {
+export function updatePost(id, values) {
     const request = axios.put(`${ROOT_URL}/posts/${id}`, values)
     return {
         type: EDIT_POST,
         payload: request
+    }
+
+}
+export function editPost(id, data) {
+
+    return async dispatch => {
+        const req = await API.put(apiName, `/posts/${id}`, {body: {option:data.option,userId:data.userId}})
+        dispatch(
+            updateVotePost(req)
+        )
+
     }
 
 }
@@ -63,7 +74,8 @@ export function destroyPost(request) {
 }
 export function deletePost(id) {
     return async dispatch => {
-        const req = await API.get(apiName, path)
+        const req = await API.del(apiName, `/posts/${id}`)
+        req.id=id
         dispatch(destroyPost(req))
     }
 }
@@ -78,6 +90,7 @@ export function loadAllPosts(data) {
 export function getAllPosts() {
     return async dispatch => {
         const req = await API.get(apiName, path)
+
         dispatch(loadAllPosts(req))
     }
 }

@@ -31,11 +31,9 @@ class Comments extends Component {
         console.log("THIS PROPS POST ID", this.props.postId)
 
 
-
         if (prevState.isAddCommentClicked === true && this.state.isAddCommentClicked === false) {
             // this.setState({loading: true})
             // alert("now getting comments from modal block")
-
 
 
             this.props.getPostComments(this.props.postId)
@@ -52,10 +50,10 @@ class Comments extends Component {
             this.setState({loading: false})
 
 
-
         }
 
     }
+
     openEditPostModal = () => this.setState(() => ({postModalOpen: true}))
     closeEditPostModal = () => this.setState(() => ({postModalOpen: false}))
 
@@ -90,54 +88,60 @@ class Comments extends Component {
                 <div>
                     {
                         this.state.loading
-                        ? null
-                        : <div className={'comments-container'}>
-                        <Modal
-                            isOpen={this.state.postModalOpen}
-                            onRequestClose={this.closeEditPostModal}
-                        >
-                            {this.state.postModalOpen &&
-                            <CommentEdit
-                                initialValue={c}
-                                onSub={this.updateComment}
-                                closeModal={this.closeEditPostModal}
+                            ? null
+                            : <div className={'comments-container'}>
+                                <Modal
+                                    isOpen={this.state.postModalOpen}
+                                    onRequestClose={this.closeEditPostModal}
+                                >
+                                    {this.state.postModalOpen &&
+                                    <CommentEdit
+                                        initialValue={c}
+                                        onSub={this.updateComment}
+                                        closeModal={this.closeEditPostModal}
 
-                            />}
+                                    />}
 
-                        </Modal>
-
-
-                        <div className={'comments-rating'}>
-                            <div className="fas fa-caret-up"
-                                 onClick={() => this.props.voteComment(c.commentId, {option:'upVote',postId:c.postId})}>
-
-                            </div>
-                            <div onClick={() => this.props.voteComment(c.commentId, {option:'downVote',postId:c.postId})}>
-                                <i className="fas fa-caret-down"/>
-                            </div>
-
-                        </div>
-
-                        <div className={'comments-author'}>
+                                </Modal>
 
 
-                            {c.author} {c.voteScore}
+                                <div className={'comments-rating'}>
+                                    <div className="fas fa-caret-up"
+                                         onClick={() => this.props.voteComment(c.commentId, {
+                                             option: 'upVote',
+                                             postId: c.postId
+                                         })}>
 
-                        </div>
-                        <div className={'comments-body'}>
-                            {c.body}
-                        </div>
-                        <div className={'comments-footer'}>
-                            <div onClick={() => this.onDeleteClick(c.commentId)}>
-                                <i className="fas fa-trash-alt"/>
+                                    </div>
+                                    <div onClick={() => this.props.voteComment(c.commentId, {
+                                        option: 'downVote',
+                                        postId: c.postId
+                                    })}>
+                                        <i className="fas fa-caret-down"/>
+                                    </div>
+
+                                </div>
+
+                                <div className={'comments-author'}>
 
 
-                            </div>
-                            <div><i className="fas fa-edit" onClick={this.openEditPostModal}/>
+                                    {c.author} {c.voteScore}
 
-                            </div>
-                        </div>
-                    </div>}
+                                </div>
+                                <div className={'comments-body'}>
+                                    {c.body}
+                                </div>
+                                <div className={'comments-footer'}>
+                                    <div onClick={() => this.onDeleteClick(c.commentId)}>
+                                        <i className="fas fa-trash-alt"/>
+
+
+                                    </div>
+                                    <div><i className="fas fa-edit" onClick={this.openEditPostModal}/>
+
+                                    </div>
+                                </div>
+                            </div>}
 
                 </div>
 

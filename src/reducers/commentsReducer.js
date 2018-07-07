@@ -1,5 +1,8 @@
 import _ from 'lodash'
-import {CREATE_COMMENT, EDIT_COMMENT, GET_ALL_POST_COMMENTS, VOTE_COMMENT} from "../actions/commentsActions";
+import {
+    CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, GET_ALL_POST_COMMENTS,
+    VOTE_COMMENT
+} from "../actions/commentsActions";
 export default function comments(state = {}, action){
     switch (action.type){
         case GET_ALL_POST_COMMENTS:
@@ -32,6 +35,10 @@ export default function comments(state = {}, action){
                 [action.payload.commentId]: action.payload
 
             }
+        case DELETE_COMMENT:
+            console.table("STATE FOR DELETE COMMET", state)
+            console.table("ACTION FOR DELETE COMMENT", action)
+            return _.omit(state,[action.payload.id])
 
 
 

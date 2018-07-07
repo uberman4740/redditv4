@@ -282,12 +282,14 @@ class Post extends Component {
                                                 {/*{p.title}*/}
                                             </div>
                                             <div className={'post-footer'}>
-                                                <div className={'post-footer comments'}><i
-                                                    className="far fa-comment"/>
-                                                </div>
-                                                <div className={'post-footer author'}>
+                                                {/*<div className={'post-footer comments'}><i*/}
+                                                    {/*className="far fa-comment"/>*/}
+                                                    {/*{this.props.commentCount}*/}
+                                                {/*</div>*/}
+                                                <div className={'post-footer comments'}>
+
                                                     <i className="far fa-user">
-                                                        {p.author}
+                                                      {p.author}
                                                     </i>
                                                 </div>
                                                 <div className={'post-footer date'}>
@@ -312,10 +314,12 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log("Post state: ", Object.keys(state.categories))
+    console.log("ZZZZZZZZZZZZZZZZZZZZ>>>>>>>>>>>............", state)
 
 
     return {
+        commentCount: Object.keys(state.comments).length,
+
         posts: state.posts,
         authUser: state.authUser,
     }
@@ -332,6 +336,7 @@ const mapDispatchToProps = (dispatch) => ({
 
     votePost: (id, option) => dispatch(votePost(id, option)),
     editPost: (id, data) => dispatch(editPost(id, data))
+
 })
 
 

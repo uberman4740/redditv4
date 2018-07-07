@@ -20,25 +20,64 @@ export const VOTE_COMMENT = "VOTE_COMMENT"
 export const EDIT_COMMENT = "EDIT_COMMENT"
 
 
+export function updateComment(data) {
 
-export function editComment(id,values) {
-    const request =  axios.put(`${ROOT_URL}/comments/${id}`,values)
-    console.log("################ action edit", request)
-    return{
+
+    return {
         type:EDIT_COMMENT,
-        payload:request
+        payload:data
     }
 
+}
+export function editComment(id, data) {
+    console.log("main huuuuun edit main!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", data)
+
+    return async dispatch => {
+
+            const req = await API.put('notes', "/comments/3e0b1c80-8181-11e8-9267-33e694e64da8", {body: {opt:"upVote",postId:"8f20dad0-7b08-11e8-b538-6f09bcae7322"}})
+            dispatch(
+                updateComment(req)
+            )
+
+
+
+    }
 
 }
-export function deleteComment(id){
-    const request =  axios.delete(`${ROOT_URL}/comments/${id}`)
+// export function editComment(id,values) {
+//     const request =  axios.put(`${ROOT_URL}/comments/${id}`,values)
+//     console.log("################ action edit", request)
+//     return{
+//         type:EDIT_COMMENT,
+//         payload:request
+//     }
+//
+//
+// }
+
+export function destroyComment(request) {
     return {
         type: DELETE_COMMENT,
         payload: request
     }
 
 }
+export function deleteComment(id,postId) {
+    return async dispatch => {
+
+        const req = await API.del('notes', `/comments/${id}`,{body:{postId:postId}})
+        req.id=id
+        dispatch(destroyComment(req))
+    }
+}
+// export function deleteComment(id){
+//     const request =  axios.delete(`${ROOT_URL}/comments/${id}`)
+//     return {
+//         type: DELETE_COMMENT,
+//         payload: request
+//     }
+//
+// }
 
 export function loadAllPostComments(data){
     return{

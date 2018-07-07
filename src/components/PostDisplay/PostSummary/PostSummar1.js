@@ -43,7 +43,8 @@ class PostSummary1 extends Component {
     state = {
         isAddCommentClicked: false,
         postModalOpen: false,
-        loadPost: false
+        loadPost: false,
+        commentCount:''
     }
 
     componentDidMount() {
@@ -77,25 +78,20 @@ class PostSummary1 extends Component {
         if (this.props.match.params.postId !== nextProps.match.params.postId) {
             if (!this.props.match.params.postId) {
                 this.setState({loadPost: false})
-
-
             } else {
-
-
                 this.props.getPost(this.props.match.params.postId)
                 this.setState({loadPost: true})
-
             }
-
-
         }
     }
-
+    getCommentCount=(count)=>{
+        // alert("comment count",count)
+        this.setState({commentsCount:count})
+    }
     openEditPostModal = () => this.setState(() => ({postModalOpen: true}))
     closeEditPostModal = () => {
         this.setState(() => ({postModalOpen: false}))
     }
-
     onDeleteClick = (id) => {
         this.props.deletePost(id)
         // .then(() => this.props.history.push(`/${this.props.match.params.categoryId}`))
@@ -120,8 +116,9 @@ class PostSummary1 extends Component {
     render() {
         console.log("PostSummary Render  state: ", this.props.post)
         console.log("PostSummary params  state: ", this.props.match.params.postId)
+        console.log("PostSummary state~~~~~~~~~~~~~~~~~~~: ", this.state)
 
-
+        // alert(this.state.commentCount)
         return (
             <div className={'post-summary-container'}>
                 <PostSummarBar/>
@@ -148,31 +145,46 @@ class PostSummary1 extends Component {
                                     </IconButton>
 
                                     <span className={'vote-score'}>{this.props.post.voteScore}</span>
-                                    <IconButton onClick={() => this.props.votePost(this.props.post.postId, {option:'downVote',userId:this.props.post.userId})}>
+                                    <IconButton onClick={() => this.props.votePost(this.props.post.postId, {
+                                        option: 'downVote',
+                                        userId: this.props.post.userId
+                                    })}>
                                         <ArrowDropDown/>
                                     </IconButton>
+                                    {
+                                        (this.props.authUser === this.props.post.author)
+                                            ? <IconButton onClick={() => this.onDeleteClick(this.props.post.postId)}>
+                                                <Link to={`/${this.props.post.category}`}>
+                                                    <Delete/>
+                                                </Link>
+                                            </IconButton>
+                                            : null
+                                    }
 
-                                    <IconButton onClick={() => this.onDeleteClick(this.props.post.postId)}>
-                                        <Link to={`/${this.props.post.category}`}>
-                                        <Delete/>
-                                        </Link>
-                                    </IconButton>
+
                                     <IconButton>
                                         <ModeComment/>
                                     </IconButton>
-                                    <span>4</span>
+                                    <span style={{color:'black'}}>
 
-                                    <IconButton aria-label="Next" bsSize="large"
-                                    >
-                                        <Edit/>
-                                    </IconButton>
+                                   {this.props.commentCount}
+
+                                        </span>
+                                    {
+                                        (this.props.authUser === this.props.post.author)
+                                            ? <IconButton aria-label="Next" bsSize="large">
+                                                <Edit/>
+                                            </IconButton>
+                                            : null
+                                    }
+
+
                                 </div>
 
 
                                 <Comments1 postId={this.props.match.params.postId}
-                                          onAddComment={this.onAddComment}
-                                />
-
+                                           onAddComment={this.onAddComment}
+                                           onCommentCountChange={(commentCount) => this.setState({commentCount})}                                />
 
 
                             </CardContent>
@@ -190,20 +202,27 @@ class PostSummary1 extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     console.log("PostSummary state: ", state.posts[ownProps.match.params.postId])
+    console.log("~~~~~~~~~##!!!!!~~~~~",state)
+
+
 
     console.log("PostSummary ownprops", ownProps)
     if (ownProps.match.params.postId === undefined) {
         return {
             post: "",
-            categories: state.categories
+            categories: state.categories,
+            authUser: state.authUser
         }
     }
     else {
         return {
+            commentCount: Object.keys(state.comments).length,
 
             post: state.posts[ownProps.match.params.postId],
 
-            categories: state.categories
+            categories: state.categories,
+            authUser: state.authUser
+
         }
     }
 

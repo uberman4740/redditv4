@@ -116,7 +116,7 @@ class PostSummary extends Component {
                                     {this.props.post.voteScore}
                                 </div>
                                 <div>
-                                    <i className="fas fa-caret-down"
+                                    <i className="fas fa-thumbs-down"
                                        onClick={() => this.props.votePost(this.props.post.postId, {option:'downVote',userId:this.props.post.userId})}/>
                                 </div>
                             </div>

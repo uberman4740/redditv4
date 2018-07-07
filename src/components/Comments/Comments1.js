@@ -29,7 +29,9 @@ class Comments1 extends Component {
     componentDidMount() {
         console.log("MOUNTING COMPONENT:", "COMMENTS")
 
-        this.props.getPostComments(this.props.postId).then(()=> this.setState({loading: false}))
+        this.props.getPostComments(this.props.postId).then(() => this.setState({loading: false}))
+        // this.props.onCommentCountChange(Object.keys(this.props.comments).length)
+
 
     }
 
@@ -40,7 +42,6 @@ class Comments1 extends Component {
 
         console.log("NEXPROPS POSTS ID", nextProps.postId)
         console.log("THIS PROPS POST ID", this.props.postId)
-
 
 
         // if (prevState.isAddCommentClicked === true && this.state.isAddCommentClicked === false) {
@@ -59,22 +60,25 @@ class Comments1 extends Component {
             // // alert("now getting differ post id block")
 
 
-            this.props.getPostComments(this.props.postId).then(()=> this.setState({loading: false}))
-
-
+            this.props.getPostComments(this.props.postId).then(() => this.setState({loading: false}))
 
 
         }
+
+    }
+
+    getCommentCount = () => {
+        return Object.keys(this.props.comments).length
 
     }
     openEditPostModal = () => this.setState(() => ({postModalOpen: true}))
     closeEditPostModal = () => this.setState(() => ({postModalOpen: false}))
 
 
-    onDeleteClick = (id) => {
+    onDeleteClick = (id,postId) => {
 
 
-        this.props.deleteComment(id)
+        this.props.deleteComment(id,postId)
             .then(() => this.props.getPostComments(this.props.postId))
     }
     onAddCommentClick = (val) => {
@@ -82,13 +86,12 @@ class Comments1 extends Component {
     }
     updateComment = (comment) => {
         const updatedComment = {
-            id: comment.id,
-            time_stamp: Date.now(), //update with edit time
+            commentId: comment.commentId,
             body: comment.body,
 
         }
         // console.log("updatePost data_________________", updatedComment)
-        this.props.editComment(updatedComment.id, updatedComment)
+        this.props.editComment(updatedComment.commentId, {body: updatedComment.body, postId: this.props.postId})
         this.closeEditPostModal()
 
     }
@@ -109,7 +112,7 @@ class Comments1 extends Component {
                                 >
                                     {this.state.postModalOpen &&
                                     <CommentEdit
-                                        initialValue={c}
+                                        initialValue={{commentId: c.commentId, body: c.body}}
                                         onSub={this.updateComment}
                                         closeModal={this.closeEditPostModal}
 
@@ -119,58 +122,59 @@ class Comments1 extends Component {
 
 
                                 {/*<div className={'comments-rating'}>*/}
-                                    {/*<div className="fas fa-caret-up"*/}
-                                         {/*onClick={() => this.props.voteComment(c.commentId, {option:'upVote',postId:c.postId})}>*/}
+                                {/*<div className="fas fa-caret-up"*/}
+                                {/*onClick={() => this.props.voteComment(c.commentId, {option:'upVote',postId:c.postId})}>*/}
 
-                                    {/*</div>*/}
-                                    {/*<div onClick={() => this.props.voteComment(c.commentId, {option:'downVote',postId:c.postId})}>*/}
-                                        {/*<i className="fas fa-caret-down"/>*/}
-                                    {/*</div>*/}
+                                {/*</div>*/}
+                                {/*<div onClick={() => this.props.voteComment(c.commentId, {option:'downVote',postId:c.postId})}>*/}
+                                {/*<i className="fas fa-caret-down"/>*/}
+                                {/*</div>*/}
 
                                 {/*</div>*/}
 
 
-                                    <Typography variant="body2" gutterBottom>
-                                        {c.author}
+                                <Typography variant="body2" gutterBottom>
+                                    {c.author}
 
-                                    </Typography>
-
-
+                                </Typography>
 
 
-
-
-                                    <Typography>
-                                        {c.body}
-
-                                    </Typography>
-                                <IconButton      className={'c-button'}
-                                    onClick={() => this.props.voteComment(c.commentId, {option:'upVote',postId:c.postId})}>
-
+                                <Typography>
+                                    {c.body}
+                                </Typography>
+                                <IconButton className={'c-button'}
+                                            onClick={() => this.props.voteComment(c.commentId, {
+                                                option: 'upVote',
+                                                postId: c.postId
+                                            })}>
                                     <ArrowDropUp/>
                                 </IconButton>
-                            <span className={'c-button'}>                                    {c.voteScore}
-</span>
-                                <IconButton      className={'c-button'}
-                                    onClick={() => this.props.voteComment(c.commentId, {option:'downVote',postId:c.postId})}>
+                                <span className={'c-button'}>{c.voteScore}</span>
+                                <IconButton className={'c-button'}
+                                            onClick={() => this.props.voteComment(c.commentId, {
+                                                option: 'downVote',
+                                                postId: c.postId
+                                            })}>
                                     <ArrowDropDown/>
                                 </IconButton>
-                                <IconButton      className={'c-button'}>
+
+                                <IconButton className={'c-button'}
+                                            onClick={() => this.onDeleteClick(c.commentId,c.postId)}>
                                     <Delete/>
                                 </IconButton>
-                                <IconButton      className={'c-button'}>
+                                <IconButton onClick={this.openEditPostModal} className={'c-button'}>
                                     <Edit/>
                                 </IconButton>
 
                                 {/*<div className={'comments-footer'}>*/}
-                                    {/*<div onClick={() => this.onDeleteClick(c.commentId)}>*/}
-                                        {/*<i className="fas fa-trash-alt"/>*/}
+                                {/*<div onClick={() => this.onDeleteClick(c.commentId)}>*/}
+                                {/*<i className="fas fa-trash-alt"/>*/}
 
 
-                                    {/*</div>*/}
-                                    {/*<div><i className="fas fa-edit" onClick={this.openEditPostModal}/>*/}
+                                {/*</div>*/}
+                                {/*<div><i className="fas fa-edit" onClick={this.openEditPostModal}/>*/}
 
-                                    {/*</div>*/}
+                                {/*</div>*/}
                                 {/*</div>*/}
                             </div>}
 
@@ -184,6 +188,7 @@ class Comments1 extends Component {
     render() {
         console.log("Comments Render  state: ", this.state)
 
+
         return (
             <div>
 
@@ -191,25 +196,25 @@ class Comments1 extends Component {
                     !this.state.loading
                         ? <div>
                             <div className={'c-add'} onClick={() => this.onAddCommentClick(true)}>
-                                                              {
+                                {
                                     this.state.isAddCommentClicked
                                         ? <AddComment1 postId={this.props.postId} commentClicked={this.onAddCommentClick}/>
                                         :
                                         <div>
-                                            <Button  block
-                                                     bsSize="small"
-                                                     color="primary"
-                                                     variant="contained" type="submit">ADD COMMENT
-                                        </Button>
+                                            <Button block
+                                                    bsSize="small"
+                                                    color="primary"
+                                                    variant="contained" type="submit">ADD COMMENT
+                                            </Button>
                                             <br/>
                                             <br/>
                                             <br/>
                                             <br/>
-                                        <Divider/>
+                                            <Divider/>
                                         </div>
 
 
-                                                              }
+                                }
 
                             </div>
 
@@ -227,6 +232,9 @@ class Comments1 extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     console.log("Comments state: ", state)
+    console.log("Comments state: ", state.comments)
+    console.log("Comments length: ", Object.keys(state.comments).length)
+
 
     // console.log("Comments ownProps: ", ownProps)
 
@@ -236,7 +244,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = (dispatch) => ({
     getPostComments: (postId) => dispatch(getAllPostComments(postId)),
-    deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+    deleteComment: (commentId,postId) => dispatch(deleteComment(commentId,postId)),
     voteComment: (id, option) => dispatch(voteComment(id, option)),
     editComment: (id, data) => dispatch(editComment(id, data))
 })
