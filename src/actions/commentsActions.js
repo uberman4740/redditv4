@@ -30,11 +30,11 @@ export function updateComment(data) {
 
 }
 export function editComment(id, data) {
-    console.log("main huuuuun edit main!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", data)
+    console.log("main huuuuun edit main!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", data.body,data.postId)
 
     return async dispatch => {
 
-            const req = await API.put('notes', "/comments/3e0b1c80-8181-11e8-9267-33e694e64da8", {body: {opt:"upVote",postId:"8f20dad0-7b08-11e8-b538-6f09bcae7322"}})
+            const req = await API.put('notes', `/comments/${id}`, {body: {option:"updateBody",body:data.body,postId:data.postId}})
             dispatch(
                 updateComment(req)
             )

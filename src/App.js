@@ -44,15 +44,19 @@ class App extends Component {
                     <Route exact path='/signup' component={SignUp}/>
                     <Route exact path="/verification" component={Verification}/>
 
+                    {
+                        this.props.authUser ?
+                            <Switch>
+                                <Route path='/:categoryId/:postId?' render={(props) =>
+                                    <div className={"app-container"}>
+                                        <Category {...props}/>
+                                        <Post {...props}/>
+                                        <PostSummary1 {...props}/>
+                                    </div>}/>
+                            </Switch>
+                            : null
+                    }
 
-                    <Switch>
-                        <Route path='/:categoryId/:postId?' render={(props) =>
-                            <div className={"app-container"}>
-                                <Category {...props}/>
-                                <Post {...props}/>
-                                <PostSummary1 {...props}/>
-                            </div>}/>
-                    </Switch>
 
                     {/*<Route path='/:categoryId' render={(props) =>*/}
                     {/*<div className={"app-container"}>*/}
@@ -68,11 +72,23 @@ class App extends Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    console.log("AUTH USER IN THE HOUSE,", state)
 
+    // console.log("ownPPP", ownProps)
+    return {
+        authUser: state.authUser,
+
+        categories: state.categories,
+
+    }
+
+
+}
 const mapDispatchToProps = (dispatch) => ({
     addAuthUser: (authUser) => dispatch(addAuthUser(authUser)),
 
 })
 
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

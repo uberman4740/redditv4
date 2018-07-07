@@ -37,10 +37,9 @@ export default function posts(state = {}, action) {
 
             }
         case EDIT_POST:
-            console.log("in reducer for edit", action)
-            return {
+            return{
                 ...state,
-                [action.payload.data.id]: action.payload.data
+                [action.payload.postId]: action.payload
 
             }
         case CREATE_POST:

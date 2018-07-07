@@ -44,7 +44,7 @@ class PostSummary1 extends Component {
         isAddCommentClicked: false,
         postModalOpen: false,
         loadPost: false,
-        commentCount:''
+        commentCount: ''
     }
 
     componentDidMount() {
@@ -84,9 +84,10 @@ class PostSummary1 extends Component {
             }
         }
     }
-    getCommentCount=(count)=>{
+
+    getCommentCount = (count) => {
         // alert("comment count",count)
-        this.setState({commentsCount:count})
+        this.setState({commentsCount: count})
     }
     openEditPostModal = () => this.setState(() => ({postModalOpen: true}))
     closeEditPostModal = () => {
@@ -96,23 +97,28 @@ class PostSummary1 extends Component {
         this.props.deletePost(id)
         // .then(() => this.props.history.push(`/${this.props.match.params.categoryId}`))
     }
-    onSubmitEditPost = (id, value) => {
+    onSubmitEditPost = (value) => {
         const updatedPost = {
-            postId: id,
+            postId: value.postId,
             title: value.title,
             body: value.body,
             category: value.category,
             author: value.author,
-            time_stamp: value.timestamp
+            time_stamp: value.time_stamp,
+            userId:value.userId
+
         }
-        // console.log("updatePost data_________________", updatedPost)
-        this.props.editPost(updatedPost.id, updatedPost)
-        this.props.history.push(`/${updatedPost.category}/${updatedPost.id}`)
+        console.table(updatedPost)
+        this.props.editPost(updatedPost.postId, {
+            body: updatedPost.body,
+            title: updatedPost.title,
+            time_stamp: updatedPost.time_stamp,
+            userId:updatedPost.userId
+        })
+        this.props.history.push(`/${updatedPost.category}/${updatedPost.postId}`)
         this.closeEditPostModal()
     }
-    // onAddComment =()=>{
-    //
-    // }
+
     render() {
         console.log("PostSummary Render  state: ", this.props.post)
         console.log("PostSummary params  state: ", this.props.match.params.postId)
@@ -165,14 +171,18 @@ class PostSummary1 extends Component {
                                     <IconButton>
                                         <ModeComment/>
                                     </IconButton>
-                                    <span style={{color:'black'}}>
-
-                                   {this.props.commentCount}
-
-                                        </span>
+                                    <span style={{color: 'black'}}>{this.props.commentCount}</span>
                                     {
                                         (this.props.authUser === this.props.post.author)
-                                            ? <IconButton aria-label="Next" bsSize="large">
+                                            ? <IconButton aria-label="Next" bsSize="large"
+                                                          onClick={this.openEditPostModal}>
+                                                <Modal
+                                                    isOpen={this.state.postModalOpen}
+                                                    onRequestClose={this.closeEditPostModal}>
+                                                    <EditPost
+                                                        onSubmitEditPost={this.onSubmitEditPost}
+                                                        post={this.props.post}/>
+                                                </Modal>
                                                 <Edit/>
                                             </IconButton>
                                             : null
@@ -184,7 +194,7 @@ class PostSummary1 extends Component {
 
                                 <Comments1 postId={this.props.match.params.postId}
                                            onAddComment={this.onAddComment}
-                                           onCommentCountChange={(commentCount) => this.setState({commentCount})}                                />
+                                           onCommentCountChange={(commentCount) => this.setState({commentCount})}/>
 
 
                             </CardContent>
@@ -202,8 +212,7 @@ class PostSummary1 extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     console.log("PostSummary state: ", state.posts[ownProps.match.params.postId])
-    console.log("~~~~~~~~~##!!!!!~~~~~",state)
-
+    console.log("~~~~~~~~~##!!!!!~~~~~", state)
 
 
     console.log("PostSummary ownprops", ownProps)

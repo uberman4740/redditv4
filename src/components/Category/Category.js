@@ -1,22 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import {getAllCategories} from "../actions/categoryActions";
 import _ from 'lodash'
 import {Link} from 'react-router-dom'
 import './Category.css'
 import {getAllCategories} from "../../actions/categoryActions";
 import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../../actions/postActions";
-import List from "@material-ui/core/es/List/List";
-import Divider from "@material-ui/core/es/Divider/Divider";
-import Button from "@material-ui/core/es/Button/Button";
-import Drawer from "@material-ui/core/es/Drawer/Drawer";
-import {mailFolderListItems, otherMailFolderListItems} from '../tileData';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import IconButton from "@material-ui/core/es/IconButton/IconButton";
 import Menu from "@material-ui/core/es/Menu/Menu";
 import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import {Auth, API} from "aws-amplify";
+import {addAuthUser} from "../../actions/authAction";
 
 
 const styles = {
@@ -30,20 +26,7 @@ const styles = {
 const ITEM_HEIGHT = 48;
 
 const options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
+ 'Sign Out'
 ];
 
 class Category extends Component {
@@ -51,7 +34,24 @@ class Category extends Component {
         loading: true,
         sortByTitleAsc: false,
         sortByTitleDesc: false,
-        anchorEl: null
+        anchorEl: null,
+        isAuthenticated: false,
+
+
+    }
+    handleLogout = async event => {
+        await Auth.signOut();
+
+        this.userHasAuthenticated(false);
+        this.setState({ anchorEl: null });
+        this.props.addAuthUser("")
+        this.props.history.push({pathname: '/signin'})
+
+    }
+    userHasAuthenticated =  authenticated => {
+
+        this.setState({isAuthenticated: authenticated});
+
 
     }
     handleClick = event => {
@@ -94,7 +94,7 @@ class Category extends Component {
                     }}
                 >
                     {options.map(option => (
-                        <MenuItem key={option} selected={option === 'Pyxis'} onClick={this.handleClose}>
+                        <MenuItem key={option} selected={option === 'Pyxis'} onClick={this.handleLogout}>
                             {option}
                         </MenuItem>
                     ))}
@@ -204,6 +204,8 @@ class Category extends Component {
 const mapStateToProps = (state, ownProps) => {
     // console.log("ownPPP", ownProps)
     return {
+        authUser: state.authUser,
+
         categories: state.categories,
 
     }
@@ -213,6 +215,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
     getAllCategories: () => dispatch(getAllCategories()),
     getCategoryPosts: (category) => dispatch(getCategoryPosts(category)),
+    addAuthUser: (authUser) => dispatch(addAuthUser(authUser)),
+
 
 
 })

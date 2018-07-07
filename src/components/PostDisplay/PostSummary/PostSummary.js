@@ -83,7 +83,7 @@ class PostSummary extends Component {
             time_stamp: value.timestamp
         }
         // console.log("updatePost data_________________", updatedPost)
-        this.props.editPost(updatedPost.id, updatedPost)
+        this.props.editPost(updatedPost.postId, updatedPost)
         this.props.history.push(`/${updatedPost.category}/${updatedPost.id}`)
         this.closeEditPostModal()
     }

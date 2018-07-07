@@ -25,24 +25,25 @@ export const EDIT_POST = "EDIT_POST"
 // export function sortPosts{
 //
 // }
-export function updatePost(id, values) {
-    const request = axios.put(`${ROOT_URL}/posts/${id}`, values)
+export function updatePost(data) {
+
+
     return {
-        type: EDIT_POST,
-        payload: request
+        type:EDIT_POST,
+        payload:data
     }
 
 }
 export function editPost(id, data) {
 
     return async dispatch => {
-        const req = await API.put(apiName, `/posts/${id}`, {body: {option:data.option,userId:data.userId}})
+        console.log("action edit post data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", data)
+
+        const req = await API.put('notes', `/posts/${id}`, {body: {option:"updateBody",body:data.body,title:data.title, userId:data.userId}})
         dispatch(
-            updateVotePost(req)
+            updatePost(req)
         )
-
     }
-
 }
 export function updateVotePost(data) {
 
