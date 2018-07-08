@@ -94,6 +94,18 @@
 
 
 }
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+}
+.ripple:hover {
+    background: dimgrey radial-gradient(circle, transparent 1%, #636363 1%) center/15000%;
+}
+.ripple:active {
+    background-color: dimgrey;
+    background-size: 100%;
+    transition: background -1.0s;
+}
 
 .category{
     display: grid;

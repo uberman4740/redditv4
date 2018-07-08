@@ -181,7 +181,7 @@ class Category extends Component {
                             _.map(cat, c => {
                                 return (
                                     <div className={'category'} key={c.title}>
-                                        <Link className={'category'} to={`/${c.title}`}>
+                                        <Link className={'category ripple'} to={`/${c.title}`}>
                                             {c.title}
 
                                             {/*<Route path={`${match.url}/:categoryId`} component={SingleCategory}/>*/}

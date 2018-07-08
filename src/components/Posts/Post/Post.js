@@ -17,6 +17,9 @@ import PostSummary from "../../PostDisplay/PostSummary/PostSummary";
 import Link from "react-router-dom/es/Link";
 import AddPost from "./AddPost";
 import Button from "@material-ui/core/es/Button/Button";
+import IconButton from "@material-ui/core/es/IconButton/IconButton";
+import ArrowDropDown from "@material-ui/core/es/internal/svg-icons/ArrowDropDown";
+import ArrowDropUp from "@material-ui/icons/es/ArrowDropUp";
 
 class Post extends Component {
     state = {
@@ -230,8 +233,9 @@ class Post extends Component {
                         {/*<div className={"search-posts"}><i className="fas fa-search"></i>*/}
                         {/*</div>*/}
                         <div className={'search-posts'}>
-                            <Button variant="fab" color="primary" aria-label="add"  onClick={() => this.onAddPostClick(true)} >
-                                <AddIcon />
+                            <Button variant="fab" color="primary" aria-label="add"
+                                    onClick={() => this.onAddPostClick(true)}>
+                                <AddIcon/>
                                 {
                                     this.state.isAddPostClicked
                                         ? <div>
@@ -264,32 +268,51 @@ class Post extends Component {
                                     <div className={"hh"} key={p.postId}>
                                         <div className={'post-list'}>
                                             <div className={'rating'}>
-                                                <div>
-                                                    <i className="fas fa-caret-up"
-                                                       onClick={() => this.props.votePost(p.postId, {option:'upVote',userId:p.userId})}/>
+
+                                                <div className={'upvote'}>
+                                                    <IconButton
+                                                       onClick={() => this.props.votePost(p.postId, {
+                                                           option: 'upVote',
+                                                           userId: p.userId
+                                                       })}>
+                                                    <ArrowDropUp/>
+                                                    </IconButton>
                                                 </div>
-                                                <div>
+                                                <div className={'score'}>
                                                     {p.voteScore}
                                                 </div>
-                                                <div>
-                                                    <i className="fas fa-caret-down"
-                                                       onClick={() => this.props.votePost(p.postId, {option:'downVote',userId:p.userId})}/>
+
+                                                <div className={'downvote'}>
+
+                                                    <IconButton
+                                                        onClick={() => this.props.votePost(p.postId, {
+                                                            option: 'downVote',
+                                                            userId: p.userId
+                                                        })}>
+                                                        <ArrowDropDown/>
+
+                                                    </IconButton>
+
                                                 </div>
                                             </div>
-                                            <div className={'post'}>
-                                                <Link className={'no-u'}
-                                                      to={`/${p.category}/${p.postId}`}>{p.title}</Link>
-                                                {/*{p.title}*/}
-                                            </div>
+
+                                            <Link className={'no-u'}
+                                                  to={`/${p.category}/${p.postId}`}>
+                                                <div className={'post ripple'}>
+                                                    {p.title}
+                                                </div>
+                                            </Link>
+                                            {/*{p.title}*/}
+
                                             <div className={'post-footer'}>
                                                 {/*<div className={'post-footer comments'}><i*/}
-                                                    {/*className="far fa-comment"/>*/}
-                                                    {/*{this.props.commentCount}*/}
+                                                {/*className="far fa-comment"/>*/}
+                                                {/*{this.props.commentCount}*/}
                                                 {/*</div>*/}
                                                 <div className={'post-footer comments'}>
 
                                                     <i className="far fa-user">
-                                                      {p.author}
+                                                        {p.author}
                                                     </i>
                                                 </div>
                                                 <div className={'post-footer date'}>
