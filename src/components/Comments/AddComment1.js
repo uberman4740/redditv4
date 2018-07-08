@@ -60,7 +60,9 @@ class AddComment extends Component {
     state = {
         body: '',
         author: this.props.authUser,
-        postId: this.props.postId
+        postId: this.props.postId,
+        userId:this.props.userId
+
     }
     componentDidMount = () => {
         // // console.log("AddComment CDM props: ", this.props)
@@ -68,6 +70,7 @@ class AddComment extends Component {
 
 
     handleInputChange = (event) => {
+
         const target = event.target
 
         const value = target.value
@@ -82,6 +85,7 @@ class AddComment extends Component {
     //     this.props.commentClicked(false)
     // }
     handleSubmit = () => {
+        console.table(this.state)
 
         this.props.createComment(this.state)
 

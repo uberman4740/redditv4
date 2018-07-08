@@ -17,12 +17,15 @@ import Delete from "@material-ui/icons/es/Delete";
 import ArrowDropDown from "@material-ui/core/es/internal/svg-icons/ArrowDropDown";
 import ArrowDropUp from "@material-ui/icons/es/ArrowDropUp";
 import Divider from "@material-ui/core/es/Divider/Divider";
+import TimeAgo from 'javascript-time-ago'
 
+const timeAgo = new TimeAgo('en-US')
 class Comments1 extends Component {
     state = {
         isAddCommentClicked: false,
         postModalOpen: false,
-        loading: true
+        loading: true,
+        formattedTime:''
 
     }
 
@@ -75,10 +78,10 @@ class Comments1 extends Component {
     closeEditPostModal = () => this.setState(() => ({postModalOpen: false}))
 
 
-    onDeleteClick = (id,postId) => {
+    onDeleteClick = (id, postId) => {
 
 
-        this.props.deleteComment(id,postId)
+        this.props.deleteComment(id, postId)
             .then(() => this.props.getPostComments(this.props.postId))
     }
     onAddCommentClick = (val) => {
@@ -131,12 +134,20 @@ class Comments1 extends Component {
                                 {/*</div>*/}
 
                                 {/*</div>*/}
+                                <div>
+                                    <Typography variant="body2">
+                                        {c.author}
 
 
-                                <Typography variant="body2" gutterBottom>
-                                    {c.author}
+                                    </Typography>
+                                    <div>
+                                        <Typography variant="caption" gutterBottom>
 
-                                </Typography>
+                                            {timeAgo.format(c.time_stamp, 'twitter')}
+
+                                        </Typography>
+                                    </div>
+                                </div>
 
 
                                 <Typography>
@@ -159,7 +170,7 @@ class Comments1 extends Component {
                                 </IconButton>
 
                                 <IconButton className={'c-button'}
-                                            onClick={() => this.onDeleteClick(c.commentId,c.postId)}>
+                                            onClick={() => this.onDeleteClick(c.commentId, c.postId)}>
                                     <Delete/>
                                 </IconButton>
                                 <IconButton onClick={this.openEditPostModal} className={'c-button'}>
@@ -198,7 +209,7 @@ class Comments1 extends Component {
                             <div className={'c-add'} onClick={() => this.onAddCommentClick(true)}>
                                 {
                                     this.state.isAddCommentClicked
-                                        ? <AddComment1 postId={this.props.postId} commentClicked={this.onAddCommentClick}/>
+                                        ? <AddComment1 postId={this.props.postId} userId={this.props.userId} commentClicked={this.onAddCommentClick}/>
                                         :
                                         <div>
                                             <Button block
@@ -244,7 +255,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = (dispatch) => ({
     getPostComments: (postId) => dispatch(getAllPostComments(postId)),
-    deleteComment: (commentId,postId) => dispatch(deleteComment(commentId,postId)),
+    deleteComment: (commentId, postId) => dispatch(deleteComment(commentId, postId)),
     voteComment: (id, option) => dispatch(voteComment(id, option)),
     editComment: (id, data) => dispatch(editComment(id, data))
 })

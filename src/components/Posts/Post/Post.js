@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import './Post.css'
 import AddIcon from '@material-ui/icons/Add';
+import en from 'javascript-time-ago/locale/en'
 
 import {PostBar} from "../PostBar/PostBar";
 import {PostSort} from "../PostSort/PostSort";
@@ -20,8 +21,12 @@ import Button from "@material-ui/core/es/Button/Button";
 import IconButton from "@material-ui/core/es/IconButton/IconButton";
 import ArrowDropDown from "@material-ui/core/es/internal/svg-icons/ArrowDropDown";
 import ArrowDropUp from "@material-ui/icons/es/ArrowDropUp";
+import TimeAgo from 'javascript-time-ago'
 
+TimeAgo.locale(en)
+const timeAgo = new TimeAgo('en-US')
 class Post extends Component {
+
     state = {
         loading: true,
         toPostSummary: false,
@@ -305,19 +310,22 @@ class Post extends Component {
                                             {/*{p.title}*/}
 
                                             <div className={'post-footer'}>
-                                                {/*<div className={'post-footer comments'}><i*/}
-                                                {/*className="far fa-comment"/>*/}
-                                                {/*{this.props.commentCount}*/}
-                                                {/*</div>*/}
-                                                <div className={'post-footer comments'}>
-
-                                                    <i className="far fa-user">
-                                                        {p.author}
-                                                    </i>
+                                                <div className={'post-footer comments'}><i
+                                                className="far fa-comment"/>
+                                                {p.commentsCount}
                                                 </div>
+                                                {/*<div className={'post-footer comments'}>*/}
+
+                                                    {/*<i className="far fa-user">*/}
+                                                        {/*{p.author}*/}
+                                                    {/*</i>*/}
+                                                {/*</div>*/}
+
                                                 <div className={'post-footer date'}>
                                                     <i className="far fa-calendar-alt">
-                                                        {p.time_stamp}
+                                                        {" "}{timeAgo.format(p.time_stamp, 'twitter')}
+
+
                                                     </i>
                                                 </div>
                                             </div>

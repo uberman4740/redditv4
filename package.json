@@ -9,6 +9,7 @@
     "amazon-cognito-js": "^1.1.0",
     "aws-amplify": "^0.4.6",
     "axios": "^0.18.0",
+    "javascript-time-ago": "^1.0.31",
     "lodash": "^4.17.10",
     "material-ui": "^0.20.1",
     "prop-types": "^15.6.2",
@@ -17,6 +18,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-modal": "^3.4.5",
+    "react-phone-number-input": "^1.1.7",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -30,8 +32,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.3.0",
     "slug": "^0.9.1",
-    "uuid": "^3.2.1",
-    "react-phone-number-input": "^1.1.7"
+    "uuid": "^3.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

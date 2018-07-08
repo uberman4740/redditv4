@@ -1,68 +1,40 @@
 import React, {Component} from 'react'
 import './PostSummary.css';
 import {PostSummarBar} from "../PostSummaryBar/PostSummarBar";
-import Comments from "../../Comments/Comments";
 import {deletePost, editPost, getCategoryPosts, getPost, votePost} from "../../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
-import AddComment from "../../Comments/AddComment";
-import {getAllPostComments} from "../../../actions/commentsActions";
 import Modal from 'react-modal'
 import {EditPost} from "./EditPost";
 import Link from "react-router-dom/es/Link";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import {API} from "aws-amplify";
 import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ModeComment from '@material-ui/icons/ModeComment';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
-
-import Divider from '@material-ui/core/Divider';
-
-import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import CardHeader from '@material-ui/core/CardHeader';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
 import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
 import './PostSummary.css';
-
-
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Avatar from '@material-ui/core/Avatar';
-
 import './PostSummary.css';
-import TextField from "@material-ui/core/es/TextField/TextField";
-import Button from "@material-ui/core/es/Button/Button";
-import Paper from "@material-ui/core/es/Paper/Paper";
 import Comments1 from "../../Comments/Comments1";
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 
+
+TimeAgo.locale(en)
+const timeAgo = new TimeAgo('en-US')
 class PostSummary1 extends Component {
     state = {
         isAddCommentClicked: false,
         postModalOpen: false,
         loadPost: false,
-        commentCount: ''
+        commentCount: '',
+        formattedTime:''
     }
 
     componentDidMount() {
-        // try {
-        //
-        //     const post = await this.getPost()
-        //     // this.setState({post: post})
-        //     // console.log("bro the post is+++++", post)
-        // } catch (e) {
-        //     alert(e)
-        // }
-
-        // console.log("CCDDDDDDDDD", this.props)
-        //
-        //
-        // this.props.getAllPosts()
-        // // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",note)
-
 
     }
 
@@ -80,7 +52,7 @@ class PostSummary1 extends Component {
                 this.setState({loadPost: false})
             } else {
                 this.props.getPost(this.props.match.params.postId)
-                this.setState({loadPost: true})
+                this.setState({loadPost: true,formattedTime:timeAgo.format(this.props.post.time_stamp, 'twitter')})
             }
         }
     }
@@ -128,13 +100,13 @@ class PostSummary1 extends Component {
         return (
             <div className={'post-summary-container'}>
                 <PostSummarBar/>
-                {!this.state.loadPost
+                {(!this.state.loadPost)
                     ? null
                     : <div>
                         <Card>
                             <CardHeader
                                 title={this.props.post.title}
-                                subheader={this.props.post.time_stamp}
+                                subheader={ this.state.formattedTime}
 
                             />
                             <CardContent>
@@ -193,6 +165,7 @@ class PostSummary1 extends Component {
 
 
                                 <Comments1 postId={this.props.match.params.postId}
+                                           userId={this.props.post.userId}
                                            onAddComment={this.onAddComment}
                                            onCommentCountChange={(commentCount) => this.setState({commentCount})}/>
 

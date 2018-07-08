@@ -3,6 +3,7 @@ import {
     VOTE_POST
 } from "../actions/postActions";
 import _ from 'lodash'
+import {CREATE_COMMENT} from "../actions/commentsActions";
 
 export default function posts(state = {}, action) {
 
@@ -28,6 +29,7 @@ export default function posts(state = {}, action) {
 
             }
         }
+
         case VOTE_POST:
             console.log("VOTE COMMENT action", action)
             console.log("STATE", state)
@@ -57,6 +59,18 @@ export default function posts(state = {}, action) {
             console.log("STATE FOR DELETE POST", state)
             console.log("ACTION FOR DELETE POST", action)
             return _.omit(state,[action.payload.id])
+
+        case CREATE_COMMENT:
+            console.log("Reducer COMMENT", action)
+
+            console.log("______________________________", state[action.payload.postId].commentsCount)
+            return {
+                ...state,
+                [action.payload.postId]: {
+                    ...state[action.payload.postId],
+                    commentsCount: state[action.payload.postId].commentsCount +1
+                }
+            }
 
 
         default:
