@@ -82,7 +82,8 @@ class Comments1 extends Component {
 
 
         this.props.deleteComment(id, postId)
-            .then(() => this.props.getPostComments(this.props.postId))
+            .then(() => this.props.getPostComments(this.props.postId)).then(()=>this.props.coolMethod
+        )
     }
     onAddCommentClick = (val) => {
         this.setState({isAddCommentClicked: val})

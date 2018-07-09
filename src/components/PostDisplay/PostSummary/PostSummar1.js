@@ -56,6 +56,9 @@ class PostSummary1 extends Component {
             }
         }
     }
+    coolMethod(){
+        this.setState({loading: true})
+    }
 
     getCommentCount = (count) => {
         // alert("comment count",count)
@@ -65,8 +68,8 @@ class PostSummary1 extends Component {
     closeEditPostModal = () => {
         this.setState(() => ({postModalOpen: false}))
     }
-    onDeleteClick = (id) => {
-        this.props.deletePost(id)
+    onDeleteClick = (id,userId) => {
+        this.props.deletePost(id,userId)
         // .then(() => this.props.history.push(`/${this.props.match.params.categoryId}`))
     }
     onSubmitEditPost = (value) => {
@@ -131,7 +134,7 @@ class PostSummary1 extends Component {
                                     </IconButton>
                                     {
                                         (this.props.authUser === this.props.post.author)
-                                            ? <IconButton onClick={() => this.onDeleteClick(this.props.post.postId)}>
+                                            ? <IconButton onClick={() => this.onDeleteClick(this.props.post.postId,this.props.post.userId)}>
                                                 <Link to={`/${this.props.post.category}`}>
                                                     <Delete/>
                                                 </Link>
@@ -167,6 +170,7 @@ class PostSummary1 extends Component {
                                 <Comments1 postId={this.props.match.params.postId}
                                            userId={this.props.post.userId}
                                            onAddComment={this.onAddComment}
+                                           coolMethod = {this.coolMethod}
                                            onCommentCountChange={(commentCount) => this.setState({commentCount})}/>
 
 
@@ -212,7 +216,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getPost: (postId) => dispatch(getPost(postId)),
-    deletePost: (postId) => dispatch(deletePost(postId)),
+    deletePost: (postId,userId) => dispatch(deletePost(postId,userId)),
     votePost: (id, option) => dispatch(votePost(id, option)),
     editPost: (id, data) => dispatch(editPost(id, data)),
     // getPostComments: (postId) => dispatch(getAllPostComments(postId)),

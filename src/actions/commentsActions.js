@@ -67,6 +67,7 @@ export function deleteComment(id,postId) {
 
         const req = await API.del('notes', `/comments/${id}`,{body:{postId:postId}})
         req.id=id
+        req.postId=postId
         dispatch(destroyComment(req))
     }
 }
