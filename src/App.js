@@ -29,6 +29,7 @@ class App extends Component {
     }
 
     render() {
+        console.log("AUTH USSSSSER RENDER",this.props.authUser)
 
         return (
 
@@ -37,31 +38,25 @@ class App extends Component {
 
 
                 <div>
-                    {/*<PersistentDrawer/>*/}
-
-
-                    <Route exact path='/signin' component={SignIn}/>
-                    <Route exact path='/signup' component={SignUp}/>
-                    <Route exact path="/verification" component={Verification}/>
-
                     {
-                        this.props.authUser ?
-                            <Switch>
-                                <Route path='/:categoryId/:postId?' render={(props) =>
+                        (Object.keys(this.props.authUser).length === 0) ?
+                            <div>
+                                <Route exact path='/' component={SignIn}/>
+                                <Route exact path='/signin' component={SignIn}/>
+
+                                <Route exact path='/signup' component={SignUp}/>
+                                <Route exact path="/verification" component={Verification}/>
+                            </div>
+                            :     <Switch>
+                                <Route path='/:categoryId?/:postId?' render={(props) =>
                                     <div className={"app-container"}>
                                         <Category {...props}/>
                                         <Post {...props}/>
                                         <PostSummary1 {...props}/>
                                     </div>}/>
                             </Switch>
-                            : null
                     }
 
-
-                    {/*<Route path='/:categoryId' render={(props) =>*/}
-                    {/*<div className={"app-container"}>*/}
-                    {/*<Category {...props}/>*/}
-                    {/*</div>}/>*/}
 
                 </div>
 
