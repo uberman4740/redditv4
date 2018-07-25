@@ -106,7 +106,7 @@ class SignIn extends Component {
                             <div className={'email'}>
                                 <TextField
                                     id="email"
-                                    label="Email or phone"
+                                    label="Username Email or phone"
                                     autoComplete="current-password"
                                     margin="normal"
                                     fullWidth

@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
-import {Route, Link} from 'react-router-dom'
 import connect from "react-redux/es/connect/connect";
 import {createComment, getAllPostComments} from "../../actions/commentsActions";
-import Divider from "@material-ui/core/es/Divider/Divider";
-import Button from "@material-ui/core/es/Button/Button";
-import TextField from "@material-ui/core/es/TextField/TextField";
+
 
 class AddComment extends Component {
     state = {

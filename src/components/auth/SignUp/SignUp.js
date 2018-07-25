@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import {Auth} from "aws-amplify";
 import {Link} from "react-router-dom";
-import LinearProgress from "@material-ui/core/es/LinearProgress/LinearProgress";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/rrui.css'
 import 'react-phone-number-input/style.css'
@@ -119,9 +119,10 @@ class SignUp extends Component {
                             <div className={'phone'}>
 
                                 <PhoneInput
+
                                     id = 'phone_number'
                                     country="US"
-                                    placeholder="Start typing a phone number"
+                                    placeholder="(Optional) Start typing a phone number"
                                     value={ this.state.phone_number }
                                     onChange={ value => this.setState({phone_number:value}) }/>
 

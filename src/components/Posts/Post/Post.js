@@ -17,10 +17,10 @@ import {SinglePost} from "../PostList/SinglePost";
 import PostSummary from "../../PostDisplay/PostSummary/PostSummary";
 import Link from "react-router-dom/es/Link";
 import AddPost from "./AddPost";
-import Button from "@material-ui/core/es/Button/Button";
-import IconButton from "@material-ui/core/es/IconButton/IconButton";
-import ArrowDropDown from "@material-ui/core/es/internal/svg-icons/ArrowDropDown";
-import ArrowDropUp from "@material-ui/icons/es/ArrowDropUp";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import TimeAgo from 'javascript-time-ago'
 
 TimeAgo.locale(en)

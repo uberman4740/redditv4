@@ -6,17 +6,16 @@ import {deleteComment, editComment, getAllPostComments, voteComment} from "../..
 import AddComment from "./AddComment";
 import Modal from 'react-modal'
 import {CommentEdit} from "./CommentEdit";
-import Typography from "@material-ui/core/es/Typography/Typography";
-import Paper from "@material-ui/core/es/Paper/Paper";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 import AddComment1 from "./AddComment1";
-import Button from "@material-ui/core/es/Button/Button";
-import IconButton from "@material-ui/core/es/IconButton/IconButton";
-import ModeComment from "@material-ui/icons/es/ModeComment";
-import Edit from "@material-ui/icons/es/Edit";
-import Delete from "@material-ui/icons/es/Delete";
-import ArrowDropDown from "@material-ui/core/es/internal/svg-icons/ArrowDropDown";
-import ArrowDropUp from "@material-ui/icons/es/ArrowDropUp";
-import Divider from "@material-ui/core/es/Divider/Divider";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import Edit from "@material-ui/icons/Edit";
+import Delete from "@material-ui/icons/Delete";
+import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
+import Divider from "@material-ui/core/Divider";
 import TimeAgo from 'javascript-time-ago'
 
 const timeAgo = new TimeAgo('en-US')

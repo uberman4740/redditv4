@@ -7,9 +7,9 @@ import {getAllCategories} from "../../actions/categoryActions";
 import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../../actions/postActions";
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import IconButton from "@material-ui/core/es/IconButton/IconButton";
-import Menu from "@material-ui/core/es/Menu/Menu";
-import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {Auth, API} from "aws-amplify";
 import {addAuthUser} from "../../actions/authAction";
@@ -150,7 +150,7 @@ class Category extends Component {
 
                         </div>
                         <div className={"category-bar-header"}>
-                            <h1>Categories</h1>
+                            <h4>Categories</h4>
                         </div>
                         {/*<div className={"search-category"}><i className="fas fa-search" ></i>*/}
 

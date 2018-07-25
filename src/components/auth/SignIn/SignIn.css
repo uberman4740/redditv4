@@ -4,6 +4,8 @@
     grid-template-columns: 0.48fr auto 0.48fr ;
     grid-template-rows: 1.2fr auto 1.2fr;
     height: 100vh;
+
+
 }
 
 .card-content-container{

@@ -2,11 +2,11 @@ import React, {Component} from 'react'
 import connect from "react-redux/es/connect/connect";
 import {createPost} from "../../../actions/postActions";
 import {getAllCategories} from "../../../actions/categoryActions";
-import Card from "@material-ui/core/es/Card/Card";
-import TextField from "@material-ui/core/es/TextField/TextField";
-import CardContent from "@material-ui/core/es/CardContent/CardContent";
+import Card from "@material-ui/core/Card";
+import TextField from "@material-ui/core/TextField";
+import CardContent from "@material-ui/core/CardContent";
 import MenuItem from '@material-ui/core/MenuItem';
-import Button from "@material-ui/core/es/Button/Button";
+import Button from "@material-ui/core/Button";
 
 
 const uuidv4 = require('uuid/v4');

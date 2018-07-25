@@ -9,8 +9,6 @@ import registerServiceWorker from "./registerServiceWorker"
 import {Provider} from "react-redux"
 import {createStore, applyMiddleware,compose} from "redux"
 import logger from 'redux-logger'
-
-import promise from "redux-promise"
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from "./reducers";
 import App from "./App";

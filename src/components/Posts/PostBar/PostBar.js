@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import './PostBar.css'
-import Button from "@material-ui/core/es/Button/Button";
+import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
 
 export class PostBar extends Component {
