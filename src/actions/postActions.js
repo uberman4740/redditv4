@@ -4,11 +4,14 @@ import {
 
 } from './shared';
 import axios from 'axios';
+import {API} from "aws-amplify";
+
 const uuidv4 = require('uuid/v4');
 
 axios.defaults.headers.common['Authorization'] = AUTH_HEADERS;
 
-
+let apiName = 'notes';
+let path = '/posts';
 export const GET_ALL_POSTS = "GET_ALL_POSTS"
 export const GET_CATEGORY_POSTS = "GET_CATEGORY_POSTS"
 export const GET_POST = "GET_POST"
@@ -22,80 +25,143 @@ export const EDIT_POST = "EDIT_POST"
 // export function sortPosts{
 //
 // }
-export function editPost(id,values) {
-    const request =  axios.put(`${ROOT_URL}/posts/${id}`,values)
-    return{
+export function updatePost(data) {
+
+
+    return {
         type:EDIT_POST,
-        payload:request
+        payload:data
     }
 
-
 }
-export function votePost(id, vote){
-    const request = axios.post(`${ROOT_URL}/posts/${id}`, {option: vote})
+export function editPost(id, data) {
 
-    return{
+    return async dispatch => {
+        console.log("action edit post data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", data)
+
+        const req = await API.put('notes', `/posts/${id}`, {body: {option:"updateBody",body:data.body,title:data.title, userId:data.userId}})
+        dispatch(
+            updatePost(req)
+        )
+    }
+}
+export function updateVotePost(data) {
+
+
+    return {
         type: VOTE_POST,
-        payload: request
+        payload: data
+    }
+
+}
+export function votePost(id, data) {
+
+    return async dispatch => {
+        const req = await API.put(apiName, `/posts/${id}`, {body: {option:data.option,userId:data.userId}})
+        dispatch(
+            updateVotePost(req)
+        )
+
     }
 
 }
 
-export function deletePost(id){
-    const request =  axios.delete(`${ROOT_URL}/posts/${id}`)
+export function destroyPost(request) {
     return {
         type: DELETE_POST,
         payload: request
     }
 
 }
-export function getAllPosts (){
-    const request = axios.get(`${ROOT_URL}/posts`)
+export function deletePost(id) {
+    return async dispatch => {
+        const req = await API.del(apiName, `/posts/${id}`)
+        req.id=id
+        dispatch(destroyPost(req))
+    }
+}
 
-    return{
+export function loadAllPosts(data) {
+    return {
         type: GET_ALL_POSTS,
-        payload: request
-
+        payload: data
     }
 }
 
-export function getCategoryPosts (category){
-    const request = axios.get(`${ROOT_URL}/${category}/posts`)
+export function getAllPosts() {
+    return async dispatch => {
+        const req = await API.get(apiName, path)
 
+        dispatch(loadAllPosts(req))
+    }
+}
 
-    return{
+export function loadCategoryPosts(data) {
+    return {
         type: GET_CATEGORY_POSTS,
-        payload: request
+        payload: data
+
+    }
+}
+export function getCategoryPosts(id) {
+
+
+    return async dispatch => {
+        try {
+            dispatch(loadCategoryPosts(await API.get(apiName, `/categories/${id}`)))
+        }
+        catch (e) {
+            console.log(e)
+        }
+
 
     }
 }
 
-export function getPost (postId){
-    const request = axios.get(`${ROOT_URL}/posts/${postId}`)
+
+export function loadPost(data) {
 
 
-    return{
+    return {
         type: GET_POST,
-        payload: request
+        payload: data
 
     }
 }
-export function createPost(values){
-   const {title,body,author,category} = values
+export function getPost(postId) {
+
+
+    return async dispatch => {
+        const req = await API.post(apiName, `/posts/${postId}`)
+        dispatch(
+            loadPost(req)
+        )
+
+    }
+}
+
+export function addPost(data) {
+
+    return {
+        type: CREATE_POST,
+        payload: data
+    }
+}
+
+export function createPost(values) {
+    const {title, body, author, category} = values
     const data = {
-        id: values.id,
-        timestamp: Date.now(),
         title,
         body,
         author,
         category
     }
-    const request = axios.post(`${ROOT_URL}/posts`,data)
 
-
-    return{
-        type: CREATE_POST,
-        payload: request
+    return async dispatch => {
+        const req = await API.post(apiName, path, {body: data})
+        dispatch(
+            addPost(req)
+        )
 
     }
 }

@@ -149,8 +149,13 @@
     grid-row-gap: 0.3rem;
     grid-template-rows: auto;
     display: grid;
-
-
-
+}
+.divider-comments{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+.vote-score{
+    font-size: 15px;
+    color: black;
 }
 

@@ -1,0 +1,52 @@
+npx aws-api-gateway-cli-test --username=admin@example.com --password=password123 --user-pool-id=us-east-1_bOBqs13db --app-client-id=1kmk8dh7n657l17g4oore4sd0p --cognito-region=us-east-1 --identity-pool-id=us-east-1:91b99b79-d304-4054-a86e-d95bdd9f20c9 --invoke-url=https://8wojk2jl2a.execute-api.us-east-1.amazonaws.com/prod --api-gateway-region=us-east-1 --path-template=/posts --method=POST --body={"content":"hello world","attachment":"hello.jpg"}
+
+
+aws cognito-idp sign-up \
+  --region us-east-1 \
+  --client-id 1kmk8dh7n657l17g4oore4sd0p \
+  --username admin@example.com \
+  --password password123
+
+
+  aws cognito-idp admin-confirm-sign-up \
+    --region us-east-1 \
+    --user-pool-id us-east-1_bOBqs13db \
+    --username admin@example.com
+
+Identity pool ID
+us-east-1:91b99b79-d304-4054-a86e-d95bdd9f20c9
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "mobileanalytics:PutEvents",
+        "cognito-sync:*",
+        "cognito-identity:*"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::forum-app-uploads/private/${cognito-identity.amazonaws.com:sub}/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "execute-api:Invoke"
+      ],
+      "Resource": [
+        "arn:aws:execute-api:us-east-1:*:8wojk2jl2a/*"
+      ]
+    }
+  ]
+}

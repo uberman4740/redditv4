@@ -1,10 +1,12 @@
 .post-container{
     display: grid;
+    grid-template-rows:auto;
     grid-template-columns: 1fr;
     height: 100vh;
-    background: #c1bdf4;
+    background: #a39cef;
     text-decoration: none;
     color: white;
+    overflow: scroll;
 
 }
 
@@ -34,47 +36,123 @@ div.post-yo > div:nth-of-type(1) {
     background: #302976;
 
 }
+div.post-yo > div:nth-of-type(1):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(2) {
     background: #383090;
 
-}
+}div.post-yo > div:nth-of-type(2):hover {
+     background: dimgrey;
+
+ }
+
+
+
 div.post-yo > div:nth-of-type(3) {
     background: #4036a5;
 
 }
+div.post-yo > div:nth-of-type(3):hover {
+    background: dimgrey;
+
+}
+
+
+
 
 div.post-yo > div:nth-of-type(4) {
     background: #483db9;
 
 }
+div.post-yo > div:nth-of-type(4):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(5) {
     background: #5044ce;
 
 }
+div.post-yo > div:nth-of-type(5):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(6) {
     background: #574ae2;
 
 }
+div.post-yo > div:nth-of-type(6):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(7) {
     background: #665ae4;
 
 }
+div.post-yo > div:nth-of-type(7):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(8) {
     background: #756ae7;
 
 }
+div.post-yo > div:nth-of-type(8):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(9) {
     background: #847be9;
 
 }
+div.post-yo > div:nth-of-type(9):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(10) {
     background: #948bec;
 
 }
+div.post-yo > div:nth-of-type(10):hover {
+    background: dimgrey;
+
+}
+
+
+
 div.post-yo > div:nth-of-type(11) {
     background: #a39cef;
 
 }
+div.post-yo > div:nth-of-type(11):hover {
+    background: dimgrey;
+
+}
+
+
+
 
 
 
@@ -93,7 +171,19 @@ div.post-yo > div:nth-of-type(11) {
 
 }
 
-
+/* Ripple effect */
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+}
+.ripple:hover {
+    background: dimgrey radial-gradient(circle, transparent 1%, #636363 1%) center/15000%;
+}
+.ripple:active {
+    background-color: dimgrey;
+    background-size: 100%;
+    transition: background -1.0s;
+}
 .post{
     grid-column: 2;
     grid-row: 1;
@@ -105,6 +195,7 @@ div.post-yo > div:nth-of-type(11) {
     font-size: 1.2rem;
     text-decoration: none;
     color: white;
+    transform: translate(0px, 0px);
 
 }
 .no-u{
@@ -116,11 +207,31 @@ div.post-yo > div:nth-of-type(11) {
     grid-column: 1;
     grid-row: 1/3;
     grid-template-rows:  repeat(3,1fr);
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
+
 
 }
+.rating .upvote{
+    grid-row: 1;
+    transform: scale(0.7);
+
+
+}
+
+.rating .score{
+    grid-row: 2;
+
+    padding-left: 18px;
+    margin-bottom: -5px;
+}
+.rating .downvote{
+    display: grid;
+    grid-row: 3;
+    transform: scale(0.7);
+
+
+
+}
+
 .post-footer{
     grid-column: 2;
     grid-row: 2;

@@ -1,0 +1,26 @@
+
+.card-container{
+    display: grid;
+    grid-template-columns: 0.48fr auto 0.48fr ;
+    grid-template-rows: 1.2fr auto 1.2fr;
+    height: 100vh;
+
+
+}
+
+.card-content-container{
+    grid-column: 2/3;
+    grid-row:2/3;
+}
+.card-inside{
+    display:grid;
+    grid-template-rows: auto;
+    grid-template-columns:1fr ;
+}
+.action-row{
+    padding-top: 70px;
+    justify-items: center;
+    /*grid-row:7/8;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

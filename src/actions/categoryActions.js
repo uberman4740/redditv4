@@ -4,17 +4,33 @@ import {
 
 } from './shared';
 import axios from 'axios';
-
-axios.defaults.headers.common['Authorization'] = AUTH_HEADERS;
-
-export const FETCH_CATEGORIES = "fetch_categories"
+import { API } from "aws-amplify";
 
 
-export function getAllCategories(){
-    const req = axios.get(`${ROOT_URL}/categories`)
+let apiName = 'notes';
+let path = '/categories';
+
+export const FETCH_CATEGORIES = "FETCH_CATEGORIES"
+
+
+export function loadAllCategories(data){
+
     return{
         type: FETCH_CATEGORIES,
-        payload: req
+        payload: data
 
     }
 }
+
+export const getAllCategories= ()=>{
+    return async dispatch => {
+        const req = await API.get(apiName,path)
+        dispatch(loadAllCategories(req))
+
+    }
+
+
+
+}
+
+

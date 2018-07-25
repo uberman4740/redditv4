@@ -6,7 +6,8 @@ import Redirect from "react-router-dom/es/Redirect";
 
 export class CommentEdit extends Component {
     state = {
-        value: this.props.initialValue
+        commentId:this.props.initialValue.commentId,
+        body:this.props.initialValue.body
     }
 
     componentDidMount() {
@@ -15,26 +16,25 @@ export class CommentEdit extends Component {
 
     onFormSubmit = () => {
         // event.preventDefault()
-        this.props.onSub(this.state.value)
+        this.props.onSub(this.state)
         // console.log("submit!!!!!" ,this.state.value)
     }
     handleChange = (event) => {
-        var someProperty = {...this.state.value}
-        someProperty.body = event.target.value
 
         this.setState({
-            value: someProperty
+            body: event.target.value
         })
     }
 
 
     render() {
+        console.log("commend edit", this.state)
         // console.log("CommentEdit Render  props: ", this.props)
         // console.log("CommentEdit Render  state: ", this.state)
         // console.log(this.state.value.body)
 
         // console.log("someproprrrr", someProperty)
-        let someProperty = {...this.state.value}
+        // let someProperty = {...this.state.value}
         // console.log("sommmme proper",someProperty)
         // someProperty.body = event.target.value
 
@@ -44,15 +44,15 @@ export class CommentEdit extends Component {
                 <form onSubmit={this.onFormSubmit}>
                     <input
                         ref='name'
-                        value={someProperty.body}
+                        value={this.state.body}
                         onChange={this.handleChange}/>
 
 
                     <div>
-                        <button type="submit" className={'ui primary button'}>
+                        <button type="submit" >
                             Submit
                         </button>
-                        <button type="button" className={'ui red button'} onClick={this.props.closeModal}>
+                        <button type="submit" onClick={this.props.closeModal}>
                             Cancel
                         </button>
 

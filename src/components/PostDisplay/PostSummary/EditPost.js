@@ -7,19 +7,21 @@ import withRouter from "react-router-dom/es/withRouter";
 
 export class EditPost extends Component {
     state={
-        id:this.props.post.id,
+        postId:this.props.post.postId,
         title:this.props.post.title,
         body:this.props.post.body,
         category:this.props.post.category,
         author: this.props.post.author,
-        timestamp: this.props.post.timestamp
+        time_stamp: this.props.post.time_stamp,
+        userId: this.props.post.userId
 
     }
     componentDidMount=()=>{
-        // this.props.getAllCategories()
+        console.log("in edit post cdu,", this.state)
     }
-    handleSubmit=(event)=>{
-        this.props.onSubmitEditPost(this.state.id,this.state)
+    handleSubmit=()=>{
+        console.table(this.state)
+        this.props.onSubmitEditPost(this.state)
 
        // this.setState({timestamp:Date.now()});
 

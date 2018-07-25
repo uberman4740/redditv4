@@ -1,0 +1,96 @@
+
+.card-container{
+    display: grid;
+    grid-template-columns: 0.48fr auto 0.48fr ;
+    grid-template-rows: 1.2fr 3fr 1.2fr;
+    height: 100vh;
+}
+
+.card-content-container{
+    grid-column: 2/3;
+    grid-row:2/3;
+}
+.card-inside{
+    display:grid;
+    grid-template-rows: repeat(7,0.2fr);
+    grid-template-columns:1fr ;
+}
+.logo{
+    padding-top: 50px;
+    grid-row:1/2;
+}
+.title{
+    grid-row:2/3;
+}
+.subtitle{
+    grid-row:3/4;
+    padding-bottom: 40px;
+}
+.email{
+    grid-row:4/5;
+}
+.user-name{
+    grid-row:5/6;
+}
+.password-row{
+    grid-row:6/7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 40px;
+}
+.action-row{
+    padding-top: 30px;
+    justify-items: center;
+    grid-row:7/8;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.phone{
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+/*.sign-up-container{*/
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 1.5fr 1fr ;*/
+    /*grid-template-rows: 0.8fr 2.3fr 0.8fr ;*/
+    /*height: 100vh;*/
+
+
+/*}*/
+
+/*.sign-up-card{*/
+
+    /*grid-column: 2/3;*/
+    /*grid-row: 2/3;*/
+
+/*}*/
+
+/*.title{*/
+    /*padding-top: 70px;*/
+    /*padding-bottom: 5px;*/
+
+/*}*/
+
+/*.text-field-c{*/
+    /*display:grid;*/
+    /*grid-template-columns: 1fr 1fr;*/
+/*}*/
+/*.text-field-p{*/
+   /*grid-column: 1;*/
+
+/*}*/
+/*.text-field-c-p{*/
+    /*grid-column: 2;*/
+    /*margin-left: 10px;*/
+
+/*}*/
+/*.test{*/
+    /*padding-top: 30px;*/
+
+/*}*/
