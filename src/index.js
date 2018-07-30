@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import Amplify from "aws-amplify";
 import config from "./config";
+import 'typeface-roboto'
 
 
 import "./index.css"

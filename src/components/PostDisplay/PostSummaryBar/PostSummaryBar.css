@@ -1,7 +1,7 @@
 .post-summary-bar{
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 9rem;
+    grid-template-rows: 9.037rem;
 
     /*grid-template-areas: 'post-bar-header';*/
 

@@ -1,18 +1,4 @@
 .app-container{
     display: grid;
-    grid-template-columns: 1fr 7fr 20fr;
-    /*grid-template-columns: 1fr 1fr;*/
-    /*grid-template-rows: auto;*/
-    /*overflow: scroll;*/
-
-
-    /*padding: 10px;*/
-    font-family: "Century Gothic", CenturyGothic, AppleGothic;
-}
-.backg{
-    background: url(wb2.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    grid-template-columns: 1.8fr 7fr 20fr;
 }

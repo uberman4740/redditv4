@@ -2,11 +2,13 @@ import React, {Component} from "react"
 import './Post.css'
 import AddIcon from '@material-ui/icons/Add';
 import en from 'javascript-time-ago/locale/en'
+
 import {PostSort} from "../PostSort/PostSort";
 import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
 import _ from 'lodash'
 import Modal from '@material-ui/core/Modal';
+
 
 import Link from "react-router-dom/es/Link";
 import AddPost from "./AddPost";
@@ -45,11 +47,12 @@ class Post extends Component {
 
         this.props.getAllPosts()
 
+
+
     }
 
 
     onDeleteClick = (id) => {
-        // console.log("clicked delete")
     }
     updatePost = (post) => {
         const updatedPost = {
@@ -68,6 +71,7 @@ class Post extends Component {
         console.log("__________________________POSTS______________________________")
 
         console.log("CDU POST nextProps", nextProps)
+        // console.log("POST CDU props", this.props)
         if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
             console.log("dff")
             if (this.props.match.params.categoryId === 'all') {
@@ -78,9 +82,19 @@ class Post extends Component {
                 this.props.getCategoryPosts(this.props.match.params.categoryId)
 
             }
+            // console.log("thre is an update man!!!!!!")
+            // console.log("this.props.match.params.categoryId", this.props.match.params.categoryId)
 
         }
     }
+
+    // if (this.props.match.params.postId === undefined && nextProps.match.params.postId) {
+    //     // console.log("thre is an update man!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    //     this.props.getCategoryPosts(this.props.match.params.categoryId)
+    // }
+    // if (this.props.location.pathname === '/all' && nextProps.location.pathname !== '/all') {
+    //     this.props.getAllPosts()
+    // }
 
 
     onSubmitNewPost = (values) => {
@@ -166,28 +180,31 @@ class Post extends Component {
 
 
     render() {
-        let posts;
+
+    let posts;
+
+
         if (this.state.sortByTitleAsc === true) {
 
-             posts = _.sortBy(this.props.posts, p => p.title.toLowerCase())
+            posts = _.sortBy(this.props.posts, p => p.title.toLowerCase())
         }
         else if (this.state.sortByTitleDesc === true) {
-             posts = _.sortBy(this.props.posts, p => p.title.toLowerCase()).reverse()
+            posts = _.sortBy(this.props.posts, p => p.title.toLowerCase()).reverse()
         }
         else if (this.state.sortByRatingAsc === true) {
-             posts = _.sortBy(this.props.posts, p => p.voteScore)
+            posts = _.sortBy(this.props.posts, p => p.voteScore)
         }
         else if (this.state.sortByRatingDesc === true) {
-             posts = _.sortBy(this.props.posts, p => p.voteScore).reverse()
+            posts = _.sortBy(this.props.posts, p => p.voteScore).reverse()
         }
         else if (this.state.sortByDateAsc === true) {
-             posts = _.sortBy(this.props.posts, p => p.time_stamp)
+            posts = _.sortBy(this.props.posts, p => p.time_stamp)
         }
         else if (this.state.sortByDateDesc === true) {
-             posts = _.sortBy(this.props.posts, p => p.time_stamp).reverse()
+            posts = _.sortBy(this.props.posts, p => p.time_stamp).reverse()
         }
         else {
-             posts = {...this.props.posts}
+            posts = {...this.props.posts}
 
         }
         return (
@@ -197,6 +214,8 @@ class Post extends Component {
                     <div className={'post-bar'}>
                         <div className={"post-bar-header"}>
                             <h1>Posts</h1></div>
+                        {/*<div className={"search-posts"}><i className="fas fa-search"></i>*/}
+                        {/*</div>*/}
                         <div className={'search-posts'}>
                             <Button variant="fab" color="primary" aria-label="add"
                                     onClick={() => this.onAddPostClick(true)}>
@@ -224,8 +243,6 @@ class Post extends Component {
                         </div>
                     </div>
                     <PostSort sortBy={this.sortBy}/>
-                </div>
-
                     <div className={'post-yo'}>
                         {
 
@@ -238,11 +255,11 @@ class Post extends Component {
 
                                                 <div className={'upvote'}>
                                                     <IconButton
-                                                       onClick={() => this.props.votePost(p.postId, {
-                                                           option: 'upVote',
-                                                           userId: p.userId
-                                                       })}>
-                                                    <ArrowDropUp/>
+                                                        onClick={() => this.props.votePost(p.postId, {
+                                                            option: 'upVote',
+                                                            userId: p.userId
+                                                        })}>
+                                                        <ArrowDropUp/>
                                                     </IconButton>
                                                 </div>
                                                 <div className={'score'}>
@@ -273,10 +290,15 @@ class Post extends Component {
 
                                             <div className={'post-footer'}>
                                                 <div className={'post-footer comments'}><i
-                                                className="far fa-comment"/>
-                                                {p.commentsCount}
+                                                    className="far fa-comment"/>
+                                                    {p.commentsCount}
                                                 </div>
+                                                {/*<div className={'post-footer comments'}>*/}
 
+                                                {/*<i className="far fa-user">*/}
+                                                {/*{p.author}*/}
+                                                {/*</i>*/}
+                                                {/*</div>*/}
 
                                                 <div className={'post-footer date'}>
                                                     <i className="far fa-calendar-alt">
@@ -294,6 +316,7 @@ class Post extends Component {
                         }
                     </div>
 
+                </div>
             </div>
 
         );
@@ -301,6 +324,9 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log("ZZZZZZZZZZZZZZZZZZZZ>>>>>>>>>>>............", state)
+
+
     return {
         commentCount: Object.keys(state.comments).length,
 
@@ -311,9 +337,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getAllPosts: () => dispatch(getAllPosts()),
+    // getPostComments: (postId) => dispatch(getAllPostComments(postId)),
     createPost: (values) => dispatch(createPost(values)),
+
+
     getCategoryPosts: (categoryId) => dispatch(getCategoryPosts(categoryId)),
     deletePost: (postId) => dispatch(deletePost(postId)),
+
     votePost: (id, option) => dispatch(votePost(id, option)),
     editPost: (id, data) => dispatch(editPost(id, data))
 

@@ -282,6 +282,7 @@ div.post-yo > div:nth-of-type(11):hover {
     grid-template-columns: 1fr 0.07fr 0.07fr;
     background: #181557;
 
+
     grid-template-areas: 'post-bar-header search-posts add-post';
     /*border-bottom: solid 0.5px #ba0015;*/
 
@@ -293,6 +294,8 @@ div.post-yo > div:nth-of-type(11):hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 7.67rem;
+
 
     /*justify-content: center;*/
 
