@@ -2,19 +2,12 @@ import React, {Component} from "react"
 import './Post.css'
 import AddIcon from '@material-ui/icons/Add';
 import en from 'javascript-time-ago/locale/en'
-
-import {PostBar} from "../PostBar/PostBar";
 import {PostSort} from "../PostSort/PostSort";
 import {createPost, deletePost, editPost, getAllPosts, getCategoryPosts, votePost} from "../../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
 import _ from 'lodash'
 import Modal from '@material-ui/core/Modal';
-import {API} from "aws-amplify";
 
-
-import {getAllPostComments} from "../../../actions/commentsActions";
-import {SinglePost} from "../PostList/SinglePost";
-import PostSummary from "../../PostDisplay/PostSummary/PostSummary";
 import Link from "react-router-dom/es/Link";
 import AddPost from "./AddPost";
 import Button from "@material-ui/core/Button";
@@ -52,17 +45,6 @@ class Post extends Component {
 
         this.props.getAllPosts()
 
-        // const post= await this.getPost()
-        // console.log("bro the post is+++++", post)
-
-
-        // console.log("CCDDDDDDDDD", this.props)
-        //
-        //
-        // this.props.getAllPosts()
-        // // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",note)
-
-
     }
 
 
@@ -78,7 +60,6 @@ class Post extends Component {
             author: post.author,
             category: post.category,
         }
-        // console.log("updatePost data_________________", updatedPost)
         this.props.editPost(updatedPost.id, updatedPost)
         this.closeEditPostModal()
     }
@@ -87,7 +68,6 @@ class Post extends Component {
         console.log("__________________________POSTS______________________________")
 
         console.log("CDU POST nextProps", nextProps)
-        // console.log("POST CDU props", this.props)
         if (this.props.match.params.categoryId !== nextProps.match.params.categoryId) {
             console.log("dff")
             if (this.props.match.params.categoryId === 'all') {
@@ -98,19 +78,9 @@ class Post extends Component {
                 this.props.getCategoryPosts(this.props.match.params.categoryId)
 
             }
-            // console.log("thre is an update man!!!!!!")
-            // console.log("this.props.match.params.categoryId", this.props.match.params.categoryId)
 
         }
     }
-
-    // if (this.props.match.params.postId === undefined && nextProps.match.params.postId) {
-    //     // console.log("thre is an update man!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    //     this.props.getCategoryPosts(this.props.match.params.categoryId)
-    // }
-    // if (this.props.location.pathname === '/all' && nextProps.location.pathname !== '/all') {
-    //     this.props.getAllPosts()
-    // }
 
 
     onSubmitNewPost = (values) => {
@@ -124,7 +94,7 @@ class Post extends Component {
     }
     sortBy = (type, val) => {
         if (type === 'title') {
-            if (val == 'asc') {
+            if (val === 'asc') {
                 this.setState({sortByTitleAsc: true})
                 this.setState({sortByTitleDesc: false})
 
@@ -135,7 +105,7 @@ class Post extends Component {
 
 
             }
-            if (val == 'desc') {
+            if (val === 'desc') {
                 this.setState({sortByTitleDesc: true})
                 this.setState({sortByTitleAsc: false})
 
@@ -148,7 +118,7 @@ class Post extends Component {
             }
         }
         if (type === 'rating') {
-            if (val == 'asc') {
+            if (val === 'asc') {
                 this.setState({sortByRatingAsc: true})
                 this.setState({sortByRatingDesc: false})
 
@@ -158,7 +128,7 @@ class Post extends Component {
                 this.setState({sortByDateDesc: false})
 
             }
-            if (val == 'desc') {
+            if (val === 'desc') {
                 this.setState({sortByRatingDesc: true})
                 this.setState({sortByRatingAsc: false})
 
@@ -170,7 +140,7 @@ class Post extends Component {
             }
         }
         if (type === 'date') {
-            if (val == 'asc') {
+            if (val === 'asc') {
                 this.setState({sortByDateAsc: true})
                 this.setState({sortByDateDesc: false})
 
@@ -180,7 +150,7 @@ class Post extends Component {
                 this.setState({sortByRatingDesc: false})
 
             }
-            if (val == 'desc') {
+            if (val === 'desc') {
                 this.setState({sortByDateDesc: true})
                 this.setState({sortByDateAsc: false})
 
@@ -196,36 +166,28 @@ class Post extends Component {
 
 
     render() {
-
-
-        const color = ['#d90015', '#dc1c17', '#e03917', '#e25819', '#e4751b'];
-        // console.log("Post render props:");
-        console.log("props Post ", this.props);
-        const divStyle = {
-            backgroundColor: '#b65b1d', // note the capital 'W' here
-        };
-
+        let posts;
         if (this.state.sortByTitleAsc === true) {
 
-            var posts = _.sortBy(this.props.posts, p => p.title.toLowerCase())
+             posts = _.sortBy(this.props.posts, p => p.title.toLowerCase())
         }
         else if (this.state.sortByTitleDesc === true) {
-            var posts = _.sortBy(this.props.posts, p => p.title.toLowerCase()).reverse()
+             posts = _.sortBy(this.props.posts, p => p.title.toLowerCase()).reverse()
         }
         else if (this.state.sortByRatingAsc === true) {
-            var posts = _.sortBy(this.props.posts, p => p.voteScore)
+             posts = _.sortBy(this.props.posts, p => p.voteScore)
         }
         else if (this.state.sortByRatingDesc === true) {
-            var posts = _.sortBy(this.props.posts, p => p.voteScore).reverse()
+             posts = _.sortBy(this.props.posts, p => p.voteScore).reverse()
         }
         else if (this.state.sortByDateAsc === true) {
-            var posts = _.sortBy(this.props.posts, p => p.time_stamp)
+             posts = _.sortBy(this.props.posts, p => p.time_stamp)
         }
         else if (this.state.sortByDateDesc === true) {
-            var posts = _.sortBy(this.props.posts, p => p.time_stamp).reverse()
+             posts = _.sortBy(this.props.posts, p => p.time_stamp).reverse()
         }
         else {
-            var posts = {...this.props.posts}
+             posts = {...this.props.posts}
 
         }
         return (
@@ -235,8 +197,6 @@ class Post extends Component {
                     <div className={'post-bar'}>
                         <div className={"post-bar-header"}>
                             <h1>Posts</h1></div>
-                        {/*<div className={"search-posts"}><i className="fas fa-search"></i>*/}
-                        {/*</div>*/}
                         <div className={'search-posts'}>
                             <Button variant="fab" color="primary" aria-label="add"
                                     onClick={() => this.onAddPostClick(true)}>
@@ -264,6 +224,8 @@ class Post extends Component {
                         </div>
                     </div>
                     <PostSort sortBy={this.sortBy}/>
+                </div>
+
                     <div className={'post-yo'}>
                         {
 
@@ -314,12 +276,7 @@ class Post extends Component {
                                                 className="far fa-comment"/>
                                                 {p.commentsCount}
                                                 </div>
-                                                {/*<div className={'post-footer comments'}>*/}
 
-                                                    {/*<i className="far fa-user">*/}
-                                                        {/*{p.author}*/}
-                                                    {/*</i>*/}
-                                                {/*</div>*/}
 
                                                 <div className={'post-footer date'}>
                                                     <i className="far fa-calendar-alt">
@@ -337,7 +294,6 @@ class Post extends Component {
                         }
                     </div>
 
-                </div>
             </div>
 
         );
@@ -345,9 +301,6 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("ZZZZZZZZZZZZZZZZZZZZ>>>>>>>>>>>............", state)
-
-
     return {
         commentCount: Object.keys(state.comments).length,
 
@@ -358,13 +311,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getAllPosts: () => dispatch(getAllPosts()),
-    // getPostComments: (postId) => dispatch(getAllPostComments(postId)),
     createPost: (values) => dispatch(createPost(values)),
-
-
     getCategoryPosts: (categoryId) => dispatch(getCategoryPosts(categoryId)),
     deletePost: (postId) => dispatch(deletePost(postId)),
-
     votePost: (id, option) => dispatch(votePost(id, option)),
     editPost: (id, data) => dispatch(editPost(id, data))
 
@@ -372,152 +321,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post)
-{/*<div className={'post-container'}>*/
-}
-{/*<div>*/
-}
-{/*<div className={'post-bar'}>*/
-}
-{/*<div className={"post-bar-header"}>*/
-}
-{/*<h1>Posts</h1></div>*/
-}
-{/*<div className={"search-posts"}><i className="fas fa-search"></i>*/
-}
-{/*</div>*/
-}
-{/*<div className={'add-post'}><i className="fas fa-plus"*/
-}
-{/*onClick={() => this.onAddPostClick(true)}>*/
-}
-{/*{*/
-}
-{/*this.state.isAddPostClicked*/
-}
-{/*? <div>*/
-}
-{/*<Modal*/
-}
-{/*isOpen={this.state.postModalOpen}*/
-}
-{/*onRequestClose={this.closeEditPostModal}*/
-}
-{/*>*/
-}
-{/*<AddPost onSubmitNewPost={this.onSubmitNewPost}*/
-}
-{/*authUser={this.state.authUser}/>*/
-}
-
-{/*</Modal>*/
-}
-{/*</div>*/
-}
-{/*: null*/
-}
-{/*}*/
-}
-{/*</i>*/
-}
-{/*</div>*/
-}
-{/*</div>*/
-}
-{/*<PostSort sortBy={this.sortBy}/>*/
-}
-{/*<div className={'post-yo'}>*/
-}
-{/*{*/
-}
-
-
-{/*_.map(posts, p =>*/
-}
-{/*(*/
-}
-{/*<div className={"hh"} key={p.postId}>*/
-}
-{/*<div className={'post-list'}>*/
-}
-{/*<div className={'rating'}>*/
-}
-{/*<div>*/
-}
-{/*<i className="fas fa-caret-up"*/
-}
-{/*onClick={() => this.props.votePost(p.postId, 'upVote')}/>*/
-}
-{/*</div>*/
-}
-{/*<div>*/
-}
-{/*{p.voteScore}*/
-}
-{/*</div>*/
-}
-{/*<div>*/
-}
-{/*<i className="fas fa-caret-down"*/
-}
-{/*onClick={() => this.props.votePost(p.postId, 'downVote')}/>*/
-}
-{/*</div>*/
-}
-{/*</div>*/
-}
-{/*<div className={'post'}>*/
-}
-{/*<Link className={'no-u'} to={`/${p.category}/${p.id}`}>{p.title}</Link>*/
-}
-{/*/!*{p.title}*!/*/
-}
-{/*</div>*/
-}
-{/*<div className={'post-footer'}>*/
-}
-{/*<div className={'post-footer comments'}><i*/
-}
-{/*className="far fa-comment"/>*/
-}
-{/*</div>*/
-}
-{/*<div className={'post-footer author'}>*/
-}
-{/*<i className="far fa-user">*/
-}
-{/*{p.author}*/
-}
-{/*</i>*/
-}
-{/*</div>*/
-}
-{/*<div className={'post-footer date'}>*/
-}
-{/*<i className="far fa-calendar-alt">*/
-}
-{/*{p.timestamp}*/
-}
-{/*</i>*/
-}
-{/*</div>*/
-}
-{/*</div>*/
-}
-{/*</div>*/
-}
-{/*</div>*/
-}
-
-{/*)*/
-}
-{/*)*/
-}
-{/*}*/
-}
-{/*</div>*/
-}
-
-{/*</div>*/
-}
-{/*</div>*/
-}

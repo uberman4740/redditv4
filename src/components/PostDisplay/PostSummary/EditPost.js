@@ -1,8 +1,4 @@
 import React, {Component} from 'react'
-import {Route, Link} from 'react-router-dom'
-import connect from "react-redux/es/connect/connect";
-import {editPost} from "../../../actions/postActions";
-import withRouter from "react-router-dom/es/withRouter";
 
 
 export class EditPost extends Component {
@@ -22,11 +18,6 @@ export class EditPost extends Component {
     handleSubmit=()=>{
         console.table(this.state)
         this.props.onSubmitEditPost(this.state)
-
-       // this.setState({timestamp:Date.now()});
-
-        // this.props.editPost(this.state.id,this.state);
-       // this.props.history.push('/redux')
 
     }
     handleChange=(event)=>{
@@ -55,7 +46,6 @@ export class EditPost extends Component {
                 <label>
 
                     <textarea
-                        // placeholder="Enter Body"
                         name={'body'}
                         type={'text'}
                         value={this.state.body}
@@ -65,7 +55,6 @@ export class EditPost extends Component {
                     <input
                         name={'category'}
                         type={'text'}
-                        // placeholder="Enter Category"
 
                         value={this.state.category}
                         onChange={this.handleChange}/>

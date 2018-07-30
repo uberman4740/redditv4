@@ -21,7 +21,6 @@ export default function posts(state = {}, action) {
         }
         case GET_POST: {
             console.log("IN GET POST REDUCER", action)
-            const post = action.payload
             return {
                 ...state,
                 [action.payload.data.id]: action.payload.data

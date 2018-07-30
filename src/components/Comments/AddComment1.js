@@ -1,61 +1,10 @@
 
 import React, {Component} from 'react'
-import {Route, Link} from 'react-router-dom'
 import connect from "react-redux/es/connect/connect";
 import {createComment, getAllPostComments} from "../../actions/commentsActions";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-{/*<TextField*/
-}
-{/*id="email"*/
-}
-{/*label="Comment as raju"*/
-}
-{/*margin="normal"*/
-}
-{/*multiline="true"*/
-}
-{/*rows="4"*/
-}
-{/*autoFocus={"false"}*/
-}
-{/*fullWidth={true}*/
-}
-{/*/>*/
-}
-{/*<Button*/
-}
-{/*block*/
-}
-{/*bsSize="small"*/
-}
-{/*type="submit"*/
-}
-{/*color="primary"*/
-}
-{/*variant="contained"*/
-}
-
-
-{/*>*/
-}
-{/*Comment*/
-}
-{/*</Button>*/
-}
-{/*<br/>*/
-}
-{/*<br/>*/
-}
-{/*<br/>*/
-}
-{/*<br/>*/
-}
-
-
-{/*<Divider/>*/
-}
 class AddComment extends Component {
     state = {
         body: '',
@@ -64,9 +13,7 @@ class AddComment extends Component {
         userId:this.props.userId
 
     }
-    componentDidMount = () => {
-        // // console.log("AddComment CDM props: ", this.props)
-    }
+
 
 
     handleInputChange = (event) => {
@@ -77,13 +24,7 @@ class AddComment extends Component {
         const name = target.name
         this.setState({[name]: value});
     }
-    // handleSubmit =()=> {
-    //
-    //     this.props.createComment(this.state).then(()=>this.props.getPostComments(this.state.parentId)
-    //     )
-    //
-    //     this.props.commentClicked(false)
-    // }
+
     handleSubmit = () => {
         console.table(this.state)
 
@@ -94,7 +35,6 @@ class AddComment extends Component {
     }
 
     render() {
-        // // console.log("AddComment Render  props: ", this.props)
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -105,7 +45,6 @@ class AddComment extends Component {
                 <div className={'ui form'}>
                     <div>
 
-                        {/*<label>Text</label>*/}
                         <TextField name={'body'}
                                   placeholder="Enter Comment"
                                   value={this.state.body}
@@ -119,14 +58,6 @@ class AddComment extends Component {
 
                         />
                     </div>
-                    {/*<div className="ui field">*/}
-                    {/*/!*<label>Author</label>*!/*/}
-                    {/*<input type="text" name="author" placeholder="Author Name"*/}
-                    {/*value={this.state.author}*/}
-                    {/*onChange={this.handleInputChange}*/}
-                    {/*/>*/}
-                    {/*</div>*/}
-
                     <Button    block
                                bsSize="small"
                                color="primary"
@@ -147,7 +78,7 @@ class AddComment extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 
     return {authUser: state.authUser}
 }

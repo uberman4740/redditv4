@@ -1,6 +1,6 @@
 .app-container{
     display: grid;
-    grid-template-columns: 2fr 7fr 20fr;
+    grid-template-columns: 1fr 7fr 20fr;
     /*grid-template-columns: 1fr 1fr;*/
     /*grid-template-rows: auto;*/
     /*overflow: scroll;*/

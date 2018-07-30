@@ -1,7 +1,6 @@
 
 .post-sort {
     display: grid;
-    height: 1.3rem;
 
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #282267;

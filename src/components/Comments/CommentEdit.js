@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import {Route, Link} from 'react-router-dom'
-import connect from "react-redux/es/connect/connect";
-import Redirect from "react-router-dom/es/Redirect";
+
 
 
 export class CommentEdit extends Component {
@@ -10,14 +8,8 @@ export class CommentEdit extends Component {
         body:this.props.initialValue.body
     }
 
-    componentDidMount() {
-        console.log("CommentEdit CDM props: ", this.props)
-    }
-
     onFormSubmit = () => {
-        // event.preventDefault()
         this.props.onSub(this.state)
-        // console.log("submit!!!!!" ,this.state.value)
     }
     handleChange = (event) => {
 
@@ -29,14 +21,7 @@ export class CommentEdit extends Component {
 
     render() {
         console.log("commend edit", this.state)
-        // console.log("CommentEdit Render  props: ", this.props)
-        // console.log("CommentEdit Render  state: ", this.state)
-        // console.log(this.state.value.body)
 
-        // console.log("someproprrrr", someProperty)
-        // let someProperty = {...this.state.value}
-        // console.log("sommmme proper",someProperty)
-        // someProperty.body = event.target.value
 
 
         return (

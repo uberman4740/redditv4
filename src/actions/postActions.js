@@ -1,14 +1,7 @@
-import {
-    ROOT_URL,
-    AUTH_HEADERS
 
-} from './shared';
-import axios from 'axios';
 import {API} from "aws-amplify";
 
-const uuidv4 = require('uuid/v4');
 
-axios.defaults.headers.common['Authorization'] = AUTH_HEADERS;
 
 let apiName = 'notes';
 let path = '/posts';
@@ -19,12 +12,7 @@ export const CREATE_POST = "CREATE_POST"
 export const DELETE_POST = "DELETE_POST"
 export const VOTE_POST = "VOTE_POST"
 export const EDIT_POST = "EDIT_POST"
-// export const SORT_POSTS = "SORT_POSTS"
-//
-//
-// export function sortPosts{
-//
-// }
+
 export function updatePost(data) {
 
 

@@ -1,9 +1,4 @@
-import {
-    ROOT_URL,
-    AUTH_HEADERS
 
-} from './shared';
-import axios from 'axios';
 import { API } from "aws-amplify";
 
 

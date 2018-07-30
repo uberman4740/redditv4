@@ -1,15 +1,7 @@
 import {API} from "aws-amplify";
 
-import {
-    ROOT_URL,
-    AUTH_HEADERS
-
-} from './shared';
-import axios from 'axios';
-const uuidv4 = require('uuid/v4');
 
 
-axios.defaults.headers.common['Authorization'] = AUTH_HEADERS;
 
 export const GET_ALL_POST_COMMENTS = 'GET_ALL_POST_COMMENTS'
 
@@ -44,16 +36,6 @@ export function editComment(id, data) {
     }
 
 }
-// export function editComment(id,values) {
-//     const request =  axios.put(`${ROOT_URL}/comments/${id}`,values)
-//     console.log("################ action edit", request)
-//     return{
-//         type:EDIT_COMMENT,
-//         payload:request
-//     }
-//
-//
-// }
 
 export function destroyComment(request) {
     return {
@@ -71,14 +53,6 @@ export function deleteComment(id,postId) {
         dispatch(destroyComment(req))
     }
 }
-// export function deleteComment(id){
-//     const request =  axios.delete(`${ROOT_URL}/comments/${id}`)
-//     return {
-//         type: DELETE_COMMENT,
-//         payload: request
-//     }
-//
-// }
 
 export function loadAllPostComments(data){
     return{
@@ -110,7 +84,6 @@ export function addComment (data){
 export function createComment (values){
     const {body} = values
     const data = {body}
-    // console.log("ACTIOB COMMENT", values)
 
 
     return async dispatch => {
@@ -122,15 +95,7 @@ export function createComment (values){
     }
 }
 
-// export function voteComment(id, vote){
-//     const request = axios.post(`${ROOT_URL}/comments/${id}`, {option: vote})
-//
-//     return{
-//         type: VOTE_COMMENT,
-//         payload: request
-//     }
-//
-// }
+
 export function updateVoteComment(data) {
 
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './PostSummary.css';
 import {PostSummarBar} from "../PostSummaryBar/PostSummarBar";
-import {deletePost, editPost, getCategoryPosts, getPost, votePost} from "../../../actions/postActions";
+import {deletePost, editPost, getPost, votePost} from "../../../actions/postActions";
 import connect from "react-redux/es/connect/connect";
 import Modal from 'react-modal'
 import {EditPost} from "./EditPost";
@@ -38,12 +38,7 @@ class PostSummary1 extends Component {
 
     }
 
-
-    // componentDidMount() {
-    //     console.log("PostSummary CDM props: ", this.props)
-    //
-    // }
-    componentDidUpdate(nextProps, prevState, snapshot) {
+    componentDidUpdate(nextProps, ) {
         console.log("__________________________|||||||||||______________________________")
         console.log("CDU nextProps", nextProps)
         console.log("POST CDU props", this.props)
@@ -70,7 +65,6 @@ class PostSummary1 extends Component {
     }
     onDeleteClick = (id,userId) => {
         this.props.deletePost(id,userId)
-        // .then(() => this.props.history.push(`/${this.props.match.params.categoryId}`))
     }
     onSubmitEditPost = (value) => {
         const updatedPost = {
@@ -188,11 +182,6 @@ class PostSummary1 extends Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("PostSummary state: ", state.posts[ownProps.match.params.postId])
-    console.log("~~~~~~~~~##!!!!!~~~~~", state)
-
-
-    console.log("PostSummary ownprops", ownProps)
     if (ownProps.match.params.postId === undefined) {
         return {
             post: "",
@@ -219,7 +208,6 @@ const mapDispatchToProps = (dispatch) => ({
     deletePost: (postId,userId) => dispatch(deletePost(postId,userId)),
     votePost: (id, option) => dispatch(votePost(id, option)),
     editPost: (id, data) => dispatch(editPost(id, data)),
-    // getPostComments: (postId) => dispatch(getAllPostComments(postId)),
 
 })
 

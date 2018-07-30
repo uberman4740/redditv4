@@ -3,7 +3,6 @@ import './Comments.css'
 import connect from "react-redux/es/connect/connect";
 import _ from 'lodash'
 import {deleteComment, editComment, getAllPostComments, voteComment} from "../../actions/commentsActions";
-import AddComment from "./AddComment";
 import Modal from 'react-modal'
 import {CommentEdit} from "./CommentEdit";
 import Typography from "@material-ui/core/Typography";
@@ -37,34 +36,13 @@ class Comments1 extends Component {
 
     }
 
-    componentDidUpdate(nextProps, prevState, snapshot) {
-        // console.log("++prev state+++", prevState)
-        // console.log("++comp state+++", this.state)
-        // console.log("++NEXT PROPS id++", nextProps)
+    componentDidUpdate(nextProps) {
+
 
         console.log("NEXPROPS POSTS ID", nextProps.postId)
         console.log("THIS PROPS POST ID", this.props.postId)
-
-
-        // if (prevState.isAddCommentClicked === true && this.state.isAddCommentClicked === false) {
-        //     // this.setState({loading: true})
-        //     // alert("now getting comments from modal block")
-        //
-        //
-        //
-        //     this.props.getPostComments(this.props.postId)
-        //     this.setState({loading: false})
-        //     // alert("DONE! now getting comments from modal block")
-        //
-        //
-        // }
         if (nextProps.postId !== this.props.postId) {
-            // // alert("now getting differ post id block")
-
-
             this.props.getPostComments(this.props.postId).then(() => this.setState({loading: false}))
-
-
         }
 
     }
@@ -93,12 +71,9 @@ class Comments1 extends Component {
             body: comment.body,
 
         }
-        // console.log("updatePost data_________________", updatedComment)
         this.props.editComment(updatedComment.commentId, {body: updatedComment.body, postId: this.props.postId})
         this.closeEditPostModal()
-
     }
-
     renderComments() {
         console.log("dskfjnsadkjfnsakjdnfaskjfn++++++++++", this.comments)
 
@@ -123,17 +98,6 @@ class Comments1 extends Component {
 
                                 </Modal>
 
-
-                                {/*<div className={'comments-rating'}>*/}
-                                {/*<div className="fas fa-caret-up"*/}
-                                {/*onClick={() => this.props.voteComment(c.commentId, {option:'upVote',postId:c.postId})}>*/}
-
-                                {/*</div>*/}
-                                {/*<div onClick={() => this.props.voteComment(c.commentId, {option:'downVote',postId:c.postId})}>*/}
-                                {/*<i className="fas fa-caret-down"/>*/}
-                                {/*</div>*/}
-
-                                {/*</div>*/}
                                 <div>
                                     <Typography variant="body2">
                                         {c.author}
@@ -177,16 +141,6 @@ class Comments1 extends Component {
                                     <Edit/>
                                 </IconButton>
 
-                                {/*<div className={'comments-footer'}>*/}
-                                {/*<div onClick={() => this.onDeleteClick(c.commentId)}>*/}
-                                {/*<i className="fas fa-trash-alt"/>*/}
-
-
-                                {/*</div>*/}
-                                {/*<div><i className="fas fa-edit" onClick={this.openEditPostModal}/>*/}
-
-                                {/*</div>*/}
-                                {/*</div>*/}
                             </div>}
 
                 </Paper>
@@ -241,13 +195,7 @@ class Comments1 extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    console.log("Comments state: ", state)
-    console.log("Comments state: ", state.comments)
-    console.log("Comments length: ", Object.keys(state.comments).length)
-
-
-    // console.log("Comments ownProps: ", ownProps)
+const mapStateToProps = (state) => {
 
     return {
         comments: state.comments

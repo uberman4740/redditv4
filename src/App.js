@@ -7,7 +7,7 @@ import PostSummary1 from "./components/PostDisplay/PostSummary/PostSummar1";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import SignIn from "./components/auth/SignIn/SignIn";
-import {Auth, API} from "aws-amplify";
+import {Auth} from "aws-amplify";
 import connect from "react-redux/es/connect/connect";
 import {addAuthUser} from "./actions/authAction";
 import SignUp from "./components/auth/SignUp/SignUp";
